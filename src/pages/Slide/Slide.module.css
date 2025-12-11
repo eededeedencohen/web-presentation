@@ -1,0 +1,33 @@
+/* pages/Slide/Slide.module.css */
+.slidePage {
+    display: grid;
+    height: 100vh;
+    /* תופס את כל גובה המסך */
+
+    /* הגדרת העמודות והשורות */
+    grid-template-columns: 250px 1fr;
+    /* תפריט צד ברוחב קבוע, השאר גמיש */
+    grid-template-rows: 80px 1fr;
+    /* כותרת בגובה קבוע, השאר גמיש */
+
+    /* "ציור" של המבנה */
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+}
+
+/* שיוך הדיבים לאזורים בגריד */
+.headerArea {
+    grid-area: header;
+    /* אין צורך בעיצוב נוסף - הקומפוננטה בפנים תמלא את זה */
+}
+
+.sideArea {
+    grid-area: sidebar;
+}
+
+.mainArea {
+    grid-area: main;
+    overflow-y: auto;
+    /* אם התוכן ארוך, רק החלק הזה יגלול */
+}

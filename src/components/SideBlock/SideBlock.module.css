@@ -1,0 +1,116 @@
+/* components/SideBlock/SideBlock.module.css */
+
+.container {
+    background-color: #ffffff;
+    height: 100%;
+    /* ממלא את כל הגובה שנתן לו ה-Grid */
+    display: flex;
+    flex-direction: column;
+    /* מסדר את האלמנטים אחד מתחת לשני */
+    border-left: 1px solid #e0e0e0;
+    /* קו הפרדה עדין בצד */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    /* צללית עדינה */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.topSection {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.menuTitle {
+    margin: 0;
+    color: #835ba8;
+    /* הסגול שלך */
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* אזור הניווט תופס את כל המקום הפנוי באמצע */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* רווח בין כפתורים */
+    flex-grow: 1;
+}
+
+.menuItem {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: #666;
+    text-align: right;
+    /* חשוב לעברית */
+}
+
+.menuItem:hover {
+    background-color: #f5f0fa;
+    /* סגול בהיר מאוד ברחף */
+    color: #835ba8;
+}
+
+/* המצב הפעיל (Active State) */
+.active {
+    background-color: #835ba8;
+    color: white;
+    box-shadow: 0 4px 10px rgba(131, 91, 168, 0.3);
+}
+
+/* כשאנחנו במצב פעיל, גם ברחף נשמור על הצבע */
+.active:hover {
+    background-color: #6d4a8e;
+    color: white;
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+/* אזור המשתמש למטה */
+.userSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #55aeb6;
+    /* הטורקיז שלך */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.userRole {
+    font-size: 12px;
+    color: #999;
+}

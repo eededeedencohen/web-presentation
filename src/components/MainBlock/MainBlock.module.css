@@ -1,0 +1,7 @@
+/* components/MainBlock/MainBlock.module.css */
+.container {
+    background-color: #ecf0f1;
+    /* אפור בהיר */
+    height: 100%;
+    padding: 20px;
+}
