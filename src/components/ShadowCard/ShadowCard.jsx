@@ -1,12 +1,16 @@
 import React from "react";
 import styles from "./ShadowCard.module.css";
 
+import DuelBorderCard from "../DuelBorderCard/DuelBorderCard.jsx";
+
 // טעינת SVG כקומפוננטה
-import MountainsIcon from "../../assets/snowed-mountains.svg?react"; // type is
+import MountainsIcon from "../../assets/snowed-mountains.svg?react"; 
 
 function ShadowCard() {
   return (
-    <div className={styles["card-container"]}>
+    <DuelBorderCard 
+      color="var(--purple)"
+    >
       <div className={styles["icon-wrapper"]}>
         <MountainsIcon className={styles["mountains-icon"]} />
       </div>
@@ -20,7 +24,7 @@ function ShadowCard() {
         <br />
         ההכנסה העיקרי
       </p>
-    </div>
+    </DuelBorderCard>
   );
 }
 
