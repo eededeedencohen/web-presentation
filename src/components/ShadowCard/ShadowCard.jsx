@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ShadowCard.module.css";
 
 // טעינת SVG כקומפוננטה
-import MountainsIcon from "../../assets/snowed-mountains.svg?react"; 
+import MountainsIcon from "../../assets/snowed-mountains.svg?react"; // type is
 
 function ShadowCard() {
   return (

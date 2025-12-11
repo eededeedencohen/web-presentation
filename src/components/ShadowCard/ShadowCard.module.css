@@ -10,13 +10,13 @@
     text-align: center;
 
     /* המסגרת והצללית המיוחדת */
-    border: 5px solid rgb(86, 58, 116);
+    border: 5px solid var(--purple);
      /* המסגרת הסגולה */
-    box-shadow: 10px 8px 0px 1px rgb(86, 58, 116);
+    box-shadow: 10px 8px 0px 1px var(--purple);
         /* הצללית הצידית */
 
         /* פונטים וצבעים */
-        color:rgb(86, 58, 116);
+        color: var(--purple);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,6 +47,6 @@
 .mountains-icon {
     width: 100%;
     height: 100%;
-    fill: rgb(86, 58, 116);
+    fill: var(--purple);
     /* צבע האייקון */
 }

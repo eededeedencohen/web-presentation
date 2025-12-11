@@ -1,3 +1,8 @@
+:root {
+  --purple: rgb(86, 58, 116);
+  --green: rgb(72, 156, 167);
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
@@ -9,7 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 
 * {
