@@ -31,3 +31,27 @@
     overflow-y: auto;
     /* אם התוכן ארוך, רק החלק הזה יגלול */
 }
+
+.extraDesign {
+    /* 1. הוספת גבול (Border) */
+    /* זה לא מתנגש עם ה-box-shadow, אז זה בטוח */
+    border: 3px solid var(--purple) !important;
+
+    /* 2. פילטרים ואפקטים */
+    filter: grayscale(80%); /* הופך את התמונה לקצת אפורה */
+    opacity: 0.9;
+    
+    /* 3. מיקומים */
+    margin-top: 20px;
+    cursor: pointer;
+
+    /* 4. טרנזিশן לאפקטים רגילים (לא לאנימציית הטעינה) */
+    transition: filter 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+/* אפשר אפילו להוסיף אפקט Hover */
+.extraDesign:hover {
+    filter: grayscale(0%); /* מחזיר צבע מלא */
+    transform: scale(1.05); /* מגדיל קצת */
+    border-color: #ff0055;
+}
