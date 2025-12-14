@@ -10,6 +10,7 @@ import ShadowCard from "../../components/ShadowCard/ShadowCard";
 
 // ייבוא הרכיב המתוקן
 import CircularShadowImage from "../../components/CircularShadowImage/CircularShadowImage";
+import VisionCard from "../../components/Cards/VisionCard/VisionCard";
 
 // ייבוא התמונה (וודא שהנתיב הזה אכן נכון במבנה התיקיות שלך)
 import exampleImage from "../../assets/Images/image.png";
@@ -43,6 +44,34 @@ export default function Slide() {
             className={styles.extraDesign}
             onClick={() => alert("Hi!")}
           />
+
+          {/* שימוש ברכיב הכרטיס */}
+          <div className={styles.visionCardWrapper}>
+            <VisionCard
+              imageSrc={exampleImage}
+              title="Our Vision"
+              text="To be the leading company in our field, setting standards of excellence and innovation."
+              iconName="megaphone"
+              color="var(--purple)"
+              className={styles.visionCardStyle}
+            />
+            <VisionCard
+              imageSrc={exampleImage}
+              title="Our Vision"
+              text="To be the leading company in our field, setting standards of excellence and innovation."
+              iconName="megaphone"
+              color="var(--purple)"
+              className={styles.visionCardStyle}
+            />
+            <VisionCard
+              imageSrc={exampleImage}
+              title="Our Vision"
+              text="To be the leading company in our field, setting standards of excellence and innovation."
+              iconName="megaphone"
+              color="var(--purple)"
+              className={styles.visionCardStyle}
+            />
+          </div>
         </MainBlock>
       </div>
     </div>

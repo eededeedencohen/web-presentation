@@ -38,9 +38,10 @@
     border: 3px solid var(--purple) !important;
 
     /* 2. פילטרים ואפקטים */
-    filter: grayscale(80%); /* הופך את התמונה לקצת אפורה */
+    filter: grayscale(80%);
+    /* הופך את התמונה לקצת אפורה */
     opacity: 0.9;
-    
+
     /* 3. מיקומים */
     margin-top: 20px;
     cursor: pointer;
@@ -51,7 +52,18 @@
 
 /* אפשר אפילו להוסיף אפקט Hover */
 .extraDesign:hover {
-    filter: grayscale(0%); /* מחזיר צבע מלא */
-    transform: scale(1.05); /* מגדיל קצת */
-    border-color: #ff0055;
+    filter: grayscale(0%);
+    /* מחזיר צבע מלא */
+    transform: scale(1.05);
+    /* מגדיל קצת */
+    border-color: var(--purple) !important;
+    /* משנה צבע הגבול */
+}
+
+
+.visionCardWrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
