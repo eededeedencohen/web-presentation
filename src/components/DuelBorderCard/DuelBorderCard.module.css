@@ -1,5 +1,16 @@
 /* DuelBorderCard.module.css */
 
+/* נגדיר את האנימציה: התחלה ללא צללית, סיום עם הערכים מהמשתנים */
+@keyframes growShadow {
+  0% {
+    box-shadow: 0px 0px 0px 0px var(--card-color);
+  }
+
+  100% {
+    box-shadow: var(--offset-x) var(--offset-y) 0px 1px var(--card-color);
+  }
+}
+
 .cardContainer {
   /* 1. קבלת ערכים דינמיים מהמשתנים */
   width: var(--card-width);
@@ -8,11 +19,18 @@
   background-color: var(--card-bg);
   color: var(--card-color);
 
-  /* 2. הגדרת המסגרת והצללית לפי הצבע והמיקום */
+  /* 2. הגדרת המסגרת והצללית */
   border: 5px solid var(--card-color);
+
+  /* הסרנו את ה-box-shadow הקבוע מכאן כי האנימציה תטפל בו */
+  /* אבל נשאיר אותו כ-fallback או שהאנימציה תדרוס אותו בסוף */
   box-shadow: var(--offset-x) var(--offset-y) 0px 1px var(--card-color);
 
-  /* 3. עיצוב קבוע (לא משתנה) */
+  /* 3. הוספת האנימציה */
+  /* משך: 0.8 שניות, סוג תנועה: ease-out (מהיר ואז מאט), forwards (שומר על המצב הסופי) */
+  animation: growShadow 0.8s ease-out forwards;
+
+  /* 4. עיצוב קבוע (לא משתנה) */
   border-radius: 30px;
   padding: 20px 5px;
   text-align: center;

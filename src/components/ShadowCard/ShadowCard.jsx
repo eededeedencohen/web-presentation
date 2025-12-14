@@ -2,19 +2,17 @@ import React from "react";
 import styles from "./ShadowCard.module.css";
 
 import DuelBorderCard from "../DuelBorderCard/DuelBorderCard.jsx";
-
-// טעינת SVG כקומפוננטה
-import MountainsIcon from "../../assets/snowed-mountains.svg?react"; 
+import IconSVG from "../IconSVG/IconSVG.jsx";
 
 function ShadowCard() {
   return (
-    <DuelBorderCard 
-      color="var(--purple)"
-    >
-      <div className={styles["icon-wrapper"]}>
-        <MountainsIcon className={styles["mountains-icon"]} />
-      </div>
-
+    <DuelBorderCard color="var(--purple)" className={styles["card-container"]}>
+      <IconSVG
+        iconName="snowed-mountains"
+        color="var(--purple)"
+        width="80px"
+        height="80px"
+      />
       <h2 className={styles["card-title"]}>כיבוש הפסגות</h2>
 
       <p className={styles["card-text"]}>
