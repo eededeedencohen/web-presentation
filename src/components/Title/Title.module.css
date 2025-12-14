@@ -1,0 +1,68 @@
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+    direction: ltr;
+    /* זנב שמאל -> מלבן -> זנב ימין */
+    /* מונע פסי גלילה אם הזוויות חורגות */
+}
+
+.rectangle-part {
+    background-color: #4798a1;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    /* ריווח שווה משני הצדדים */
+
+    border-bottom: 12px solid #53386b;
+
+    font-size: 2rem;
+    font-weight: bold;
+    direction: rtl;
+
+    /* קריטי: שמים את המלבן מעל הצדדים כדי להסתיר את החיבור */
+    position: relative;
+    z-index: 2;
+}
+
+/* החלק הימני (ב-LTR הוא ראשון מצד שמאל) */
+.parallelogram-part {
+    width: 50px;
+    background-color: #4798a1;
+    border-bottom: 12px solid #53386b;
+
+    /* הזווית */
+    transform: skewX(20deg);
+
+    /* מחבר אותו למלבן מימינו */
+    margin-right: -18px;
+
+    position: relative;
+    z-index: 1;
+    /* מתחת למלבן */
+
+    /* עיגול הפינה החיצונית השמאלית */
+    border-bottom-left-radius: 20px;
+}
+
+/* החלק השמאלי (ב-LTR הוא אחרון מצד ימין) */
+.parallelogram-part2 {
+    width: 50px;
+    background-color: #4798a1;
+    border-bottom: 12px solid #53386b;
+
+    /* הזווית - אותה זווית כדי ליצור מקבילית רציפה */
+    transform: skewX(20deg);
+
+    /* תיקון: מרג'ין משמאל כדי להתחבר למלבן שמשמאלו */
+    margin-left: -18px;
+
+    position: relative;
+    z-index: 1;
+    /* מתחת למלבן */
+
+    /* תיקון: עיגול הפינה החיצונית הימנית */
+    border-bottom-right-radius: 20px;
+}
