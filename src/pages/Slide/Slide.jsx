@@ -5,52 +5,38 @@ import styles from "./Slide.module.css";
 // ייבוא הבלוקים
 import HeaderBlock from "../../components/HeaderBlock/HeaderBlock";
 import MainBlock from "../../components/MainBlock/MainBlock";
-import SideBlock from "../../components/SideBlock/SideBlock";
 import ShadowCard from "../../components/ShadowCard/ShadowCard";
-
-// ייבוא הרכיב המתוקן
-// import CircularShadowImage from "../../components/CircularShadowImage/CircularShadowImage";
 import VisionCard from "../../components/Cards/VisionCard/VisionCard";
 
-// ייבוא התמונה (וודא שהנתיב הזה אכן נכון במבנה התיקיות שלך)
+// ייבוא התמונה
 import exampleImage from "../../assets/Images/image.png";
+
+// הסרתי את SideBlock כפי שביקשת
 
 export default function Slide() {
   return (
     <div className={styles.slidePage}>
-      {/* אזור הכותרת */}
+      {/* 1. Header Area - 10% */}
       <div className={styles.headerArea}>
         <HeaderBlock />
       </div>
 
-      {/* אזור הצד */}
-      <div className={styles.sideArea}>
-        <SideBlock />
-      </div>
-
-      {/* האזור הראשי */}
-      <div className={styles.mainArea}>
+      {/* 2. Middle Area - 45% */}
+      <div className={styles.middleArea}>
+        {/* עטפתי ב-MainBlock כדי לשמור על העיצוב הפנימי, אבל אפשר להסיר אם לא צריך */}
         <MainBlock>
           <ShadowCard />
-          {/* שימוש ברכיב התמונה העגולה */}
-          {/* <CircularShadowImage
-            src={exampleImage}
-            alt="Example View"
-            color="var(--purple)"
-            size="200px"
-            offsetX={6}
-            offsetY={8}
-            spread={9}
-            className={styles.extraDesign}
-            onClick={() => alert("Hi!")}
-          /> */}
+        </MainBlock>
+      </div>
 
-          {/* שימוש ברכיב הכרטיס */}
+      {/* 3. Bottom Area - 45% */}
+      <div className={styles.bottomArea}>
+        <MainBlock>
           <div className={styles.visionCardWrapper}>
             <VisionCard
               imageSrc={exampleImage}
               title="Our Vision"
-              text="To be the leading company in our field, setting standards of excellence and innovation."
+              text="To be the leading company in our field."
               iconName="megaphone"
               color="var(--purple)"
               className={styles.visionCardStyle}
@@ -58,7 +44,7 @@ export default function Slide() {
             <VisionCard
               imageSrc={exampleImage}
               title="Our Vision"
-              text="To be the leading company in our field, setting standards of excellence and innovation."
+              text="To be the leading company in our field."
               iconName="megaphone"
               color="var(--purple)"
               className={styles.visionCardStyle}
@@ -66,7 +52,7 @@ export default function Slide() {
             <VisionCard
               imageSrc={exampleImage}
               title="Our Vision"
-              text="To be the leading company in our field, setting standards of excellence and innovation."
+              text="To be the leadגגגגג גגג גגג גגג גגג iגגג גגגגג גג גג גג ג גג גג גג גגג גג גג גג גג g company in our field."
               iconName="megaphone"
               color="var(--purple)"
               className={styles.visionCardStyle}

@@ -1,16 +1,20 @@
+/* components/HeaderBlock/HeaderBlock.module.css */
 .container {
     background-color: #f0f2f5;
-    /* צבע רקע כללי בהיר */
     width: 100%;
     height: 100%;
-    /* ממלא את ה-80px של הגריד */
+
     display: flex;
-    justify-content: center;
-    /* מצמיד את הכותרת לימין */
+    justify-content: space-between;
     align-items: center;
-    /* מיישר לגובה */
-    padding-left: 20px;
-    /* רווח קטן מהקצה */
+
+    padding-right: 20px;
+    /* רווח ללוגו מהקצה */
     overflow: hidden;
-    /* מונע חריגה אם השיפוע יוצא מהגבול */
+    /* חותך את מה שיוצא מהגבולות (השפיץ השמאלי) */
+}
+
+.logo {
+    height: 60px;
+    object-fit: contain;
 }

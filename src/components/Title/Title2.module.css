@@ -1,0 +1,68 @@
+/* components/Title/Title2.module.css */
+
+.parallelogram {
+    /* מידות ומיקום */
+    width: 55%;
+    height: 100%;
+
+    /* עיצוב בסיסי */
+    background-color: var(--purple);
+    border-bottom-right-radius: 20px;
+
+    /* סידור הטקסט בפנים */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 60px;
+
+    /* --- הגדרות אנימציה --- */
+
+    /* אנו מגדירים את נקודת ההתחלה כאן, כדי שהאלמנט לא "יקפוץ" לפני שהאנימציה מתחילה.
+       1. translateX(-150%): מתחיל הרבה יותר שמאלה (מחוץ למסך)
+       2. box-shadow: אין צל בהתחלה
+    */
+    transform: skew(-30deg) translateX(-150%) translateY(-10px);
+    box-shadow: 0 0 0 0 transparent;
+
+    /* הפעלת האנימציה */
+    /* שם האנימציה | משך כולל | פונקציית תזמון | מצב סיום (שמור על התוצאה הסופית) */
+    animation: slideAndShadow 1.2s ease-out forwards;
+}
+
+/* הגדרת שלבי האנימציה */
+@keyframes slideAndShadow {
+
+    /* שלב 0%: מצב התחלתי - מחוץ למסך, ללא צל */
+    0% {
+        transform: skew(-30deg) translateX(-150%) translateY(-10px);
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    /* שלב 70%: הכניסה הסתיימה. האלמנט במקום, אבל עדיין בלי צל */
+    70% {
+        /* זה המיקום הסופי שרצית */
+        transform: skew(-30deg) translateX(-70px) translateY(-10px);
+        /* עדיין שומרים על צל שקוף */
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    /* שלב 100%: סיום האנימציה - הצל מופיע */
+    100% {
+        /* המיקום נשאר קבוע */
+        transform: skew(-30deg) translateX(-70px) translateY(-10px);
+        /* הצל הירוק הסופי מופיע */
+        box-shadow: 10px 10px 0px 0px var(--green);
+    }
+}
+
+
+/* ה-CSS של הטקסט נשאר ללא שינוי */
+.textContent {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    transform: skew(30deg);
+    /* תיקנתי לך את זה חזרה ל-30 כדי שיהיה ישר */
+    direction: rtl;
+    white-space: nowrap;
+}
