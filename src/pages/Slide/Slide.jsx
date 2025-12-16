@@ -9,7 +9,7 @@ import SideBlock from "../../components/SideBlock/SideBlock";
 import ShadowCard from "../../components/ShadowCard/ShadowCard";
 
 // ייבוא הרכיב המתוקן
-import CircularShadowImage from "../../components/CircularShadowImage/CircularShadowImage";
+// import CircularShadowImage from "../../components/CircularShadowImage/CircularShadowImage";
 import VisionCard from "../../components/Cards/VisionCard/VisionCard";
 
 // ייבוא התמונה (וודא שהנתיב הזה אכן נכון במבנה התיקיות שלך)
@@ -33,7 +33,7 @@ export default function Slide() {
         <MainBlock>
           <ShadowCard />
           {/* שימוש ברכיב התמונה העגולה */}
-          <CircularShadowImage
+          {/* <CircularShadowImage
             src={exampleImage}
             alt="Example View"
             color="var(--purple)"
@@ -43,7 +43,7 @@ export default function Slide() {
             spread={9}
             className={styles.extraDesign}
             onClick={() => alert("Hi!")}
-          />
+          /> */}
 
           {/* שימוש ברכיב הכרטיס */}
           <div className={styles.visionCardWrapper}>

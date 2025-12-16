@@ -24,8 +24,9 @@ function VisionCard({
           src={imageSrc}
           color={color}
           size="180px"
-          offsetX={-10} // זווית קצת שונה לפי העיצוב בתמונה
+          offsetX={5} // זווית קצת שונה לפי העיצוב בתמונה
           offsetY={5}
+          spread={8}
         />
       </div>
 
