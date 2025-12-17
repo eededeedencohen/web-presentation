@@ -9,6 +9,7 @@ function DuelBorderCard({
   backgroundColor = "white", // דיפולט
   offsetX = 8,       // דיפולט
   offsetY = 10,      // דיפולט
+  shadowSpread = 1,  // דיפולט: עובי הצללית
   style = {},        // אופציונלי: סטייל חיצוני נוסף
   className = "",    // אופציונלי: קלאס חיצוני נוסף
   ...restProps       // שאר הפרמטרים (כמו onClick וכו')
@@ -21,7 +22,8 @@ function DuelBorderCard({
     "--card-height": height,
     "--card-bg": backgroundColor,
     "--offset-x": `${offsetX}px`,
-    "--offset-y": `${offsetY}px`
+    "--offset-y": `${offsetY}px`,
+    "--shadow-spread": `${shadowSpread}px`,
   };
 
   return (

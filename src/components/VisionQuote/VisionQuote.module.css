@@ -1,0 +1,98 @@
+/* components/VisionQuote/VisionQuote.module.css */
+.quoteWrapper {
+    position: relative;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.textContainer {
+    position: relative;
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.quoteText {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: #333;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    direction: rtl;
+    text-align: start;
+}
+
+/* --- הגדרת המסגרות (הפסים) --- */
+.bracketTopLeft,
+.bracketBottomRight {
+    position: absolute;
+    width: 80%;
+    height: 30%;
+    border-color: var(--green);
+    border-style: solid;
+    border-width: 7px;
+}
+
+/* הפינה השמאלית עליונה */
+.bracketTopLeft {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 20px;
+}
+
+/* הפינה הימנית תחתונה */
+.bracketBottomRight {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 20px;
+}
+
+/* --- הגדרת המרכאות (SVG) --- */
+.quoteIconTop,
+.quoteIconBottom {
+    position: absolute;
+    /* מחקנו את כל הגדרות הפונט שהיו כאן */
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.quoteIconTop {
+    top: -40px;
+    /* כיוונון קל בגלל שהחלפנו טקסט באייקון */
+    right: -40px;
+}
+
+.quoteIconBottom {
+    bottom: -40px;
+    /* כיוונון קל */
+    left: -40px;
+
+    /* הופך את האייקון ב-180 מעלות כדי שייראה כמו ציטוט סוגר */
+    transform: rotate(180deg);
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 768px) {
+    .quoteText {
+        font-size: 1.1rem;
+    }
+
+    /* אין צורך לשנות פונט סייז, הגודל משתנה יחסית לקונטיינר אם רוצים, 
+       אבל כרגע הגדרנו גודל קבוע ב-JS. אפשר להקטין דרך CSS אם רוצים: */
+    /*
+    .quoteIconTop, .quoteIconBottom {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    */
+}

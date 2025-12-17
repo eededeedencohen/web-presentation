@@ -1,68 +1,82 @@
-/* components/Title/Title2.module.css */
-
 .parallelogram {
     /* מידות ומיקום */
     width: 55%;
-    height: 100%;
+    height: 85%;
 
-    /* עיצוב בסיסי */
     background-color: var(--purple);
     border-bottom-right-radius: 20px;
 
-    /* סידור הטקסט בפנים */
+    /* סידור הטקסט */
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 60px;
 
-    /* --- הגדרות אנימציה --- */
+    /* אנימציה (כמו שביקשת קודם) */
+    /* transform: skew(-30deg) translateX(-150%) translateY(-10px); */
+    transform: skew(-30deg) translateX(-150%);
 
-    /* אנו מגדירים את נקודת ההתחלה כאן, כדי שהאלמנט לא "יקפוץ" לפני שהאנימציה מתחילה.
-       1. translateX(-150%): מתחיל הרבה יותר שמאלה (מחוץ למסך)
-       2. box-shadow: אין צל בהתחלה
-    */
-    transform: skew(-30deg) translateX(-150%) translateY(-10px);
     box-shadow: 0 0 0 0 transparent;
-
-    /* הפעלת האנימציה */
-    /* שם האנימציה | משך כולל | פונקציית תזמון | מצב סיום (שמור על התוצאה הסופית) */
     animation: slideAndShadow 1.2s ease-out forwards;
+
+    /* חשוב מאוד למיקום הגלים */
+    position: relative;
+    overflow: visible;
+    /* חותך את הגלים שלא יצאו מהגבולות */
+    align-self: flex-start;
+
 }
 
-/* הגדרת שלבי האנימציה */
-@keyframes slideAndShadow {
+/* העיצוב של הגלים */
+.waveWrapper {
+    position: absolute;
+    top: -40px;
+    left: 50px;
+    /* מצמיד לשמאל */
 
-    /* שלב 0%: מצב התחלתי - מחוץ למסך, ללא צל */
-    0% {
-        transform: skew(-30deg) translateX(-150%) translateY(-10px);
-        box-shadow: 0 0 0 0 transparent;
-    }
+    /* הגבלת רוחב - הגלים יהיו רק בשליש השמאלי */
+    width: 60%;
+    height: 100%;
 
-    /* שלב 70%: הכניסה הסתיימה. האלמנט במקום, אבל עדיין בלי צל */
-    70% {
-        /* זה המיקום הסופי שרצית */
-        transform: skew(-30deg) translateX(-70px) translateY(-10px);
-        /* עדיין שומרים על צל שקוף */
-        box-shadow: 0 0 0 0 transparent;
-    }
+    z-index: 0;
+    /* מאחורי הטקסט */
+    pointer-events: none;
 
-    /* שלב 100%: סיום האנימציה - הצל מופיע */
-    100% {
-        /* המיקום נשאר קבוע */
-        transform: skew(-30deg) translateX(-70px) translateY(-10px);
-        /* הצל הירוק הסופי מופיע */
-        box-shadow: 10px 10px 0px 0px var(--green);
-    }
+    /* מבטל את הנטייה של המקבילית כדי שהגלים ייראו זורמים ולא עקומים מדי */
+    transform: skew(30deg) translateX(-20px) rotate(-30deg);
+    opacity: 0.8;
+    /* שקיפות כללית */
 }
 
-
-/* ה-CSS של הטקסט נשאר ללא שינוי */
+/* הטקסט */
 .textContent {
     color: white;
-    font-size: 32px;
+    font-size: 3rem;
     font-weight: bold;
-    transform: skew(30deg);
-    /* תיקנתי לך את זה חזרה ל-30 כדי שיהיה ישר */
+    transform: skew(15deg);
     direction: rtl;
     white-space: nowrap;
+
+    position: relative;
+    z-index: 1;
+    /* מעל הגלים */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* קצת צל לטקסט לקריאות */
+}
+
+@keyframes slideAndShadow {
+    0% {
+        transform: skew(-30deg) translateX(-150%);
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    70% {
+        transform: skew(-30deg) translateX(-70px);
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        transform: skew(-30deg) translateX(-70px);
+        box-shadow: 16px 4px 0px 10px var(--green);
+    }
 }

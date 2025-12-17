@@ -5,7 +5,7 @@ import styles from "./Slide.module.css";
 // ייבוא הבלוקים
 import HeaderBlock from "../../components/HeaderBlock/HeaderBlock";
 import MainBlock from "../../components/MainBlock/MainBlock";
-import ShadowCard from "../../components/ShadowCard/ShadowCard";
+import StrategyCard from "../../components/Cards/StrategyCard/StrategyCard";
 import VisionCard from "../../components/Cards/VisionCard/VisionCard";
 
 // ייבוא התמונה
@@ -25,7 +25,30 @@ export default function Slide() {
       <div className={styles.middleArea}>
         {/* עטפתי ב-MainBlock כדי לשמור על העיצוב הפנימי, אבל אפשר להסיר אם לא צריך */}
         <MainBlock>
-          <ShadowCard />
+          {/* <ShadowCard /> */}
+          <div className={styles.strategyCardWrapper}>
+            <StrategyCard
+              title="Our Strategy"
+              text="Focusing on key campaigns around holidays, which are the main revenue drivers."
+              iconName="snowed-mountains"
+              color="var(--purple)"
+              className={styles.strategyCardStyle}
+            />
+            <StrategyCard
+              title="Our Strategy"
+              text="Focusing on key campaigns around holidays, which are the main revenue drivers."
+              iconName="snowed-mountains"
+              color="var(--purple)"
+              className={styles.strategyCardStyle}
+            />
+            <StrategyCard
+              title="Our Strategy"
+              text="Focusing on key campaigns around holidays, which are the main revenue drivers."
+              iconName="snowed-mountains"
+              color="var(--purple)"
+              className={styles.strategyCardStyle}
+            />
+          </div>
         </MainBlock>
       </div>
 

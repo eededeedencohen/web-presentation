@@ -23,10 +23,10 @@ function VisionCard({
         <CircularShadowImage
           src={imageSrc}
           color={color}
-          size="180px"
-          offsetX={5} // זווית קצת שונה לפי העיצוב בתמונה
-          offsetY={5}
-          spread={8}
+          size="240px"
+          offsetX={-5} // זווית קצת שונה לפי העיצוב בתמונה
+          offsetY={-5}
+          spread={10}
         />
       </div>
 
@@ -38,8 +38,8 @@ function VisionCard({
            <IconSVG 
              iconName={iconName} 
              color={color} 
-             width="30px" 
-             height="30px" 
+             width="40px" 
+             height="40px" 
            />
         </div>
       </div>
