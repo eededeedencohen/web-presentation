@@ -14,7 +14,9 @@ export default function VisionSlide() {
   return (
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
-        <HeaderBlock />
+        <HeaderBlock 
+        text={"החזון המנחה אותנו"}
+        />
       </div>
       <div className={styles.middleArea}>
         <VisionQuote />

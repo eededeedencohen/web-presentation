@@ -7,6 +7,8 @@ import OldApp from "./pages/OldApp/OldApp.jsx";
 // import the Slide component
 import Slide from "./pages/Slide/Slide.jsx";
 import VisionSlide from "./pages/Slide/VisionSlide/VisionSlide";
+import StrategySlide from "./pages/Slide/StrategySlide/StrategySlide.jsx";
+import Presentation from "./pages/Slide/Presentation/Presentation.jsx";
 
 function App() {
   // replace with OldApp component:
@@ -16,7 +18,9 @@ function App() {
       {/* <ShadowCard /> */}
       {/* <OldApp /> */}
       {/* <Slide /> */}
-      <VisionSlide />
+      {/* <VisionSlide /> */}
+      {/* <StrategySlide /> */}
+      <Presentation />
     </>
   );
 }

@@ -2,24 +2,64 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* שינוי: מתחילים מלמעלה במקום מהאמצע */
+    justify-content: flex-start;
+
     background-color: var(--light-purple);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+
+    /* אופציונלי: רווח מינימלי בין האייקון לטקסט */
+    gap: 10px;
 }
 
-.strategy-card-title{
-    font-size: 22px;
+/* הקלאס החדש שעוטף את הטקסטים */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* ממרכז את הטקסט אנכית בתוך החלל שנותר */
+    align-items: center;
+    /* ממרכז את הטקסט אופקית */
+
+    /* זה הסוד: ה-div הזה יתפוס את כל הגובה הפנוי וידחוק את האייקון למעלה */
+    flex-grow: 1;
+    width: 100%;
+}
+
+.strategy-card-title {
+    font-size: 36px;
     font-weight: 700;
     margin-bottom: 10px;
     color: var(--purple);
+    line-height: 1.5;
+    text-align: center;
+    
 }
 
 .strategy-card-text {
-    font-size: 16px;
-    line-height: 1.4rem;
-    font-weight: 500;
-    color: var(--dark-gray);
+    font-size: 24px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    color: var(--purple);
     text-align: center;
+    padding: 0 10px;
+    direction: rtl;
+}
+
+.icon-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.strategy-card-icon {
+    margin-bottom: 2rem;
+    align-self: flex-start;
 }
