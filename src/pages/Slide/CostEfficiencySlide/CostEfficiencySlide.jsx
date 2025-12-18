@@ -7,8 +7,9 @@ function CostEfficiencySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
-          width="70%"
+          text={"ניהול עלויות אסטרטגי:\nהגדלת הרווחיות דרך מכרז ספקים"}
+          subtitle="הגדלת הרווחיות דרך מכרז ספקים"
+          width="85%"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>
@@ -18,14 +19,10 @@ function CostEfficiencySlide() {
       <div className={styles.cardsArea}>
         <div className={styles.cardWrapper}>Card Wrapper</div>
         <div className={styles.cardWrapper}>Card Wrapper</div>
-
         <div className={styles.cardWrapper}>Card Wrapper</div>
-
         <div className={styles.cardWrapper}>Card Wrapper</div>
       </div>
     </div>
   );
 }
 export default CostEfficiencySlide;
-
-

@@ -27,37 +27,9 @@ import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
 //====================================================
 import styles from "./Presentation.module.css";
 
-// CoverSlide
-
-// VisionSlide
-
-// FinancialGrowthSlide
-
-// StrategySlide
-
-// HolidayRevenueSlide
-
-// MassMarketSlide
-
-// SeasonalityChartSlide
-
-// CostEfficiencySlide
-
-// BudgetSummarySlide
-
-// NewGrowthEnginesSlide
-
-// B2BExpansionSlide 
-// SocialLabelSlide
-
-// SwotAnalysisSlide
-
-// ResourceNeedsSlide
-
-// ImpactSummarySlide
-
 const slideComponents = {
-  1: CoverSlide,
+  // 1: CoverSlide,
+  1: CostEfficiencySlide,
   2: VisionSlide,
   3: StrategySlide,
   4: HolidayRevenueSlide,
@@ -179,6 +151,5 @@ function Presentation() {
 }
 
 export default Presentation;
-
 
 // git commit -m "feat: add template of the rest of the slides components to Presentation.jsx"
