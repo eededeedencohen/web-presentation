@@ -2,13 +2,76 @@ import React, { useState, useEffect } from "react";
 import VisionSlide from "../VisionSlide/VisionSlide.jsx";
 import StrategySlide from "../StrategySlide/StrategySlide.jsx";
 import HolidayRevenueSlide from "../HolidayRevenueSlide/HolidayRevenueSlide.jsx";
+import MassMarketSlide from "../MassMarketSlide/MassMarketSlide.jsx";
+import CoverSlide from "../CoverSlide/CoverSlide";
+import FinancialGrowthSlide from "../FinancialGrowthSlide/FinancialGrowthSlide";
+import SeasonalityChartSlide from "../SeasonalityChartSlide/SeasonalityChartSlide";
+import CostEfficiencySlide from "../CostEfficiencySlide/CostEfficiencySlide";
+import BudgetSummarySlide from "../BudgetSummarySlide/BudgetSummarySlide";
+import NewGrowthEnginesSlide from "../NewGrowthEnginesSlide/NewGrowthEnginesSlide";
+import SocialLabelSlide from "../SocialLabelSlide/SocialLabelSlide";
+import SwotAnalysisSlide from "../SwotAnalysisSlide/SwotAnalysisSlide";
+import ResourceNeedsSlide from "../ResourceNeedsSlide/ResourceNeedsSlide";
+import ImpactSummarySlide from "../ImpactSummarySlide/ImpactSummarySlide";
+import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
+//====================================================
+// FinancialGrowthSlide
+// SeasonalityChartSlide
+// CostEfficiencySlide
+// BudgetSummarySlide
+// NewGrowthEnginesSlide
+// SocialLabelSlide
+// SwotAnalysisSlide
+// ResourceNeedsSlide
+// ImpactSummarySlide
+//====================================================
 import styles from "./Presentation.module.css";
-// אפשר לייבא אייקון של טלפון מסתובב אם יש לך, כרגע נשתמש בטקסט
+
+// CoverSlide
+
+// VisionSlide
+
+// FinancialGrowthSlide
+
+// StrategySlide
+
+// HolidayRevenueSlide
+
+// MassMarketSlide
+
+// SeasonalityChartSlide
+
+// CostEfficiencySlide
+
+// BudgetSummarySlide
+
+// NewGrowthEnginesSlide
+
+// B2BExpansionSlide 
+// SocialLabelSlide
+
+// SwotAnalysisSlide
+
+// ResourceNeedsSlide
+
+// ImpactSummarySlide
 
 const slideComponents = {
-  1: VisionSlide,
-  2: StrategySlide,
-  3: HolidayRevenueSlide,
+  1: CoverSlide,
+  2: VisionSlide,
+  3: StrategySlide,
+  4: HolidayRevenueSlide,
+  5: MassMarketSlide,
+  6: FinancialGrowthSlide,
+  7: SeasonalityChartSlide,
+  8: CostEfficiencySlide,
+  9: BudgetSummarySlide,
+  10: NewGrowthEnginesSlide,
+  11: B2BExpansionSlide,
+  12: SocialLabelSlide,
+  13: SwotAnalysisSlide,
+  14: ResourceNeedsSlide,
+  15: ImpactSummarySlide,
 };
 
 function Presentation() {
@@ -116,3 +179,6 @@ function Presentation() {
 }
 
 export default Presentation;
+
+
+// git commit -m "feat: add template of the rest of the slides components to Presentation.jsx"
