@@ -31,24 +31,31 @@
     grid-area: header;
 }
 
-.header{
+.header {
     background-color: rgb(7, 104, 5);
 }
+
 /* 2. כותרת משנה */
 .subtitleArea {
     background-color: bisque;
     grid-area: subtitle;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    font-size: 36px;
-    font-weight: 800;
+    font-size: 24px;
+    direction: rtl;
     margin: 0;
-    line-height: 1.2rem;
-    color: var(--purple);
-    text-align: center;
-    font-weight: bold;
     padding-right: 60px;
+}
+
+.subtitleText {
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    color: var(--purple);
+    text-align: start;
+    font-weight: bold;
+    width: 60%;
+
 }
 
 /* 3. כרטיסים */
@@ -56,17 +63,15 @@
     background-color: rgb(216, 143, 143);
     grid-area: cards;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
 }
 
-
 .cardWrapper {
-    width: 45%;
-    height: 45%;
+    width: 95%;
+    height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;

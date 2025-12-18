@@ -1,0 +1,85 @@
+.costSavingCard {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    border: 5px solid var(--green);
+    box-shadow: 11px 11px 0px 3px var(--green);
+    background-color: white;
+}
+
+.productImage {
+    width: 20%;
+    height: 120%;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 0px 15px rgb(72, 156, 167);
+    margin-left: -60px;
+}
+
+.content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding-right: 20px;
+    padding-top: 10px;
+    direction: rtl;
+}
+
+.contentProduct {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+.contentSavings {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--purple);
+}
+
+.prices {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    direction: rtl;
+    padding-left: 20px;
+}
+
+.highestPrice {
+    background-color: rgb(172, 172, 172);
+    width: 80%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.lowestPrice {
+    background-color: var(--purple);
+    width: 40%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+}

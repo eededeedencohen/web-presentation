@@ -62,7 +62,7 @@
     color: white;
     font-size: var(--p-font-size, 3rem);
     font-weight: bold;
-    transform: translateX(-25px) skew(30deg);
+    transform: translateX(-30px) skew(30deg);
     direction: rtl;
     white-space: nowrap;
 

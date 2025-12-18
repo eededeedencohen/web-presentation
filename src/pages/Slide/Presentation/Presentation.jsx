@@ -14,17 +14,6 @@ import SwotAnalysisSlide from "../SwotAnalysisSlide/SwotAnalysisSlide";
 import ResourceNeedsSlide from "../ResourceNeedsSlide/ResourceNeedsSlide";
 import ImpactSummarySlide from "../ImpactSummarySlide/ImpactSummarySlide";
 import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
-//====================================================
-// FinancialGrowthSlide
-// SeasonalityChartSlide
-// CostEfficiencySlide
-// BudgetSummarySlide
-// NewGrowthEnginesSlide
-// SocialLabelSlide
-// SwotAnalysisSlide
-// ResourceNeedsSlide
-// ImpactSummarySlide
-//====================================================
 import styles from "./Presentation.module.css";
 
 const slideComponents = {
