@@ -1,15 +1,22 @@
-// components/Title/Title2.jsxparallelogram
 import React from "react";
 import styles from "./Title2.module.css";
-import GenerativeWave from "../GenerativeWave/GenerativeWave"; // וודא שהנתיב נכון
+import GenerativeWave from "../GenerativeWave/GenerativeWave";
 
-export default function Title2({ text }) {
+export default function Title2({ text, width = "55%", fontSize = "3rem" }) {
+  // יצירת אובייקט סטייל שמכיל את המשתנה
+  const dynamicStyle = {
+    "--p-width": width,
+    "--p-font-size": fontSize,
+    // fontSize:
+  };
+
   return (
-    <div className={styles.parallelogram}>
-      {/* שכבת הגלים - ממוקמת אבסולוטית ברקע */}
+    <div
+      className={styles.parallelogram}
+      style={dynamicStyle} // הזרקת המשתנה ל-CSS
+    >
+      {/* שכבת הגלים */}
       <div className={styles.waveWrapper}>
-        {/* הגדרתי רוחב וגובה 100% כדי שימלא את המקבילית */}
-        {/* צבע אפור בהיר ושקוף מעט כדי שישתלב יפה עם הסגול */}
         <GenerativeWave
           color="rgba(255, 255, 255, 1)"
           width="100%"

@@ -12,6 +12,7 @@ export default function StrategySlide() {
       <div className={styles.headerArea}>
         <HeaderBlock 
         text={"האסטרטגיה שלנו לצמיחה"}
+        width="75%"
         />
       </div>
       <div className={styles.cardsArea}>

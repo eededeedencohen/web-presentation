@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import VisionSlide from "../VisionSlide/VisionSlide.jsx";
 import StrategySlide from "../StrategySlide/StrategySlide.jsx";
+import HolidayRevenueSlide from "../HolidayRevenueSlide/HolidayRevenueSlide.jsx";
 import styles from "./Presentation.module.css";
 // אפשר לייבא אייקון של טלפון מסתובב אם יש לך, כרגע נשתמש בטקסט
 
 const slideComponents = {
   1: VisionSlide,
   2: StrategySlide,
+  3: HolidayRevenueSlide,
 };
 
 function Presentation() {

@@ -1,0 +1,32 @@
+{
+  "title": "כיבוש הפסגות - מיקוד במכירות שיא בחגים",
+  "organization": "מתנות שק\"ל לאהוב",
+  "total_revenue_target": 612500,
+  "currency": "NIS",
+  "holidays_breakdown": [
+    {
+      "holiday": "פורים",
+      "description": "משלוחי מנות",
+      "expected_revenue": 200000,
+      "target_audience": "מ-50 בתי ספר"
+    },
+    {
+      "holiday": "ראש השנה",
+      "description": null,
+      "expected_revenue": 200000,
+      "target_audience": "מ-15 חברות"
+    },
+    {
+      "holiday": "פסח",
+      "description": null,
+      "expected_revenue": 150000,
+      "target_audience": "מ-15 חברות"
+    },
+    {
+      "holiday": "שמחת תורה",
+      "description": "שקיות ממתקים",
+      "expected_revenue": 200000,
+      "target_audience": "מ-75 בתי כנסת"
+    }
+  ]
+}

@@ -1,30 +1,22 @@
 .parallelogram {
-    /* מידות ומיקום */
-    width: 55%;
-    height: 85%;
+    /* שימוש במשתנה. אם לא הוזרק ערך, הוא יהיה 55% */
+    width: var(--p-width, 55%);
 
+    height: 85%;
     background-color: var(--purple);
     border-bottom-right-radius: 20px;
 
-    /* סידור הטקסט */
+    /* שאר ה-CSS נשאר אותו דבר... */
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 60px;
-
-    /* אנימציה (כמו שביקשת קודם) */
-    /* transform: skew(-30deg) translateX(-150%) translateY(-10px); */
     transform: skew(-30deg) translateX(-150%);
-
     box-shadow: 0 0 0 0 transparent;
     animation: slideAndShadow 1.2s ease-out forwards;
-
-    /* חשוב מאוד למיקום הגלים */
     position: relative;
     overflow: visible;
-    /* חותך את הגלים שלא יצאו מהגבולות */
     align-self: flex-start;
-
 }
 
 /* העיצוב של הגלים */
@@ -51,9 +43,9 @@
 /* הטקסט */
 .textContent {
     color: white;
-    font-size: 3rem;
+    font-size: var(--p-font-size, 3rem);
     font-weight: bold;
-    transform: skew(15deg);
+    transform: skew(30deg);
     direction: rtl;
     white-space: nowrap;
 

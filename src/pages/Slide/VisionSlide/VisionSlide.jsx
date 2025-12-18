@@ -16,6 +16,7 @@ export default function VisionSlide() {
       <div className={styles.headerArea}>
         <HeaderBlock 
         text={"החזון המנחה אותנו"}
+        width="75%"
         />
       </div>
       <div className={styles.middleArea}>
