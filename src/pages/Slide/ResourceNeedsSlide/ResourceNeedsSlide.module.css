@@ -1,4 +1,3 @@
-/* pages/Slide/Slide.module.css */
 .slidePage {
     display: grid;
     height: 100vh;
@@ -14,12 +13,12 @@
     /* מפת האזורים החדשה */
     grid-template-areas:
         "header"
-        "subtitle"
+        "titles"
         "cards";
 }
 
 .headerArea,
-.subtitleArea,
+.titlesArea,
 .cardsArea {
     width: 100%;
     height: 100%;
@@ -31,29 +30,37 @@
     grid-area: header;
 }
 
-.header{
-    background-color: rgb(7, 104, 5);
-}
+
 /* 2. כותרת משנה */
-.subtitleArea {
-    background-color: bisque;
-    grid-area: subtitle;
+.titlesArea {
+    grid-area: titles;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "title1 title2";
+}
+
+.title1Area {
+    grid-area: title1;
+    height: 100%;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    font-size: 36px;
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.2rem;
-    color: var(--purple);
-    text-align: center;
-    font-weight: bold;
+    align-items: end;
+    padding-right: 30px;
+}
+
+.title2Area {
+    grid-area: title2;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
     padding-right: 60px;
 }
 
 /* 3. כרטיסים */
 .cardsArea {
-    background-color: rgb(216, 143, 143);
     grid-area: cards;
     display: flex;
     flex-direction: row;
@@ -70,5 +77,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(207, 177, 235);
 }
