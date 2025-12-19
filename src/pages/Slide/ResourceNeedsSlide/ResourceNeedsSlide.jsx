@@ -3,6 +3,7 @@ import styles from "./ResourceNeedsSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import ResourceRequirementCard from "../../../components/Cards/ResourceRequirementCard/ResourceRequirementCard";
 
+
 const operationalNeedsData = [
   {
     id: 1,
