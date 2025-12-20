@@ -57,79 +57,94 @@ const iconMap = {
   "broken-link": BrokenLink,
   "business-and-finance": BusinessAndFinance,
   "call-center": CallCenter,
-  "chart": Chart,
-  "clock": Clock,
-  "coins": Coins,
-  "diagram": Diagram,
-  "door": Door,
+  chart: Chart,
+  clock: Clock,
+  coins: Coins,
+  diagram: Diagram,
+  door: Door,
   "fast-delivery": FastDelivery,
-  "favorite": Favorite,
+  favorite: Favorite,
   "gift-card": GiftCard,
-  "handshake": Handshake,
-  "heart": Heart,
+  handshake: Handshake,
+  heart: Heart,
   "house-door": HouseDoor,
-  "insurance": Insurance,
-  "leaves": Leaves,
-  "lecture": Lecture,
-  "like": Like,
+  insurance: Insurance,
+  leaves: Leaves,
+  lecture: Lecture,
+  like: Like,
   "logistics-management": LogisticsManagement,
-  "maple": Maple,
-  "megaphone": Megaphone,
-  "microphone": Microphone,
-  "money": Money,
-  "note": Note,
-  "partnership": Partnership,
-  "payment": Payment,
+  maple: Maple,
+  megaphone: Megaphone,
+  microphone: Microphone,
+  money: Money,
+  note: Note,
+  partnership: Partnership,
+  payment: Payment,
   "perspective-icon": PerspectiveIcon,
   "plant-leaf": PlantLeaf,
-  "profits": Profits,
+  profits: Profits,
   "project-management": ProjectManagement,
   "public-speaking": PublicSpeaking,
-  "quote": Quote,
-  "reminder": Reminder,
-  "remove": Remove,
-  "retail": Retail,
+  quote: Quote,
+  reminder: Reminder,
+  remove: Remove,
+  retail: Retail,
   "right-arrow": RightArrow,
-  "rise": Rise,
+  rise: Rise,
   "rocket-launch": RocketLaunch,
-  "shield": Shield,
+  shield: Shield,
   "snowed-mountains": SnowedMountains,
-  "snowflake": Snowflake,
-  "success": Success,
-  "thunder": Thunder,
-  "trend": Trend,
+  snowflake: Snowflake,
+  success: Success,
+  thunder: Thunder,
+  trend: Trend,
   "up-arrow": UpArrow,
   "up-right": UpRight,
-  "user": User,
-  "voice": Voice,
-  "warehouse": Warehouse,
+  user: User,
+  voice: Voice,
+  warehouse: Warehouse,
   "water-drops": WaterDrops,
 };
 
-function IconSVG({ 
+const randomIcons = Object.values(iconMap);
+// clock icon only for example
+
+
+
+function IconSVG({
   iconName = "snowed-mountains",
-  color = "var(--purple)", 
-  width = "80px", 
+  color = "var(--purple)",
+  width = "80px",
   height = "80px",
   className = "",
   style = {},
-  ...restProps 
+  ...restProps
 }) {
   const dynamicVars = {
     "--icon-color": color,
     "--icon-width": width,
-    "--icon-height": height
+    "--icon-height": height,
   };
 
   const IconComponent = iconMap[iconName];
 
   if (!IconComponent) {
-    console.warn(`Icon "${iconName}" not found. Available icons:`, Object.keys(iconMap));
-    return null;
+    // return random icon if iconName not found
+    return (
+      <div
+        className={`${styles["icon-wrapper"]} ${className}`}
+        style={{ ...dynamicVars, ...style }}
+        {...restProps}
+      >
+        {randomIcons[Math.floor(Math.random() * randomIcons.length)]({
+          className: styles["icon"],
+        })}
+      </div>
+    );
   }
 
   return (
-    <div 
+    <div
       className={`${styles["icon-wrapper"]} ${className}`}
       style={{ ...dynamicVars, ...style }}
       {...restProps}
