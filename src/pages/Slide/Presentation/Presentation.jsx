@@ -17,7 +17,8 @@ import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
 import styles from "./Presentation.module.css";
 
 const slideComponents = {
-  1: CoverSlide, // X - 1
+  // 1: CoverSlide, // X - 1
+  1: MassMarketSlide, // X - 1
   2: VisionSlide, // V - 2
   3: FinancialGrowthSlide, // X - 3
   4: StrategySlide, // V - 4
