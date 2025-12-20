@@ -1,20 +1,12 @@
-/* pages/Slide/Slide.module.css */
 .slidePage {
     display: grid;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-
-    /* עמודה אחת שתופסת את כל הרוחב */
     grid-template-columns: 1fr;
-
-    /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
-    grid-template-rows: 16vh 10vh 74vh;
-
-    /* מפת האזורים החדשה */
+    grid-template-rows: 16vh 84vh;
     grid-template-areas:
         "header"
-        "subtitle"
         "cards";
 }
 
@@ -26,35 +18,18 @@
     overflow: hidden;
 }
 
-/* 1. כותרת */
 .headerArea {
     grid-area: header;
 }
 
-.header{
-    background-color: rgb(7, 104, 5);
-}
-/* 2. כותרת משנה */
-.subtitleArea {
-    background-color: bisque;
-    grid-area: subtitle;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 36px;
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.2rem;
-    color: var(--purple);
-    text-align: center;
-    font-weight: bold;
-    padding-right: 60px;
-}
 
-/* 3. כרטיסים */
+
+/* --- אזור הכרטיסים והקווים --- */
+
 .cardsArea {
-    background-color: rgb(216, 143, 143);
     grid-area: cards;
+    /* חשוב: כדי שהקווים יתמקמו ביחס לאזור הזה */
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -63,6 +38,43 @@
     overflow: hidden;
 }
 
+/* קו הפרדה אופקי */
+.horizontalDivider {
+    position: absolute;
+    /* ממרכז את הקו בגובה */
+    top: 50%;
+    left: 5%;
+    /* קצת רווח מהצדדים, כמו בתמונה */
+    /* קו לרוחב 90% */
+    width: 90%;
+    /* עובי הקו */
+    height: 2px;
+    /* צבע אפור בהיר */
+    background-color: #cccccc;
+    /* מזיז חצי מעובי הקו למעלה כדי שיהיה בדיוק באמצע */
+    transform: translateY(-50%);
+    /* מבטיח שהקו יהיה מאחורי הכרטיסים (אם הם חופפים) */
+    z-index: 0;
+}
+
+/* קו הפרדה אנכי */
+.verticalDivider {
+    position: absolute;
+    /* ממרכז את הקו ברוחב */
+    left: 50%;
+    top: 5%;
+    /* קצת רווח מלמעלה ולמטה */
+    /* עובי הקו */
+    width: 2px;
+    /* גובה הקו */
+    height: 90%;
+    /* צבע אפור בהיר */
+    background-color: #cccccc;
+    /* מזיז חצי מעובי הקו שמאלה כדי שיהיה בדיוק באמצע */
+    transform: translateX(-50%);
+    /* מבטיח שהקו יהיה מאחורי הכרטיסים */
+    z-index: 0;
+}
 
 .cardWrapper {
     width: 45%;
@@ -70,5 +82,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(207, 177, 235);
+    /* מבטיח שהכרטיסים יהיו מעל הקווים */
+    z-index: 1;
 }

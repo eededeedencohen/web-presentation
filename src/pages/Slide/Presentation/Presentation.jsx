@@ -17,22 +17,21 @@ import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
 import styles from "./Presentation.module.css";
 
 const slideComponents = {
-  // 1: CoverSlide,
-  1: NewGrowthEnginesSlide,
-  2: VisionSlide,
-  3: StrategySlide,
-  4: HolidayRevenueSlide,
-  5: MassMarketSlide,
-  6: FinancialGrowthSlide,
-  7: SeasonalityChartSlide,
-  8: CostEfficiencySlide,
-  9: BudgetSummarySlide,
-  10: NewGrowthEnginesSlide,
-  11: B2BExpansionSlide,
-  12: SocialLabelSlide,
-  13: SwotAnalysisSlide,
-  14: ResourceNeedsSlide,
-  15: ImpactSummarySlide,
+  1: CoverSlide, // X - 1
+  2: VisionSlide, // V - 2
+  3: FinancialGrowthSlide, // X - 3
+  4: StrategySlide, // V - 4
+  5: HolidayRevenueSlide, // V - 5
+  6: MassMarketSlide, // X - 6
+  7: SeasonalityChartSlide, // X - 7
+  8: CostEfficiencySlide, // V - 8
+  9: BudgetSummarySlide, // ? - 9
+  10: NewGrowthEnginesSlide, // V - 10
+  11: B2BExpansionSlide, // x - 11
+  12: SocialLabelSlide, // X - 12
+  13: SwotAnalysisSlide, // V - 13
+  14: ResourceNeedsSlide, // V - 14
+  15: ImpactSummarySlide, // X - 15
 };
 
 function Presentation() {

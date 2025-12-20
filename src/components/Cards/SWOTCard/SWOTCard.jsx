@@ -1,56 +1,50 @@
 import React from "react";
-import styles from "./VisionCard.module.css";
-import CircularShadowImage from "../../CircularShadowImage/CircularShadowImage";
+import styles from "./SWOTCard.module.css";
 import IconSVG from "../../IconSVG/IconSVG";
+import CircularShadowImage from "../../CircularShadowImage/CircularShadowImage.jsx";
 
-function VisionCard({
-  imageSrc,
-  title,
-  text,
-  iconName,
-  color = "var(--purple)", // צבע ראשי לכל הכרטיס
-  className = "",
-  style = {}
-}) {
+function SWOTCard({ image, icon, color, title, content }) {
+  // יצירת משתנה CSS דינמי לפי הפרופ color
+  const dynamicStyle = {
+    "--card-color": color,
+  };
+
   return (
-    <div 
-      className={`${styles.cardContainer} ${className}`} 
-      style={{ "--card-color": color, ...style }}
-    >
-      
-      {/* 1. החלק העליון - התמונה */}
-      <div className={styles.imageWrapper}>
-        <CircularShadowImage
-          src={imageSrc}
-          color={color}
-          size="180px"
-          offsetX={5} // זווית קצת שונה לפי העיצוב בתמונה
-          offsetY={5}
-          spread={8}
-        />
-      </div>
-
-      {/* 2. החלק האמצעי - כותרת ואייקון (Flex Row) */}
-      <div className={styles.headerRow}>
-        <h3 className={styles.title}>{title}</h3>
-        
-        <div className={styles.iconWrapper}>
-           <IconSVG 
-             iconName={iconName} 
-             color={color} 
-             width="30px" 
-             height="30px" 
-           />
+    <div className={styles.cardContainer} style={dynamicStyle}>
+      <div className={styles.imageArea}>
+        <div className={styles.squareContent}>
+          <CircularShadowImage
+            src={image}
+            color={color}
+            size="80%"
+            offsetX={0}
+            offsetY={0}
+            spread={10}
+          />
         </div>
       </div>
-
-      {/* 3. החלק התחתון - תוכן */}
-      <div className={styles.contentArea}>
-        <p className={styles.text}>{text}</p>
+      <div className={styles.titleArea}>
+        <h2>{title}</h2>
       </div>
 
+      {/* אזור התוכן שונה לרשימה */}
+      <div className={styles.contentArea}>
+        <ul className={styles.pointsList}>
+          {/* בודק אם content הוא מערך לפני שמריץ map */}
+          {Array.isArray(content) ? (
+            content.map((point, index) => <li key={index}>{point}</li>)
+          ) : (
+            // גיבוי למקרה שזה מגיע כמחרוזת בודדת
+            <li>{content}</li>
+          )}
+        </ul>
+      </div>
+
+      <div className={styles.iconArea}>
+        <IconSVG iconName={icon} color={color} width="60px" height="60px" />
+      </div>
     </div>
   );
 }
 
-export default VisionCard;
+export default SWOTCard;

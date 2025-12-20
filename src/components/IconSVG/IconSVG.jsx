@@ -50,6 +50,7 @@ import User from "../../assets/SVG/user.svg?react";
 import Voice from "../../assets/SVG/voice.svg?react";
 import Warehouse from "../../assets/SVG/warehouse.svg?react";
 import WaterDrops from "../../assets/SVG/water-drops.svg?react";
+import Income from "../../assets/SVG/income.svg?react";
 import styles from "./IconSVG.module.css";
 
 const iconMap = {
@@ -104,12 +105,11 @@ const iconMap = {
   voice: Voice,
   warehouse: Warehouse,
   "water-drops": WaterDrops,
+  income: Income,
 };
 
 const randomIcons = Object.values(iconMap);
 // clock icon only for example
-
-
 
 function IconSVG({
   iconName = "snowed-mountains",
