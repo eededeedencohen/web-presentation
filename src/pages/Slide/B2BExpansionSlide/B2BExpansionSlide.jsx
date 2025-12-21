@@ -3,6 +3,8 @@ import styles from "./B2BExpansionSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import IconSVG from "../../../components/IconSVG/IconSVG";
 import B2BFinancialPotentialCard from "../../../components/Cards/B2BFinancialPotentialCard/B2BFinancialPotentialCard.jsx";
+import productsImage from "../../../assets/images/products.png";
+
 
 function B2BExpansionSlide() {
   return (
@@ -37,6 +39,11 @@ function B2BExpansionSlide() {
         </div>
         <div className={styles.potencialCardWrapper}>
           <B2BFinancialPotentialCard />
+        </div>
+      </div>
+      <div className={styles.imageArea}>
+        <div className={styles.imageWrapper}>
+          <img src={productsImage} alt="Products" />
         </div>
       </div>
     </div>
