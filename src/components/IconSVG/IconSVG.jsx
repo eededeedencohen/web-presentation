@@ -112,7 +112,7 @@ const randomIcons = Object.values(iconMap);
 // clock icon only for example
 
 function IconSVG({
-  iconName = "snowed-mountains",
+  iconName = "",
   color = "var(--purple)",
   width = "80px",
   height = "80px",

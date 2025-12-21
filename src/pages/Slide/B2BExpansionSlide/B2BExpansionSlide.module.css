@@ -6,20 +6,19 @@
     overflow: hidden;
 
     /* עמודה אחת שתופסת את כל הרוחב */
-    grid-template-columns: 1fr;
+    grid-template-columns: 4fr 6fr;
 
     /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
-    grid-template-rows: 16vh 10vh 74vh;
+    grid-template-rows: 16vh 84vh;
 
     /* מפת האזורים החדשה */
     grid-template-areas:
-        "header"
-        "subtitle"
-        "cards";
+        "header header"
+        "image cards";
 }
 
 .headerArea,
-.subtitleArea,
+.imageArea,
 .cardsArea {
     width: 100%;
     height: 100%;
@@ -31,13 +30,14 @@
     grid-area: header;
 }
 
-.header{
+.header {
     background-color: rgb(7, 104, 5);
 }
+
 /* 2. כותרת משנה */
-.subtitleArea {
+.imageArea {
     background-color: bisque;
-    grid-area: subtitle;
+    grid-area: image;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -53,22 +53,76 @@
 
 /* 3. כרטיסים */
 .cardsArea {
-    background-color: rgb(216, 143, 143);
     grid-area: cards;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
 }
 
 
-.cardWrapper {
-    width: 45%;
-    height: 45%;
+.modelCardWrapper {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;  
+    align-items: center;
+    border-radius: 30px;
+    border: 7px solid var(--purple);
+    box-shadow: 14px 14px 0px 3px var(--purple);
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 80%;
+    width: 70%;
+}
+
+
+.label {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 0;
+    color: var(--purple);
+}
+
+
+.contentText {
+    font-size: 24px;
+    text-align: right;
+    direction: rtl;
+    font-weight: 400;
+
+}
+
+.iconWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(207, 177, 235);
+    background-color: var(--purple);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.contentText {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.potencialCardWrapper {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+    border: 7px solid var(--green);
+    box-shadow: 14px 14px 0px 3px var(--green);
 }
