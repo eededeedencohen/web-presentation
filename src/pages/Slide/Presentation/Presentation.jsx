@@ -18,12 +18,12 @@ import styles from "./Presentation.module.css";
 
 const slideComponents = {
   // 1: CoverSlide, // X - 1
-  1: MassMarketSlide, // X - 1
+  1: FinancialGrowthSlide, // X - 1
   2: VisionSlide, // V - 2
   3: FinancialGrowthSlide, // X - 3
   4: StrategySlide, // V - 4
   5: HolidayRevenueSlide, // V - 5
-  6: MassMarketSlide, // X - 6
+  6: MassMarketSlide, // V - 6
   7: SeasonalityChartSlide, // X - 7
   8: CostEfficiencySlide, // V - 8
   9: BudgetSummarySlide, // ? - 9
