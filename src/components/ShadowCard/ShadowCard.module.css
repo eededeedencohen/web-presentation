@@ -1,34 +1,3 @@
-.card-container {
-    /* הגודל והצורה הכללית */
-    width: 200px;
-    min-width: 200px;
-    min-height: 250px;
-    background-color: white;
-    border-radius: 30px;
-    /* פינות עגולות */
-    padding: 20px 5px; /* top is 20px, left/right is 5px */
-    text-align: center;
-
-    /* המסגרת והצללית המיוחדת */
-    border: 5px solid rgb(86, 58, 116);
-     /* המסגרת הסגולה */
-    box-shadow: 10px 8px 0px 1px rgb(86, 58, 116);
-        /* הצללית הצידית */
-
-        /* פונטים וצבעים */
-        color:rgb(86, 58, 116);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.icon-wrapper {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
-
 .card-title {
     font-size: 24px;
     font-weight: 800;
@@ -42,11 +11,4 @@
     opacity: 0.9;
     margin: 0;
     text-align: center;
-}
-
-.mountains-icon {
-    width: 100%;
-    height: 100%;
-    fill: rgb(86, 58, 116);
-    /* צבע האייקון */
 }

@@ -1,0 +1,183 @@
+.costSavingCard {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    border: 5px solid var(--green);
+    box-shadow: 11px 11px 0px 3px var(--green);
+    background-color: white;
+    animation: growCardShadow 0.6s ease-out forwards;
+}
+
+.productImage {
+    width: 20%;
+    height: 120%;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 0px 15px rgb(72, 156, 167);
+    margin-left: -60px;
+    animation: growImageAndShadow 0.7s ease-out forwards;
+    animation-delay: 0.3s;
+    transform: scale(0);
+}
+
+.content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding-right: 20px;
+    padding-top: 10px;
+    direction: rtl;
+}
+
+.contentProduct {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+.contentSavings {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--purple);
+}
+
+.prices {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    /* ב-RTL זה אומר שהם צמודים לשמאל */
+    direction: rtl;
+    padding-left: 20px;
+    position: relative;
+    /* חובה בשביל למקם את החץ */
+}
+
+.highestPrice {
+    background-color: rgb(172, 172, 172);
+    width: 80%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+    /* כדי שהחץ יהיה מתחתיו ויזואלית אם יש חפיפה */
+}
+
+.lowestPrice {
+    background-color: var(--purple);
+    width: 40%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* === עיצוב החץ === */
+/* === עיצוב החץ המעובה === */
+.arrow {
+    position: absolute;
+    top: 28%;
+    bottom: 28%;
+    right: 5px;
+    width: 50%;
+
+    /* שינוי 1: הגדלתי את העובי מ-2px ל-5px */
+    border-right: 5px solid #555;
+    border-top: 5px solid #555;
+    border-bottom: 5px solid #555;
+
+    /* התאמתי קצת את הרדיוס שיראה טוב עם העובי החדש */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeInArrow 0.5s ease-out 0.8s forwards;
+}
+
+/* === ראש החץ (המשולש) === */
+.arrow::after {
+    content: '';
+    position: absolute;
+
+    /* שינוי 2: חישוב מחדש של המיקום כדי שיהיה ממורכז לקו העבה */
+    /* הנוסחה בערך: מינוס (גודל ה-border-top) + (חצי מעובי הקו) */
+    bottom: -12px;
+    left: -5px;
+    /* מזיז קצת שמאלה שלא יעלה על הקו */
+
+    width: 0;
+    height: 0;
+
+    /* שינוי 3: הגדלת המשולש */
+    /* הגדלתי מ-6px ל-10px */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    /* הגדלתי את אורך המשולש מ-8px ל-14px */
+    border-right: 14px solid #555;
+}
+
+/* === אנימציות === */
+
+@keyframes fadeInArrow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growCardShadow {
+    from {
+        box-shadow: 0 0 0 0 var(--green);
+    }
+
+    to {
+        box-shadow: 11px 11px 0px 3px var(--green);
+    }
+}
+
+@keyframes growImageAndShadow {
+    0% {
+        transform: scale(0);
+        box-shadow: 0 0 0px 0 rgb(72, 156, 167);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0px 0px rgb(72, 156, 167);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0px 15px rgb(72, 156, 167);
+    }
+}

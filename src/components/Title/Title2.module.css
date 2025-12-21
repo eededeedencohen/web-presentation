@@ -1,0 +1,74 @@
+.parallelogram {
+    /* שימוש במשתנה. אם לא הוזרק ערך, הוא יהיה 55% */
+    width: var(--p-width, 55%);
+
+    height: 85%;
+    background-color: var(--purple);
+    border-bottom-right-radius: 20px;
+
+    /* שאר ה-CSS נשאר אותו דבר... */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 60px;
+    transform: skew(-30deg) translateX(-150%);
+    box-shadow: 0 0 0 0 transparent;
+    animation: slideAndShadow 1.2s ease-out forwards;
+    position: relative;
+    overflow: visible;
+    align-self: flex-start;
+}
+
+/* העיצוב של הגלים */
+.waveWrapper {
+    position: absolute;
+    top: -40px;
+    left: 50px;
+    /* מצמיד לשמאל */
+
+    /* הגבלת רוחב - הגלים יהיו רק בשליש השמאלי */
+    width: 60%;
+    height: 100%;
+
+    z-index: 0;
+    /* מאחורי הטקסט */
+    pointer-events: none;
+
+    /* מבטל את הנטייה של המקבילית כדי שהגלים ייראו זורמים ולא עקומים מדי */
+    transform: skew(30deg) translateX(-20px) rotate(-30deg);
+    opacity: 0.8;
+    /* שקיפות כללית */
+}
+
+/* הטקסט */
+.textContent {
+    color: white;
+    font-size: var(--p-font-size, 3rem);
+    font-weight: bold;
+    transform: skew(30deg);
+    direction: rtl;
+    white-space: nowrap;
+
+    position: relative;
+    z-index: 1;
+    /* מעל הגלים */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* קצת צל לטקסט לקריאות */
+}
+
+@keyframes slideAndShadow {
+    0% {
+        transform: skew(-30deg) translateX(-150%);
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    70% {
+        transform: skew(-30deg) translateX(-70px);
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        transform: skew(-30deg) translateX(-70px);
+        box-shadow: 16px 4px 0px 10px var(--green);
+    }
+}

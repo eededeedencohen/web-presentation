@@ -1,0 +1,54 @@
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+    direction: ltr;
+}
+
+.rectangle-part {
+    background-color: #4798a1;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    border-bottom: 12px solid #53386b;
+
+    font-size: 2rem;
+    font-weight: bold;
+    direction: rtl;
+
+    position: relative;
+    z-index: 2;
+}
+
+.parallelogram-part {
+    width: 50px;
+    background-color: #4798a1;
+    border-bottom: 12px solid #53386b;
+
+    transform: skewX(20deg);
+
+    margin-right: -18px;
+
+    position: relative;
+    z-index: 1;
+
+    border-bottom-left-radius: 20px;
+}
+
+.parallelogram-part2 {
+    width: 50px;
+    background-color: #4798a1;
+    border-bottom: 12px solid #53386b;
+
+    transform: skewX(20deg);
+
+    margin-left: -18px;
+
+    position: relative;
+    z-index: 1;
+
+    border-bottom-right-radius: 20px;
+}

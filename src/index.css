@@ -1,3 +1,9 @@
+:root {
+  --purple: rgb(86, 58, 116);
+  --green: rgb(72, 156, 167);
+}
+
+html,
 body {
   overflow-x: hidden;
   margin: 0;
@@ -10,6 +16,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  height: 100%;
+  width: 100%;
+}
 
 
 * {
@@ -19,6 +29,7 @@ body {
   /* Chrome / Android */
   -webkit-focus-ring-color: transparent;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 
   /* Safari / iOS */
 }

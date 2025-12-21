@@ -2,32 +2,102 @@
 .slidePage {
     display: grid;
     height: 100vh;
-    /* תופס את כל גובה המסך */
+    width: 100vw;
+    overflow: hidden;
 
-    /* הגדרת העמודות והשורות */
-    grid-template-columns: 250px 1fr;
-    /* תפריט צד ברוחב קבוע, השאר גמיש */
-    grid-template-rows: 80px 1fr;
-    /* כותרת בגובה קבוע, השאר גמיש */
+    /* עמודה אחת שתופסת את כל הרוחב */
+    grid-template-columns: 1fr;
 
-    /* "ציור" של המבנה */
+    /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
+    grid-template-rows: 16vh 42vh 42vh;
+
+    /* מפת האזורים החדשה */
     grid-template-areas:
-        "header header"
-        "sidebar main";
+        "header"
+        "middle"
+        "bottom";
 }
 
-/* שיוך הדיבים לאזורים בגריד */
+.headerArea,
+.middleArea,
+.bottomArea {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 1. כותרת */
 .headerArea {
     grid-area: header;
-    /* אין צורך בעיצוב נוסף - הקומפוננטה בפנים תמלא את זה */
+
 }
 
-.sideArea {
-    grid-area: sidebar;
+/* 2. אמצע */
+.middleArea {
+    grid-area: middle;
+
 }
 
-.mainArea {
-    grid-area: main;
-    overflow-y: auto;
-    /* אם התוכן ארוך, רק החלק הזה יגלול */
+/* 3. סוף/למטה */
+.bottomArea {
+    grid-area: bottom;
+
+}
+
+/* --- עיצובים פנימיים שנשמרו --- */
+
+
+/* השארתי את המחלקה למקרה שתחזיר את התמונה העגולה */
+/* .extraDesign {
+    border: 3px solid var(--purple) !important;
+    filter: grayscale(80%);
+    opacity: 0.9;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: filter 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+.extraDesign:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    border-color: var(--purple) !important;
+} */
+
+
+.visionCardWrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    /* מרכוז אנכי במידת הצורך */
+    align-items: center;
+    height: 100%;
+}
+
+.visionCardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+/* pages/Slide/Slide.module.css */
+
+.strategyCardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 100%;
+
+    /* align-items: center; */
+
+    flex-wrap: wrap;
+    align-content: center;
+
+    justify-content: space-evenly;
+
+
 }

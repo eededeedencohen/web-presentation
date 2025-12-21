@@ -1,0 +1,107 @@
+.slidePage {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: 16vh 10vh 74vh;
+    grid-template-areas:
+        "header"
+        "subtitle"
+        "cards";
+}
+
+.headerArea,
+.subtitleArea,
+.cardsArea {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.headerArea {
+    grid-area: header;
+}
+
+
+.subtitleArea {
+    grid-area: subtitle;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 24px;
+    direction: rtl;
+    margin: 0;
+    padding-right: 60px;
+}
+
+.subtitleText {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: var(--purple);
+    text-align: start;
+    font-weight: bold;
+    width: 70%;
+}
+
+/* --- אזור הכרטיסים והקווים --- */
+
+.cardsArea {
+    grid-area: cards;
+    /* חשוב: כדי שהקווים יתמקמו ביחס לאזור הזה */
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* קו הפרדה אופקי */
+.horizontalDivider {
+    position: absolute;
+    /* ממרכז את הקו בגובה */
+    top: 50%;
+    left: 5%;
+    /* קצת רווח מהצדדים, כמו בתמונה */
+    /* קו לרוחב 90% */
+    width: 90%;
+    /* עובי הקו */
+    height: 2px;
+    /* צבע אפור בהיר */
+    background-color: #cccccc;
+    /* מזיז חצי מעובי הקו למעלה כדי שיהיה בדיוק באמצע */
+    transform: translateY(-50%);
+    /* מבטיח שהקו יהיה מאחורי הכרטיסים (אם הם חופפים) */
+    z-index: 0;
+}
+
+/* קו הפרדה אנכי */
+.verticalDivider {
+    position: absolute;
+    /* ממרכז את הקו ברוחב */
+    left: 50%;
+    top: 5%;
+    /* קצת רווח מלמעלה ולמטה */
+    /* עובי הקו */
+    width: 2px;
+    /* גובה הקו */
+    height: 90%;
+    /* צבע אפור בהיר */
+    background-color: #cccccc;
+    /* מזיז חצי מעובי הקו שמאלה כדי שיהיה בדיוק באמצע */
+    transform: translateX(-50%);
+    /* מבטיח שהקו יהיה מאחורי הכרטיסים */
+    z-index: 0;
+}
+
+.cardWrapper {
+    width: 45%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* מבטיח שהכרטיסים יהיו מעל הקווים */
+    z-index: 1;
+}

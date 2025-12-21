@@ -1,0 +1,12 @@
+.icon-wrapper {
+    width: var(--icon-width);
+    height: var(--icon-height);
+    object-fit: contain;
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    fill: var(--icon-color);
+}
+

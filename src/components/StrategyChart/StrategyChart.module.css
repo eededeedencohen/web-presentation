@@ -1,0 +1,173 @@
+.strategyChartContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 80% 20%;
+    grid-template-areas:
+        "strategy25Area strategy26Area"
+        "summaryArea summaryArea";
+
+    /* חשוב: מאפשר לחץ להתמקם ביחס לקונטיינר הזה */
+    position: relative;
+}
+
+.strategy25Area {
+    grid-area: strategy25Area;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+
+.strategy25Card {
+    width: 90%;
+    aspect-ratio: 3 / 2;
+    background-color: white;
+    border: 5px solid var(--purple);
+    border-radius: 40px;
+    border-bottom: 10px solid var(--purple);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+
+
+.strategy25Card h3 {
+    color: var(--purple);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.strategy25Card h1 {
+    color: #ff3131;
+}
+
+
+.strategy26Area {
+    grid-area: strategy26Area;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+
+.strategy26Card {
+    width: 90%;
+    /* ratio of width to height 3:1; */
+    aspect-ratio: 3 / 2;
+    background-color: var(--purple);
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.strategy26Card h3 {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-top: 2rem;
+
+}
+
+.strategy26Card h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.summaryArea {
+    grid-area: summaryArea;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.summaryCard {
+    width: 85%;
+    height: 90%;
+    background-color: var(--light-purple);
+    border: 7px solid var(--green);
+    border-left: 10px solid var(--green);
+    border-right: 10px solid var(--green);
+
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    direction: rtl;
+}
+
+.summaryCard h1 {
+    color: black;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.arrowWrapper {
+    position: absolute;
+    /* מיקום במרכז התפר שבין שני הכרטיסים */
+    top: 49%;
+    left: 45%;
+
+    /* שילוב של היפוך וסיבוב */
+    /* scaleX(-1) הופך אותו אופקית */
+    /* rotate משנה את הזווית של העיקול */
+    transform: translate(-50%, -50%) scaleX(-1) rotate(262deg);
+
+    /* מבטיח שהחץ לא יפריע ללחיצה על הכרטיסים אם יש שם לינקים */
+    pointer-events: none;
+    z-index: 10;
+}
+
+.arrowWrapper2 {
+    position: absolute;
+    /* מיקום במרכז התפר שבין שני הכרטיסים */
+    top: 48%;
+    left: 45%;
+
+    /* שילוב של היפוך וסיבוב */
+    /* scaleX(-1) הופך אותו אופקית */
+    /* rotate משנה את הזווית של העיקול */
+    transform: translate(-50%, -50%) scaleX(-1) rotate(262deg);
+
+    /* מבטיח שהחץ לא יפריע ללחיצה על הכרטיסים אם יש שם לינקים */
+    pointer-events: none;
+    z-index: 8;
+}
+
+/* אופציונלי: אנימציה עדינה לחץ כשהוא מופיע */
+.arrowWrapper,
+.arrowWrapper2 {
+    animation: fadeInArrow 0.6s ease-out;
+}
+
+@keyframes fadeInArrow {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scaleX(-1) rotate(262deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scaleX(-1) rotate(262deg);
+    }
+}
