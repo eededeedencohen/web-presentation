@@ -5,13 +5,12 @@ import IconSVG from "../../../components/IconSVG/IconSVG";
 import B2BFinancialPotentialCard from "../../../components/Cards/B2BFinancialPotentialCard/B2BFinancialPotentialCard.jsx";
 import productsImage from "../../../assets/images/products.png";
 
-
 function B2BExpansionSlide() {
   return (
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
+          text={"הזדמנות אסטרטגית: כניסה לשוק הקמעונאי (B2B)"}
           width="70%"
           className={styles.header} // TO DO: Remove this class at the end
         />

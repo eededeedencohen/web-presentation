@@ -1,0 +1,19 @@
+.labelWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.label {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 0;
+    color: var(--color);
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}

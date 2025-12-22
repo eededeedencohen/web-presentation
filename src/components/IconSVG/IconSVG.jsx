@@ -51,7 +51,9 @@ import Voice from "../../assets/SVG/voice.svg?react";
 import Warehouse from "../../assets/SVG/warehouse.svg?react";
 import WaterDrops from "../../assets/SVG/water-drops.svg?react";
 import Income from "../../assets/SVG/income.svg?react";
+import Dollars from "../../assets/SVG/dollars.svg?react";
 import styles from "./IconSVG.module.css";
+
 
 const iconMap = {
   "arrow-up": ArrowUp,
@@ -106,6 +108,7 @@ const iconMap = {
   warehouse: Warehouse,
   "water-drops": WaterDrops,
   income: Income,
+  dollars: Dollars,
 };
 
 const randomIcons = Object.values(iconMap);
