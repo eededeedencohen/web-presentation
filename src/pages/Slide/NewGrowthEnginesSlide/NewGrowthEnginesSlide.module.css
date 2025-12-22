@@ -3,8 +3,8 @@
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    grid-template-columns: 1fr;
-    grid-template-rows: 16vh 10vh 74vh;
+    grid-template-columns: 100%;
+    grid-template-rows: 16% 10% 74%;
     grid-template-areas:
         "header"
         "subtitle"
@@ -22,6 +22,8 @@
 .headerArea {
     grid-area: header;
 }
+
+
 
 
 .subtitleArea {
@@ -50,6 +52,9 @@
     grid-area: cards;
     /* חשוב: כדי שהקווים יתמקמו ביחס לאזור הזה */
     position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -97,11 +102,34 @@
 }
 
 .cardWrapper {
-    width: 45%;
-    height: 45%;
+    width: 48%;
+    height: 48%;
     display: flex;
     justify-content: center;
     align-items: center;
     /* מבטיח שהכרטיסים יהיו מעל הקווים */
     z-index: 1;
+}
+
+
+/*=================================================================*/
+/*=================================================================*/
+/*=================================================================*/
+/*=================================================================*/
+
+
+
+@media (max-width: 768px) {
+
+    .subtitleArea {
+        padding-right: 30px;
+    }
+
+    .subtitleText {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+
+
+
 }

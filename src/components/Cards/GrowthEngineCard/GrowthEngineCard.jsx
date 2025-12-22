@@ -19,7 +19,7 @@ function GrowthEngineCard({ image, icon, color, title, content, summary }) {
             size="80%"
             offsetX={0}
             offsetY={0}
-            spread={10}
+            spread={7}
           />
         </div>
       </div>
@@ -36,8 +36,8 @@ function GrowthEngineCard({ image, icon, color, title, content, summary }) {
         <IconSVG
           iconName={icon} // שים לב לוודא שהשם הזה קיים במפרט האייקונים שלך
           color={color}
-          width="50px"
-          height="50px"
+          width="var(--icon-size)"
+          height="var(--icon-size)"
         />
       </div>
     </div>
