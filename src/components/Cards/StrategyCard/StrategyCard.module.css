@@ -6,13 +6,20 @@
     justify-content: flex-start;
 
     background-color: var(--light-purple);
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: box-shadow 0.2s;
 
     /* אופציונלי: רווח מינימלי בין האייקון לטקסט */
     gap: 10px;
+
+    --card-width: 20%;
+    --card-height: 80%;
+
+}
+
+.strategy-card-icon {
+    --icon-size: 150px;
 }
 
 /* הקלאס החדש שעוטף את הטקסטים */
@@ -36,7 +43,7 @@
     color: var(--purple);
     line-height: 1.5;
     text-align: center;
-    
+
 }
 
 .strategy-card-text {
@@ -62,4 +69,77 @@
 .strategy-card-icon {
     margin-bottom: 2rem;
     align-self: flex-start;
+}
+
+
+@media (max-width: 768px) {
+    .strategy-card-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* שינוי: מתחילים מלמעלה במקום מהאמצע */
+        justify-content: flex-start;
+        border-radius: 15px;
+        padding: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        /* אופציונלי: רווח מינימלי בין האייקון לטקסט */
+        gap: 5px;
+
+        --card-width: 25%;
+        --card-height: 80%;
+    }
+
+    .strategy-card-icon {
+        --icon-size: 75px;
+    }
+
+    /* הקלאס החדש שעוטף את הטקסטים */
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* ממרכז את הטקסט אנכית בתוך החלל שנותר */
+        align-items: center;
+        /* ממרכז את הטקסט אופקית */
+
+        /* זה הסוד: ה-div הזה יתפוס את כל הגובה הפנוי וידחוק את האייקון למעלה */
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .strategy-card-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--purple);
+        line-height: 1;
+        text-align: center;
+
+    }
+
+    .strategy-card-text {
+        font-size: 12px;
+        line-height: 1rem;
+        font-weight: 400;
+        color: var(--purple);
+        text-align: center;
+        padding: 0 10px;
+        direction: rtl;
+    }
+
+    .icon-wrapper {
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .strategy-card-icon {
+        margin-bottom: 1rem;
+        align-self: flex-start;
+    }
 }

@@ -9,12 +9,9 @@ function StrategyCard({
   title,
   text,
   color = "var(--green)",
-  width = "20%",
+  width = "var(--card-width)",
   height = "80%",
   backgroundColor = "white",
-  offsetX = -12,
-  offsetY = 15,
-  shadowSpread = 5,
   className = "",
   style = {},
   ...restProps
@@ -25,9 +22,6 @@ function StrategyCard({
       width={width}
       height={height}
       backgroundColor={backgroundColor}
-      offsetX={offsetX}
-      offsetY={offsetY}
-      shadowSpread={shadowSpread}
       className={`${styles["strategy-card-container"]} ${className}`}
       style={style}
       {...restProps}
@@ -37,8 +31,8 @@ function StrategyCard({
         <IconSVG
           iconName={iconName}
           color={"var(--purple)"}
-          width="150px"
-          height="150px"
+          width="var(--icon-size)"
+          height="var(--icon-size)"
           className={styles["strategy-card-icon"]}
         />
       </div>

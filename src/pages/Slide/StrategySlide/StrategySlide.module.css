@@ -6,10 +6,10 @@
     overflow: hidden;
 
     /* עמודה אחת שתופסת את כל הרוחב */
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
 
     /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
-    grid-template-rows: 16vh 84vh;
+    grid-template-rows: 16% 84%;
 
     /* מפת האזורים החדשה */
     grid-template-areas:
