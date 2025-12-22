@@ -90,7 +90,7 @@
 .chartWrapper::after {
     content: '';
     position: absolute;
-    top: 40%;
+    top: 60%;
     left: 60%;
     width: 20%;
     height: 0;
@@ -144,7 +144,7 @@
 
 .expensesStick1 {
     width: 90%;
-    height: 20%;
+    height: 30%;
     background-color: rgb(188, 188, 188);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -155,7 +155,7 @@
 }
 
 .expensesStick1Label {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -163,7 +163,7 @@
 }
 
 .amount1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: white;
     margin-bottom: 5%;
@@ -171,7 +171,7 @@
 
 .expensesStick2 {
     width: 90%;
-    height: 20%;
+    height: 30%;
     background-color: rgb(188, 188, 188);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -182,7 +182,7 @@
 }
 
 .expensesStick2Label {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -190,7 +190,7 @@
 }
 
 .amount2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: white;
     margin-bottom: 5%;
@@ -207,7 +207,7 @@
 
 .profitStick {
     width: 90%;
-    height: 60%;
+    height: 40%;
     background-color: white;
     border-radius: 15px;
     background-color: var(--green);
@@ -314,7 +314,7 @@
     }
 
     .amount1 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .expensesStick2Label {
@@ -322,11 +322,11 @@
     }
 
     .amount2 {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .profitLabel {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .incomeAmount,
