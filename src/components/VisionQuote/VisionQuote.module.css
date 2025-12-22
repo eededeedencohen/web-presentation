@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    --icon-size: 100px;
 }
 
 .textContainer {
@@ -83,16 +84,86 @@
 
 /* התאמה למסכים קטנים */
 @media (max-width: 768px) {
-    .quoteText {
-        font-size: 1.1rem;
+
+    .quoteWrapper {
+        position: relative;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        --icon-size: 30px;
     }
 
-    /* אין צורך לשנות פונט סייז, הגודל משתנה יחסית לקונטיינר אם רוצים, 
-       אבל כרגע הגדרנו גודל קבוע ב-JS. אפשר להקטין דרך CSS אם רוצים: */
-    /*
-    .quoteIconTop, .quoteIconBottom {
-        width: 60px !important;
-        height: 60px !important;
+    .textContainer {
+        position: relative;
+        padding: 1rem 2rem 1rem 0.5rem;
+        text-align: center;
+        width: 90%;
     }
-    */
+
+    .quoteText {
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 1.4;
+        color: #333;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        direction: rtl;
+    }
+
+    /* --- הגדרת המסגרות (הפסים) --- */
+    .bracketTopLeft,
+    .bracketBottomRight {
+        position: absolute;
+        width: 80%;
+        height: 30%;
+        border-color: var(--green);
+        border-style: solid;
+        border-width: 4px;
+    }
+
+    /* הפינה השמאלית עליונה */
+    .bracketTopLeft {
+        top: 0;
+        left: 0;
+        border-right: none;
+        border-bottom: none;
+        border-top-left-radius: 20px;
+    }
+
+    /* הפינה הימנית תחתונה */
+    .bracketBottomRight {
+        bottom: 0;
+        right: 0;
+        border-left: none;
+        border-top: none;
+        border-bottom-right-radius: 20px;
+    }
+
+    /* --- הגדרת המרכאות (SVG) --- */
+    .quoteIconTop,
+    .quoteIconBottom {
+        position: absolute;
+        /* מחקנו את כל הגדרות הפונט שהיו כאן */
+        opacity: 0.8;
+        z-index: 1;
+    }
+
+    .quoteIconTop {
+        top: 3px;
+        /* כיוונון קל בגלל שהחלפנו טקסט באייקון */
+        right: 30px;
+    }
+
+    .quoteIconBottom {
+        bottom: 3px;
+        /* כיוונון קל */
+        left: 30px;
+
+        /* הופך את האייקון ב-180 מעלות כדי שייראה כמו ציטוט סוגר */
+        transform: rotate(180deg);
+    }
 }

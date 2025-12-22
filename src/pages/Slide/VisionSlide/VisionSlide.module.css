@@ -6,10 +6,10 @@
     overflow: hidden;
 
     /* עמודה אחת שתופסת את כל הרוחב */
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
 
     /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
-    grid-template-rows: 16vh 35vh 49vh;
+    grid-template-rows: 16% 35% 49%;
 
     /* מפת האזורים החדשה */
     grid-template-areas:
@@ -51,7 +51,7 @@
 
 .visionCardWrapper {
     display: flex;
-    padding: 20px ;
+    padding: 20px;
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -67,4 +67,27 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+    .visionCardWrapper {
+        display: flex;
+        padding: 10px;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    }
+
+
+    .visionCardWrapper {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        overflow: hidden;
+    }
 }

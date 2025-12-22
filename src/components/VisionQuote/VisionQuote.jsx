@@ -5,7 +5,7 @@ import IconSVG from "../IconSVG/IconSVG"; // וודא שהנתיב נכון למ
 
 const VisionQuote = () => {
   const iconColor = "var(--green)";
-  const iconSize = "100px"; // גודל תואם ל-8rem שהיה קודם
+  const iconSize = "var(--icon-size)"; // גודל תואם ל-8rem שהיה קודם
 
   return (
     <div className={styles.quoteWrapper}>
