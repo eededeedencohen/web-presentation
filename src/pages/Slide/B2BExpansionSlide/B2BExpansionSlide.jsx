@@ -3,7 +3,7 @@ import styles from "./B2BExpansionSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import IconSVG from "../../../components/IconSVG/IconSVG";
 import B2BFinancialPotentialCard from "../../../components/Cards/B2BFinancialPotentialCard/B2BFinancialPotentialCard.jsx";
-import productsImage from "../../../assets/images/products.png";
+import productsImage from "../../../assets/Images/products.png";
 
 function B2BExpansionSlide() {
   return (
