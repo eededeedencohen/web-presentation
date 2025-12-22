@@ -116,7 +116,7 @@ function Presentation() {
       {/* תוכן המצגת */}
       <CurrentSlide />
 
-      <div className={styles.navigationControls}>
+      {/* <div className={styles.navigationControls}>
         <button
           onClick={goPrev}
           disabled={currentSlideId === 1}
@@ -134,7 +134,7 @@ function Presentation() {
         >
           הבא &gt;
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
