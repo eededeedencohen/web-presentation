@@ -32,13 +32,35 @@ function BudgetSummarySlide() {
             </div>
           </div>
           <div className={styles.expenses}>
-            <div className={styles.expensesStick1}>הוצאות</div>
-            <div className={styles.expensesStick2}>הוצאות</div>
+            <div className={styles.expensesStick1}>
+              <div className={styles.expensesStick1Label}>הוצאות משתנות</div>
+              <div className={styles.amount1}>₪368,750</div>
+            </div>
+            <div className={styles.expensesStick2}>
+              <div className={styles.expensesStick2Label}>הוצאות קבועות</div>
+              <div className={styles.amount2}>₪328,592</div>
+            </div>
           </div>
           <div className={styles.profit}>
-            <div className={styles.profitStick}>רווח</div>
+            <div className={styles.profitStick}>
+              <div className={styles.profitIcon}>
+                <IconSVG
+                  iconName="income"
+                  color="white"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+              <div className={styles.profitLabel}>רווח נקי צפוי</div>
+            </div>
           </div>
         </div>
+        <div className={styles.line}></div>
+      </div>
+      <div className={styles.summaryArea}>
+        <div className={styles.incomeAmount}>₪1,112,492</div>
+        <div className={styles.expensesAmount}>₪697,342</div>
+        <div className={styles.profitAmount}>₪415,150</div>
       </div>
     </div>
   );
