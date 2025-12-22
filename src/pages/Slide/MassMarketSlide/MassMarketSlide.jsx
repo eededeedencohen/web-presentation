@@ -1,9 +1,8 @@
 import styles from "./MassMarketSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import MassProductCard from "../../../components/Cards/MassProductCard/MassProductCard";
-import notebooksImage from "../../../assets/images/notebooks.png";
-import calendarImage from "../../../assets/images/calendar.png";
-
+import notebooksImage from "../../../assets/Images/notebooks.png";
+import calendarImage from "../../../assets/Images/calendar.png";
 function MassMarketSlide() {
   return (
     <div className={styles.slidePage}>

@@ -1,0 +1,65 @@
+.cardWrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+}
+
+.iconHeading {
+    margin-bottom: 20px;
+}
+
+.contentText {
+    font-size: 24px;
+    text-align: right;
+    direction: rtl;
+    font-weight: 400;
+    color: var(--purple);
+}
+
+
+.incomeWrapper,
+.profitWrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.incomeWrapper h3,
+.profitWrapper h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    direction: rtl;
+    margin-left: 5px;
+}
+
+.incomeWrapper h2,
+.profitWrapper h2 {
+    font-size: 24px;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: var(--green);
+    border-radius: 15px;
+    color: white;
+}
+
+
+
+.contentText {
+    font-size: 24px;
+    font-weight: 500;
+    width: 80%;
+}

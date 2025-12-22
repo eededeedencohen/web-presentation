@@ -7,22 +7,13 @@ function BudgetSummarySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
+          text={"האסטרטגיה שלנו לצמיחה"}
           width="70%"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>
-      <div className={styles.subtitleArea}>
-        יעד הכנסות כולל מהחגים: "₪662,500
-      </div>
-      <div className={styles.cardsArea}>
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-      </div>
+      <div className={styles.yearArea}><div className={styles.year}>שנת 2026</div></div>
+      <div className={styles.chartArea}></div>
     </div>
   );
 }
