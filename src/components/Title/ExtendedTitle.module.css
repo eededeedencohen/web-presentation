@@ -88,6 +88,8 @@
 
 }
 
+
+
 @keyframes slideAndShadow {
     0% {
         transform: skew(-30deg) translateX(-150%);
@@ -102,5 +104,36 @@
     100% {
         transform: skew(-30deg) translateX(-70px);
         box-shadow: 16px 4px 0px 10px var(--green);
+    }
+}
+
+@media (max-width: 900px) {
+    .parallelogram {
+        padding-right: 10px;
+    }
+
+    .mainTitle {
+        font-size: calc(var(--p-font-size, 3rem) / 2);
+    }
+    .subTitle {
+        font-size: calc(var(--p-sub-font-size, 2rem) / 2);
+        padding-right: 15px;
+    }
+
+    @keyframes slideAndShadow {
+        0% {
+            transform: skew(-30deg) translateX(-200%);
+            box-shadow: 0 0 0 0 transparent;
+        }
+
+        70% {
+            transform: skew(-30deg) translateX(-20px);
+            box-shadow: 0 0 0 0 transparent;
+        }
+
+        100% {
+            transform: skew(-30deg) translateX(-20px);
+            box-shadow: 12px 3px 0px 8px var(--green);
+        }
     }
 }

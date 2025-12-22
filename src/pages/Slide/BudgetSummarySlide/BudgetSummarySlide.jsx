@@ -10,6 +10,7 @@ function BudgetSummarySlide() {
         <HeaderBlock
           text={"האסטרטגיה שלנו לצמיחה"}
           width="70%"
+          fontSize="3rem"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>

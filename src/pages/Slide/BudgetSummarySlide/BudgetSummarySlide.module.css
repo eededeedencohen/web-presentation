@@ -16,7 +16,6 @@
         "header header"
         "chart year"
         "summary year";
-
 }
 
 .headerArea,
@@ -32,9 +31,6 @@
     grid-area: header;
 }
 
-.header {
-    background-color: rgb(7, 104, 5);
-}
 
 /* 2. כותרת משנה */
 .chartArea {
@@ -46,7 +42,7 @@
 
 }
 
-.line{
+.line {
     width: 75%;
     height: 2px;
     background-color: #999;
@@ -253,11 +249,20 @@
 }
 
 .year {
+    transform: translateY(25%) translateX(10%);
     font-size: 36px;
     font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--purple);
+    padding: 10px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    box-shadow: 0 0 0 0 var(--green);
+    color: white;
+
+    animation: slideInFromRight 1s ease-out forwards;
 }
 
 .summaryArea {
@@ -320,5 +325,19 @@
 
     .chartWrapper {
         border-top: 1px;
+    }
+
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateY(25%) translateX(150%);
+        box-shadow: 0 0 0 0 transparent;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(25%) translateX(10%);
+        box-shadow: 0 0 0 5px var(--green);
+        opacity: 1;
     }
 }
