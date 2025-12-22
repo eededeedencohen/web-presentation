@@ -47,10 +47,11 @@ function HolidayRevenueSlide() {
         <HeaderBlock
           text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
           width="75%"
+          fontSize="2.5rem"
         />
       </div>
       <div className={styles.subtitleArea}>
-        יעד הכנסות כולל מהחגים: "₪662,500
+        יעד הכנסות כולל מהחגים: ₪662,500
       </div>
       <div className={styles.cardsArea}>
         <div className={styles.cardWrapper}>

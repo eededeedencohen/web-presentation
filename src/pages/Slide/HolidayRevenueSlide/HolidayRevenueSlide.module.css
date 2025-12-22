@@ -65,3 +65,13 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+
+    /* 2. כותרת משנה */
+    .subtitleArea {
+        font-size: 18px;
+        padding-right: 30px;
+    }
+
+}
