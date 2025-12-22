@@ -47,7 +47,7 @@ function HolidayRevenueSlide() {
         <HeaderBlock
           text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
           width="75%"
-          fontSize="2.5rem"
+          fontSize="3rem"
         />
       </div>
       <div className={styles.subtitleArea}>

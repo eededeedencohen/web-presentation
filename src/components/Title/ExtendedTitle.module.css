@@ -111,12 +111,11 @@
     .parallelogram {
         padding-right: 10px;
     }
-
     .mainTitle {
-        font-size: calc(var(--p-font-size, 3rem) / 2);
+        font-size: calc(var(--p-font-size, 3rem) * 0.35);
     }
     .subTitle {
-        font-size: calc(var(--p-sub-font-size, 2rem) / 2);
+        font-size: calc(var(--p-sub-font-size, 2rem) * 0.35);
         padding-right: 15px;
     }
 
