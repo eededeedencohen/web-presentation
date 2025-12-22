@@ -46,7 +46,7 @@ function BudgetSummarySlide() {
             <div className={styles.profitStick}>
               <div className={styles.profitIcon}>
                 <IconSVG
-                  iconName="income"
+                  iconName="business-and-finance"
                   color="white"
                   width="100%"
                   height="100%"
