@@ -18,8 +18,7 @@ function StrategyChart({
           <IconSVG
             iconName={icon || "income"}
             color="var(--purple)"
-            width="80px"
-            height="80px"
+            className={styles.icon25} // הוספת קלאס
           />
           <h3>{label} 2025</h3>
           <h1>₪{value25}</h1>
@@ -30,9 +29,7 @@ function StrategyChart({
           <IconSVG
             iconName={icon || "income"}
             color="white"
-            width="100px"
-            height="100px"
-            className={styles.icon}
+            className={styles.icon26} // הוספת קלאס
           />
           <h3>{label} 2026</h3>
           <h1>₪{value26}</h1>

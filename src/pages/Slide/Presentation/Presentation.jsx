@@ -18,7 +18,7 @@ import styles from "./Presentation.module.css";
 
 const slideComponents = {
   // 1: CoverSlide, // X - 1
-  1: BudgetSummarySlide, // X - 1
+  1: FinancialGrowthSlide, // X - 1
   2: VisionSlide, // V - 2
   3: FinancialGrowthSlide, // X - 3
   4: StrategySlide, // V - 4
