@@ -4,50 +4,21 @@
     }
 
     100% {
-        /* הוספנו 0.5px blur כדי לעזור לספארי לרנדר קצוות חלקים */
-        box-shadow: var(--offset-x) var(--offset-y) 0.5px var(--shadow-spread) var(--img-color);
+        box-shadow: var(--offset-x) var(--offset-y) 0px var(--shadow-spread) var(--img-color);
     }
 }
 
-.imageWrapper {
-    position: relative;
-    /* קריטי עבור המיקום של הצל */
+.circularImage {
     width: var(--img-size);
     height: var(--img-size);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* הסרנו overflow: hidden מכאן כדי שהצל לא ייחתך */
-}
-
-/* שכבת הצל */
-.imageWrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     border-radius: 50%;
-    z-index: -1;
-    /* שם את הצל מאחורי התמונה */
 
-    /* הרצת האנימציה על השכבה הזו */
+    /* הסרנו את ה-border כי ביקשת לבטל אותו */
+    border: none;
+
+    /* שימוש באנימציה המעודכנת */
     animation: growShadow 0.8s ease-out forwards;
 
-    /* מבטיח רינדור עגול בספארי */
-    -webkit-backface-visibility: hidden;
-    will-change: box-shadow;
-}
-
-.circularImage {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 50%;
-    /* התמונה עצמה תהיה עגולה */
-
-    /* תיקון נוסף לספארי למניעת "פיקסול" בקצוות */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
 }

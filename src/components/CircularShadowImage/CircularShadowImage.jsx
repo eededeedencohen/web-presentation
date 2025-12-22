@@ -8,7 +8,7 @@ function CircularShadowImage({
   size = "150px",
   offsetX = 8,
   offsetY = 10,
-  spread = 1,
+  spread = 1, // הוספנו פרמטר לעובי הצללית (ברירת מחדל 1px)
   className = "",
   style = {},
   ...restProps
@@ -18,21 +18,17 @@ function CircularShadowImage({
     "--img-size": size,
     "--offset-x": `${offsetX}px`,
     "--offset-y": `${offsetY}px`,
-    "--shadow-spread": `${spread}px`,
+    "--shadow-spread": `${spread}px`, // משתנה חדש ל-CSS
   };
 
   return (
-    <div
-      className={`${styles.imageWrapper} ${className}`}
+    <img
+      src={src}
+      alt={alt}
+      className={`${styles.circularImage} ${className}`}
       style={{ ...dynamicVars, ...style }}
-    >
-      <img
-        src={src}
-        alt={alt}
-        className={styles.circularImage}
-        {...restProps}
-      />
-    </div>
+      {...restProps}
+    />
   );
 }
 
