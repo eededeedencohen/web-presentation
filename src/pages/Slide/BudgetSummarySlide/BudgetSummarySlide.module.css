@@ -38,6 +38,98 @@
 .chartArea {
     background-color: bisque;
     grid-area: chart;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.chartWrapper {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(22, 94, 196);
+}
+
+.income {
+    height: 100%;
+    width: 25%;
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.incomeStick {
+    width: 90%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: var(--purple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+    gap: 5%;
+}
+
+.incomeLabel {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.incomeIcon {
+    width: 50%;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.expenses {
+    height: 100%;
+    width: 25%;
+    background-color: rgb(229, 21, 21);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.expensesStick1 {
+    width: 90%;
+    height: 20%;
+    background-color: rgb(188, 188, 188);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.expensesStick2 {
+    width: 90%;
+    height: 20%;
+    background-color: rgb(188, 188, 188);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.profit {
+    height: 100%;
+    width: 25%;
+    background-color: rgb(255, 0, 157);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profitStick {
+    width: 90%;
+    height: 60%;
+    background-color: white;
+    border-radius: 15px;
+    background-color: var(--green);
 }
 
 /* 3. כרטיסים */
@@ -46,7 +138,7 @@
     grid-area: year;
 }
 
-.year{
+.year {
     font-size: 36px;
     font-weight: 800;
     display: flex;
@@ -56,8 +148,11 @@
 
 /*year for mobile*/
 @media (max-width: 768px) {
-    .year{
+    .year {
         font-size: 15px;
     }
-}
 
+    .incomeLabel {
+        font-size: 14px;
+    }
+}
