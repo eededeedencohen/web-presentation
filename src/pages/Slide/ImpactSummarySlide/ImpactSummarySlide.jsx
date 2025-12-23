@@ -16,9 +16,18 @@ function ImpactSummarySlide() {
       </div>
       צמיחה של פי 21 ברווחיות
       <div className={styles.cardsArea}>
-        <ImpactKpiCard />
-        <ImpactKpiCard />
-        <ImpactKpiCard />
+        <ImpactKpiCard
+          icon="rocket-launch"
+          title="צמיחה של פי"
+          content="25 ברווחיות"
+        />
+        <ImpactKpiCard icon="handshake" title="יעד רווח" content="₪415,150" />
+        <ImpactKpiCard
+          icon="profits"
+          title="יעד הכנסות"
+          // content="מעל 1.1 מיליון"
+          content="מעל 1.1 מיליון ₪"
+        />
       </div>
       <div className={styles.summaryArea}>
         <div className={styles.summaryCardArea}>

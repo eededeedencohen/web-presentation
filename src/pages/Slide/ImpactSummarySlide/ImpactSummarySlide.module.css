@@ -1,5 +1,5 @@
 /* pages/Slide/Slide.module.css */
-.slidePage { 
+.slidePage {
     display: grid;
     height: 100%;
     width: 100%;
@@ -27,13 +27,11 @@
 }
 
 
-.header {
-}
 
 .cardsArea {
     grid-area: cards;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
@@ -107,6 +105,10 @@
 .summarySentenceWrapper p {
     margin: 0;
     line-height: 1.5rem;
+    font-style: italic;
+    direction: rtl;
+    text-align: right;
+
 }
 
 @media (max-width: 768px) {
