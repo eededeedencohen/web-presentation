@@ -22,8 +22,8 @@ function B2BFinancialPotentialCard() {
       <div className={styles.iconWrapper}>
         <IconSVG
           iconName="chart"
-          width="100px"
-          height="100px"
+          width="var(--icon-size)"
+          height="var(--icon-size)"
           color="white"
         />
       </div>

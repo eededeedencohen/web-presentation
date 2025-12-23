@@ -1,3 +1,33 @@
+@keyframes shadowEntry {
+    0% {
+        box-shadow: 0px 0px 0px 0px var(--shadow-color);
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    100% {
+        /* כאן אנחנו משתמשים בערכים המקוריים שלך מהקוד */
+        box-shadow: 14px 14px 0px 3px var(--shadow-color);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* לאנימציה במובייל עם הערכים הקטנים יותר */
+@keyframes shadowEntryMobile {
+    0% {
+        box-shadow: 0px 0px 0px 0px var(--shadow-color);
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    100% {
+        box-shadow: 7px 7px 0px 2px var(--shadow-color);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 /* pages/Slide/Slide.module.css */
 .slidePage {
     display: grid;
@@ -62,6 +92,8 @@
     border-radius: 30px;
     border: 7px solid var(--purple);
     box-shadow: 14px 14px 0px 3px var(--purple);
+    --shadow-color: var(--purple);
+    animation: shadowEntry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .contentWrapper {
@@ -98,6 +130,7 @@
     background-color: var(--purple);
     padding: 10px;
     border-radius: 50%;
+    --icon-size: 120px;
 }
 
 .contentText {
@@ -115,6 +148,12 @@
     border-radius: 30px;
     border: 7px solid var(--green);
     box-shadow: 14px 14px 0px 3px var(--green);
+    --shadow-color: var(--green);
+    animation: shadowEntry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.2s;
+    /* כניסה מדורגת יוצרת אפקט יוקרתי */
+    opacity: 0;
+    /* מתחיל משקוף עד שהאנימציה מתחילה */
 }
 
 /* בתוך הקובץ module.css */
@@ -140,4 +179,165 @@
     border: 7px solid var(--green);
     box-shadow: 20px 15px 0px 5px rgb(from var(--green) r g b / 0.7);
     margin-right: 20px;
+    --shadow-color: rgb(from var(--green) r g b / 0.7);
+    animation: shadowEntry 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+
+/*==========================================*/
+/*=======MOBILE DESIGN ==========*/
+/*==========================================*/
+
+@media (max-width: 800px) {
+
+    /* pages/Slide/Slide.module.css */
+    .slidePage {
+        display: grid;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+
+        /* עמודה אחת שתופסת את כל הרוחב */
+        grid-template-columns: 40% 60%;
+
+        /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
+        grid-template-rows: 16% 84%;
+
+        /* מפת האזורים החדשה */
+        grid-template-areas:
+            "header header"
+            "image cards";
+
+    }
+
+    .headerArea,
+    .imageArea,
+    .cardsArea {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* 1. כותרת */
+    .headerArea {
+        grid-area: header;
+    }
+
+
+    /* 2. כותרת משנה */
+    .imageArea {
+        grid-area: image;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    /* 3. כרטיסים */
+    .cardsArea {
+        grid-area: cards;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        overflow: hidden;
+    }
+
+
+    .modelCardWrapper {
+        width: 90%;
+        height: 30%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 15px;
+        border: 3px solid var(--purple);
+        box-shadow: 7px 7px 0px 2px var(--purple);
+        animation: shadowEntryMobile 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .contentWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        height: 80%;
+        width: 70%;
+    }
+
+
+    .label {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 3px;
+        padding: 0;
+        color: var(--purple);
+    }
+
+
+    .contentText {
+        font-size: 12px;
+        text-align: right;
+        direction: rtl;
+        font-weight: 400;
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--purple);
+        padding: 5px;
+        border-radius: 50%;
+        --icon-size: 60px;
+    }
+
+    .contentText {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .potencialCardWrapper {
+        width: 90%;
+        height: 40%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: flex-start;
+        border-radius: 15px;
+        border: 3px solid var(--green);
+        box-shadow: 7px 7px 0px 2px var(--green);
+        animation: shadowEntryMobile 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation-delay: 0.2s;
+    }
+
+    /* בתוך הקובץ module.css */
+    .imageWrapper {
+        height: 55%;
+        /* הגדלתי מעט ל-60% כדי שיהיה נוכחות, שנה לפי הצורך */
+        width: fit-content;
+        /* גורם לדיב להיצמד בדיוק לרוחב של התמונה שבתוכו */
+        display: flex;
+    }
+
+    /* החלק החשוב ביותר: הגדרת התוכן שבתוך ה-Wrapper */
+    .imageWrapper img {
+        height: 100%;
+        /* תופס את כל גובה ה-wrapper */
+        width: auto;
+        /* מחשב את הרוחב אוטומטית לפי היחס המקורי */
+        display: block;
+        object-fit: contain;
+        /* מבטיח שהתוכן לא ייחתך */
+
+        border-radius: 40px;
+        border: 3px solid var(--green);
+        box-shadow: 7px 10px 0px 3px rgb(from var(--green) r g b / 0.7);
+        --shadow-color: rgb(from var(--green) r g b / 0.7);
+        animation: shadowEntryMobile 0.6s ease-out forwards;
+        animation-delay: 0.4s;
+    }
 }

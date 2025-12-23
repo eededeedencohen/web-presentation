@@ -30,9 +30,10 @@ function B2BExpansionSlide() {
           <div className={styles.iconWrapper}>
             <IconSVG
               iconName="partnership"
-              width="120px"
-              height="120px"
+              width="var(--icon-size)"
+              height="var(--icon-size)"
               color="white"
+              className="icon"
             />
           </div>
         </div>
