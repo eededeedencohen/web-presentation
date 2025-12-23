@@ -61,7 +61,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
     font-weight: 800;
     margin: 0;
     line-height: 1.2rem;
@@ -70,37 +69,97 @@
     font-weight: bold;
 }
 
-.summaryCardArea{
-    width: 90%;
+.summaryCardArea {
+    width: 60%;
     height: 90%;
-    background-color: rgb(144, 216, 144);
+    background-color: white;
+    border: 10px solid var(--purple);
+    border-radius: 70px;
+    box-shadow: -20px -15px 0 0 var(--purple);
     display: flex;
     flex-direction: column;
-    justify-content:  center;
+    justify-content: center;
     align-items: center;
 }
 
-.summaryImageWrapper{
-    width: 80%;
-    height: 50%;
-    margin-bottom: 20px;
-    background-color: rgb(240, 240, 240);
+.summaryImageWrapper {
+    width: 90%;
+    aspect-ratio: 1264 / 361;
+    height: auto;
+    /* margin-bottom: 2%; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.summarySentenceWrapper{
+.summaryImageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 5px solid var(--purple);
+    border-radius: 100px;
+}
+
+.summarySentenceWrapper {
     width: 80%;
     height: 30%;
     font-size: 24px;
-    font-weight: 600;
-    color: var(--dark-green);
+    font-weight: bold;
+    color: var(--purple);
     text-align: center;
-    background-color: rgb(220, 220, 220);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 3. כרטיסים */
+.summarySentenceWrapper p {
+    margin: 0;
+    line-height: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .summarySentenceWrapper {
+        width: 90%;
+        height: 30%;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .summarySentenceWrapper p {
+        margin: 0;
+        line-height: 0.8rem;
+        font-style: italic;
+    }
+
+    .summaryImageWrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border: 3px solid var(--purple);
+        border-radius: 40px;
+    }
+
+    .summarySentenceWrapper {
+        width: 80%;
+        height: 30%;
+        font-weight: bold;
+        color: var(--purple);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .summaryCardArea {
+        width: 60%;
+        height: 90%;
+        background-color: white;
+        border: 5px solid var(--purple);
+        border-radius: 40px;
+        box-shadow: -7px -5px 0 0 var(--purple);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
