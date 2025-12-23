@@ -27,9 +27,12 @@ function CircularShadowImage({
   };
 
   return (
-    <div className={styles.imageWrapper} style={{ ...dynamicVars, ...style }}>
-      <img src={src} className={styles.circularImage} {...restProps} />
-    </div>
+    <img
+      src={src}
+      className={styles.circularImage}
+      style={{ ...dynamicVars, ...style }}
+      {...restProps}
+    />
   );
 }
 export default CircularShadowImage;

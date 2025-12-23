@@ -1,0 +1,24 @@
+@keyframes growShadow {
+    0% {
+        box-shadow: 0px 0px 0px 0px var(--img-color);
+    }
+
+    100% {
+        box-shadow: var(--offset-x) var(--offset-y) 0px var(--shadow-spread) var(--img-color);
+    }
+}
+
+.circularImage {
+    width: var(--img-size);
+    height: var(--img-size);
+    border-radius: 50%;
+
+    /* הסרנו את ה-border כי ביקשת לבטל אותו */
+    border: none;
+
+    /* שימוש באנימציה המעודכנת */
+    animation: growShadow 0.8s ease-out forwards;
+
+    object-fit: cover;
+    display: block;
+}

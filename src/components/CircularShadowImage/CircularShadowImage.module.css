@@ -8,17 +8,29 @@
     }
 }
 
-.circularImage {
+.imageWrapper {
     width: var(--img-size);
     height: var(--img-size);
     border-radius: 50%;
 
-    /* הסרנו את ה-border כי ביקשת לבטל אותו */
-    border: none;
-
-    /* שימוש באנימציה המעודכנת */
+    /* האנימציה עוברת לעוטף - דפדפנים מסתדרים עם זה הרבה יותר טוב */
     animation: growShadow 0.8s ease-out forwards;
 
+    /* מבטיח שהתמונה תשב בדיוק בפנים */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* מונע זליגה של פיקסלים באייפון */
+    overflow: hidden;
+    /* מאפס את הרקע כדי למנוע התנגשויות צבע */
+    background-color: transparent;
+}
+
+.circularImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     object-fit: cover;
     display: block;
 }
