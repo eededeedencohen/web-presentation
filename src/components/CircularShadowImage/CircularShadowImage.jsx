@@ -27,9 +27,14 @@ function CircularShadowImage({
   };
 
   return (
-    <div className={styles.imageWrapper} style={{ ...dynamicVars, ...style }}>
-      <img src={src} className={styles.circularImage} {...restProps} />
+    <div className={styles.container} style={{ ...dynamicVars, ...style }}>
+      {/* זה העיגול שמשמש כצל */}
+      <div className={styles.shadowCircle}></div>
+
+      {/* זו התמונה המקורית */}
+      <img src={src} className={styles.mainImage} {...restProps} />
     </div>
   );
 }
+
 export default CircularShadowImage;
