@@ -3,33 +3,36 @@ import styles from "./CircularShadowImage.module.css";
 
 function CircularShadowImage({
   src,
-  alt = "image",
   color = "var(--purple)",
   size = "150px",
-  offsetX = 8,
-  offsetY = 10,
-  spread = 1, // הוספנו פרמטר לעובי הצללית (ברירת מחדל 1px)
-  className = "",
+  offsetX,
+  offsetY,
+  spread,
   style = {},
   ...restProps
 }) {
+  // פונקציית עזר למניעת הצמדת px למשתני CSS
+  const formatValue = (val, fallbackVar) => {
+    if (val === undefined) return fallbackVar;
+    if (typeof val === "string" && val.startsWith("var")) return val;
+    return `${val}px`;
+  };
+
   const dynamicVars = {
     "--img-color": color,
     "--img-size": size,
-    "--offset-x": `${offsetX}px`,
-    "--offset-y": `${offsetY}px`,
-    "--shadow-spread": `${spread}px`, // משתנה חדש ל-CSS
+    "--offset-x": formatValue(offsetX, "var(--dynamic-offsetX, 8px)"),
+    "--offset-y": formatValue(offsetY, "var(--dynamic-offsetY, 10px)"),
+    "--shadow-spread": formatValue(spread, "var(--dynamic-spread, 1px)"),
   };
 
   return (
     <img
       src={src}
-      alt={alt}
-      className={`${styles.circularImage} ${className}`}
+      className={styles.circularImage}
       style={{ ...dynamicVars, ...style }}
       {...restProps}
     />
   );
 }
-
 export default CircularShadowImage;
