@@ -17,3 +17,28 @@
     align-items: center;
     margin-left: 15px;
 }
+
+
+@media (max-width: 768px) {
+    .labelWrapper {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-end;
+        justify-self: start;
+        margin: 0;
+    }
+
+    .label {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+        color: var(--color);
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 7px;
+    }
+}

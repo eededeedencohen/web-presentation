@@ -17,6 +17,7 @@
 
 .iconHeading {
     margin-bottom: 20px;
+    --icon-size: 60px;
 }
 
 .contentText {
@@ -53,3 +54,64 @@
     font-weight: 500;
     width: 80%;
 }
+
+@media (max-width: 768px) {
+    .cardWrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        height: 100%;
+        padding: 2px 10px;
+    }
+
+    .contentWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        height: 100%;
+        width: 100%;
+    }
+
+    .iconHeading {
+        margin-bottom: 5px;
+        --icon-size: 30px;
+    }
+
+    .contentText {
+        font-size: 11px;
+        text-align: right;
+        direction: rtl;
+        font-weight: 400;
+        color: var(--purple);
+        margin-bottom: 5px;
+    }
+
+
+    .profitWrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px;
+    }
+
+
+    .profitWrapper h2 {
+        font-size: 11px;
+        text-align: center;
+        padding: 5px 5px;
+        background-color: var(--purple);
+        border-radius: 7.5px;
+        color: white;
+        direction: rtl;
+    }
+
+    .contentText {
+        font-size: 11px;
+        font-weight: 500;
+        width: 80%;
+        line-height: 1.3;
+    }
+}
+

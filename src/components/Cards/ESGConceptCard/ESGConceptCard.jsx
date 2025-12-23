@@ -9,8 +9,8 @@ function ESGConceptCard() {
         <IconHeading
           iconName="gift-card"
           headingText="הקונספט"
-          iconWidth="60px"
-          iconHeight="60px"
+          iconWidth="var(--icon-size)"
+          iconHeight="var(--icon-size)"
           color="var(--purple)"
           className={styles.iconHeading}
         />

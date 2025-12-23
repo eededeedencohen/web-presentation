@@ -140,3 +140,148 @@
     box-shadow: 0px 0px 0px 15px var(--green);
     margin-right: 20px;
 }
+
+@media (max-width: 768px) {
+    .slidePage {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        /* עמודה אחת שתופסת את כל הרוחב */
+        grid-template-columns: 40% 60%;
+
+        /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
+        grid-template-rows: 16% 84%;
+
+        /* מפת האזורים החדשה */
+        grid-template-areas:
+            "header header"
+            "image cards";
+
+    }
+
+    .headerArea,
+    .imageArea,
+    .cardsArea {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* 1. כותרת */
+    .headerArea {
+        grid-area: header;
+    }
+
+
+    /* 2. כותרת משנה */
+    .imageArea {
+        grid-area: image;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    /* 3. כרטיסים */
+    .cardsArea {
+        grid-area: cards;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 0.5rem;
+        overflow: hidden;
+        gap: 1rem;
+    }
+
+
+    .modelCardWrapper {
+        width: 80%;
+        height: 30%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 15px;
+        border: 3px solid var(--purple);
+        box-shadow: 14px 14px 0px 3px var(--purple);
+    }
+
+    .contentWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        height: 80%;
+        width: 70%;
+    }
+
+
+    .label {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding: 0;
+        color: var(--purple);
+    }
+
+
+    .contentText {
+        font-size: 24px;
+        text-align: right;
+        direction: rtl;
+        font-weight: 400;
+
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--purple);
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .contentText {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .potencialCardWrapper {
+        width: 70%;
+        height: 40%;
+        display: flex;
+        border-radius: 15px;
+        border: 3px solid var(--green);
+        box-shadow: 7px 7px 0px 1px var(--green);
+    }
+
+    .conceptCardWrapper {
+        width: 70%;
+        height: 40%;
+        display: flex;
+        border-radius: 15px;
+        border: 3px solid var(--green);
+        box-shadow: 7px 7px 0px 1px var(--green);
+    }
+
+    /* בתוך הקובץ module.css */
+    .imageWrapper {
+        height: 65%;
+        width: fit-content;
+        display: flex;
+    }
+
+    .imageWrapper img {
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        display: block;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0px 0px 0px 7px var(--green);
+        margin-right: 0;
+    }
+}

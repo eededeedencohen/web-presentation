@@ -5,9 +5,9 @@ import IconSVG from "../IconSVG/IconSVG";
 function IconHeading({
   iconName,
   headingText,
-  iconWidth = "50px",
-  iconHeight = "50px",
-  color = "black",
+  iconWidth = "",
+  iconHeight = "",
+  color = "",
   className = "",
   ...props
 }) {
