@@ -1,17 +1,17 @@
-/* pages/Slide/Slide.module.css */
 .slidePage {
     display: grid;
-    height: 100vh;
-    width: 100vw;
+    /* שינוי קריטי: dvh במקום vh */
+    height: 100dvh;
+    /* שינוי קריטי: 100% במקום 100vw למניעת גלילה הצידה באייפון */
+    width: 100%;
     overflow: hidden;
 
-    /* עמודה אחת שתופסת את כל הרוחב */
     grid-template-columns: 1fr;
 
-    /* הגדרת גובה השורות לפי הבקשה: 10% - 45% - 45% */
-    grid-template-rows: 16vh 42vh 42vh;
+    /* עדכון הגבהים שיתאימו ל-dvh החדש */
+    /* שים לב: זה מסתכם ל-100dvh */
+    grid-template-rows: 16dvh 42dvh 42dvh;
 
-    /* מפת האזורים החדשה */
     grid-template-areas:
         "header"
         "middle"
