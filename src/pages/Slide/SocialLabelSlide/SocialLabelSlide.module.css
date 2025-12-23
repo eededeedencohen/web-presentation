@@ -261,7 +261,7 @@
 
     .conceptCardWrapper {
         width: 70%;
-        height: 40%;
+        height: 45%;
         display: flex;
         border-radius: 15px;
         border: 3px solid var(--green);
