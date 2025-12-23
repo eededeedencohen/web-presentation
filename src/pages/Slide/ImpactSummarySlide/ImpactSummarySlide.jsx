@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ImpactSummarySlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import SummaryImage from "../../../assets/Images/summary.png";
+import ImpactKpiCard from "../../../components/Cards/ImpactKpiCard/ImpactKpiCard";
 
 function ImpactSummarySlide() {
   return (
@@ -13,11 +14,11 @@ function ImpactSummarySlide() {
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>
+      צמיחה של פי 21 ברווחיות
       <div className={styles.cardsArea}>
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-        <div className={styles.cardWrapper}>Card Wrapper</div>
-
-        <div className={styles.cardWrapper}>Card Wrapper</div>
+        <ImpactKpiCard />
+        <ImpactKpiCard />
+        <ImpactKpiCard />
       </div>
       <div className={styles.summaryArea}>
         <div className={styles.summaryCardArea}>

@@ -1,5 +1,5 @@
 /* pages/Slide/Slide.module.css */
-.slidePage {
+.slidePage { 
     display: grid;
     height: 100%;
     width: 100%;
@@ -26,17 +26,11 @@
     overflow: hidden;
 }
 
-/* 1. כותרת */
-.headerArea {
-    grid-area: header;
-}
 
 .header {
-    background-color: rgb(7, 104, 5);
 }
 
 .cardsArea {
-    background-color: rgb(216, 143, 143);
     grid-area: cards;
     display: flex;
     flex-direction: row;
@@ -51,12 +45,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(207, 177, 235);
 }
 
 /* 2. כותרת משנה */
 .summaryArea {
-    background-color: bisque;
     grid-area: summary;
     display: flex;
     justify-content: center;
