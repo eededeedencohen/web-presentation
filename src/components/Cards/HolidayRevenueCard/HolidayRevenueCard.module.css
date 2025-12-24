@@ -100,7 +100,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .holidayCard {
         width: 100%;
         height: 70%;

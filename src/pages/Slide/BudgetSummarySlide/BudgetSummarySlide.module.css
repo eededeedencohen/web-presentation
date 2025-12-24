@@ -298,7 +298,7 @@
 }
 
 /*year for mobile*/
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .year {
         font-size: 15px;
         border-bottom-left-radius: 15px;

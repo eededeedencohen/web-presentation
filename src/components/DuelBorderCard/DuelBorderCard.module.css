@@ -38,7 +38,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .cardContainer {
     /* 1. קבלת ערכים דינמיים מהמשתנים */
     width: var(--card-width);

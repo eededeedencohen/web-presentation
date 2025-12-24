@@ -67,7 +67,7 @@
 }
 
 /* --- Media Query: מפעיל את ההודעה רק במובייל במצב פורטרט --- */
-@media screen and (max-width: 900px) and (orientation: portrait) {
+@media screen and (max-width: 1200px) and (orientation: portrait) {
     .rotateMessageOverlay {
         display: flex;
         /* מציג את ההודעה */
@@ -91,7 +91,7 @@
 }
 
 /* בטלפונים, נקטין קצת את כפתורי הניווט שלא יפריעו */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .navigationControls {
         padding: 5px 15px;
         gap: 10px;

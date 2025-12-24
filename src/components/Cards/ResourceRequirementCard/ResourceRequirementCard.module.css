@@ -59,7 +59,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .cardContainer {
         /* סידור כל הרכיבים אחד מתחת לשני */
         display: flex;
