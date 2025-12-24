@@ -37,6 +37,17 @@ const slideComponents = {
 
 function Presentation() {
   const [currentSlideId, setCurrentSlideId] = useState(1);
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   // -- משתנים לזיהוי החלקה (Swipe) --
   const [touchStart, setTouchStart] = useState(null);
@@ -104,6 +115,9 @@ function Presentation() {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
+      <button className={styles.fullscreenBtn} onClick={toggleFullscreen}>
+        ⛶
+      </button>
       {/* הודעה שמופיעה רק במובייל לאורך - תסתיר את כל השאר ב-CSS */}
       <div className={styles.rotateMessageOverlay}>
         <div className={styles.rotateMessageContent}>

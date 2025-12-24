@@ -90,6 +90,48 @@
     z-index: 1000;
 }
 
+/* עיצוב כפתור המסך המלא */
+.fullscreenBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* או left, תלוי בשפה/עיצוב */
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.fullscreenBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* התאמות אוטומטיות כשהדפדפן נכנס למצב מסך מלא */
+:fullscreen .presentationContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    /* וודא שיש רקע כדי שלא יהיה שחור */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* הסתרת הכפתור כשאנחנו כבר במסך מלא (אופציונלי - אם אתה רוצה שהם יוכלו לצאת רק עם ESC) */
+:fullscreen .fullscreenBtn {
+    opacity: 0.3;
+    /* עושה אותו שקוף יותר במקום להעלים לגמרי */
+}
+
 /* בטלפונים, נקטין קצת את כפתורי הניווט שלא יפריעו */
 @media screen and (max-width: 1200px) {
     .navigationControls {
