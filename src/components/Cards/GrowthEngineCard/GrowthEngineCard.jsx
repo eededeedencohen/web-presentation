@@ -12,7 +12,6 @@ function GrowthEngineCard({ image, icon, color, title, content, summary }) {
   return (
     <div className={styles.cardContainer} style={dynamicStyle}>
       <div className={styles.imageArea}>
-        <div className={styles.squareContent}>
           <div className={styles.imageWrapper}>
             <img
               src={image}
@@ -28,7 +27,6 @@ function GrowthEngineCard({ image, icon, color, title, content, summary }) {
             offsetY={0}
             spread={7}
           /> */}
-        </div>
       </div>
       <div className={styles.titleArea}>
         <h2>{title}</h2>

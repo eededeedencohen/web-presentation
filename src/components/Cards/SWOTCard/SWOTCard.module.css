@@ -187,7 +187,7 @@
     }
 
     .imageWrapper {
-        height: 60%;
+        height: 65%;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
 
@@ -302,7 +302,7 @@
         100% {
             transform: scale(1);
             /* צל דק יותר - 8px במקום 15px */
-            box-shadow: 0 0 0 7px var(--card-color);
+            box-shadow: 0 0 0 6px var(--card-color);
         }
     }
 }

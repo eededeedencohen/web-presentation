@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SWOTCard.module.css";
 import IconSVG from "../../IconSVG/IconSVG";
-import CircularShadowImage from "../../CircularShadowImage/CircularShadowImage.jsx";
 
 function SWOTCard({ image, icon, color, title, content }) {
   // יצירת משתנה CSS דינמי לפי הפרופ color
