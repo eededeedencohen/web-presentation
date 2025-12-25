@@ -12,7 +12,6 @@ function SWOTCard({ image, icon, color, title, content }) {
   return (
     <div className={styles.cardContainer} style={dynamicStyle}>
       <div className={styles.imageArea}>
-        <div className={styles.squareContent}>
           {/* <CircularShadowImage src={image} color={color} size="80%" /> */}
           <div className={styles.imageWrapper}>
             <img
@@ -21,7 +20,6 @@ function SWOTCard({ image, icon, color, title, content }) {
               className={styles.circularShadowImage}
             />
           </div>
-        </div>
       </div>
       <div className={styles.titleArea}>
         <h2>{title}</h2>
