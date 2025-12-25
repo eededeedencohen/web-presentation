@@ -13,14 +13,21 @@ function GrowthEngineCard({ image, icon, color, title, content, summary }) {
     <div className={styles.cardContainer} style={dynamicStyle}>
       <div className={styles.imageArea}>
         <div className={styles.squareContent}>
-          <CircularShadowImage
+          <div className={styles.imageWrapper}>
+            <img
+              src={image}
+              alt={title}
+              className={styles.circularShadowImage}
+            />
+          </div>
+          {/* <CircularShadowImage
             src={image}
             color={color}
             size="80%"
             offsetX={0}
             offsetY={0}
             spread={7}
-          />
+          /> */}
         </div>
       </div>
       <div className={styles.titleArea}>
