@@ -1,9 +1,5 @@
 import React from "react";
 import styles from "./CostSavingCard.module.css";
-import exsampleImage from "../../../assets/Images/hagada.jpg";
-
-// const formattedRevenue = Number(revenue).toLocaleString();
-// הבחירה האופטימלית חוסכת לנו 42% בעלות.
 
 function CostSavingCard({
   image,
@@ -17,7 +13,11 @@ function CostSavingCard({
 }) {
   return (
     <div className={`${styles.costSavingCard} ${className}`} {...props}>
-      <img src={image} alt={title} className={styles.productImage} />
+      {/* --- שינוי: הוספת עוטף לתמונה --- */}
+      <div className={styles.imageWrapper}>
+        <img src={image} alt={title} className={styles.productImage} />
+      </div>
+      {/* -------------------------------- */}
 
       <div className={styles.content}>
         <div className={styles.contentProduct}>{contentProduct}</div>

@@ -12,17 +12,36 @@
     animation: growCardShadow 0.6s ease-out forwards;
 }
 
-.productImage {
-    width: 20%;
+.imageWrapper {
     height: 120%;
+    /* הגובה קובע את הגודל */
+    aspect-ratio: 1 / 1;
+    /* מוודא שזה תמיד ריבוע/עיגול מושלם */
+
     border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 0 0px 15px rgb(72, 156, 167);
     margin-left: -60px;
+    /* המיקום השלילי */
+
+    /* מרכוז התמונה בתוך העיגול */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    /* האנימציה יושבת על העוטף */
     animation: growImageAndShadow 0.7s ease-out forwards;
     animation-delay: 0.3s;
     transform: scale(0);
+    background-color: white;
+    /* רקע לבן למקרה שהתמונה שקופה */
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .content {
@@ -198,19 +217,30 @@
         animation: growCardShadow 0.6s ease-out forwards;
     }
 
-    .productImage {
-        width: 20%;
-        height: 120%;
+    .imageWrapper {
+        height: 130%;
+        /* הגובה קובע את הגודל */
+        aspect-ratio: 1 / 1;
+        /* מוודא שזה תמיד ריבוע/עיגול מושלם */
+
         border-radius: 50%;
-        object-fit: cover;
+        margin-left: -30px;
+        /* המיקום השלילי */
+
+        /* מרכוז התמונה בתוך העיגול */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
         flex-shrink: 0;
-        /* box-shadow: 0 0 0px 7px rgb(72, 156, 167); */
-        margin-left: -40px;
+
+        /* האנימציה יושבת על העוטף */
         animation: growImageAndShadow 0.7s ease-out forwards;
         animation-delay: 0.3s;
         transform: scale(0);
+        background-color: white;
+        /* רקע לבן למקרה שהתמונה שקופה */
     }
-
     .content {
         width: 60%;
         height: 100%;
