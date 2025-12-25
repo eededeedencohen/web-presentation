@@ -20,7 +20,7 @@
     flex-shrink: 0;
     /* box-shadow: 0 0 0px 15px rgb(72, 156, 167); */
     margin-left: 35px;
-    animation: growImageAndShadow 0.9s ease-out forwards;
+    /* animation: growImageAndShadow 0.9s ease-out forwards; */
     animation-delay: 0.1s;
     transform: scale(0);
 
@@ -65,27 +65,22 @@
 }
 
 /* הגדרת האנימציה */
-@keyframes growImageAndShadow {
+/* @keyframes growImageAndShadow {
     0% {
         transform: scale(0);
-        /* התמונה מתחילה בגודל 0 */
         box-shadow: 0 0 0 0 rgba(72, 156, 167, 0);
-        /* אין צל */
     }
 
     70% {
         transform: scale(1);
-        /* התמונה מגיעה לגודל המקורי */
         box-shadow: 0 0 0 0 rgba(72, 156, 167, 0);
-        /* עדיין אין צל בשלב הזה */
     }
 
     100% {
         transform: scale(1);
-        /* הצל מתרחב לגודל הסופי שלו */
         box-shadow: 0 0 0px 15px rgb(72, 156, 167);
     }
-}
+} */
 
 @keyframes expandCardShadow {
     0% {
