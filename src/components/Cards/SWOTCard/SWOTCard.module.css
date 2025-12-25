@@ -24,7 +24,36 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* overflow: hidden; */
+}
+
+.imageWrapper {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    /* מוודא עיגול מושלם */
+    border-radius: 50%;
+
+    /* יציאה החוצה שמאלה */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    flex-shrink: 0;
+
+    background-color: white;
+
+    /* אנימציה */
+    transform: scale(0);
+    animation: growImageAndShadow 0.7s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.circularShadowImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .squareContent {
@@ -113,119 +142,185 @@
     background-color: rgb(255, 255, 255);
 }
 
+@keyframes growImageAndShadow {
+    0% {
+        transform: scale(0);
+        box-shadow: 0 0 0 0 var(--card-color);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--card-color);
+    }
+
+    100% {
+        transform: scale(1);
+        /* כאן אני משתמש בצבע הכרטיס למסגרת */
+        box-shadow: 0 0 0 8px var(--card-color);
+    }
+}
+
 @media (max-width: 1200px) {
     .cardContainer {
-    --dynamic-offsetX: 0;
-    --dynamic-offsetY: 0;
-    --dynamic-spread: 5px;
+        --dynamic-offsetX: 0;
+        --dynamic-offsetY: 0;
+        --dynamic-spread: 5px;
 
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: grid;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        display: grid;
 
-    grid-template-columns: 30% 60% 10%;
-    grid-template-rows: 30% 35% 35%;
+        grid-template-columns: 30% 60% 10%;
+        grid-template-rows: 30% 35% 35%;
 
-    grid-template-areas:
-        "image title icon"
-        "image content empty"
-        "image content empty";
-}
+        grid-template-areas:
+            "image title icon"
+            "image content empty"
+            "image content empty";
+    }
 
-.imageArea {
-    grid-area: image;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: hidden;
-}
+    .imageArea {
+        grid-area: image;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* overflow: hidden; */
+    }
 
-.squareContent {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 5px;
-}
 
-.titleArea {
-    grid-area: title;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    background-color: rgb(255, 255, 255);
-}
 
-.titleArea h2 {
-    /* שימוש בצבע הדינמי */
-    color: var(--card-color);
-    font-size: 18px;
-    font-weight: 800;
-    margin: 0;
-    text-align: center;
-    direction: rtl;
-}
+    .squareContent {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5px;
+    }
 
-/* ... שאר ה-CSS נשאר אותו דבר עד contentArea ... */
+    .imageWrapper {
+        height: 90%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
 
-.contentArea {
-    grid-area: content;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    /* מצמיד לימין */
-    align-items: flex-start;
-    /* מצמיד למעלה */
-    background-color: rgb(255, 255, 255);
-    padding-right: 10px;
-}
+        /* הזחה מותאמת למובייל */
+        margin-left: 10%;
 
-/* הגדרות הרשימה */
-.pointsList {
-    margin: 0;
-    /* padding-right חשוב כדי שיהיה מקום לנקודות בצד ימין */
-    padding-right: 15px;
-    padding-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-shrink: 0;
+        background-color: white;
 
-    direction: rtl;
-    text-align: right;
+        /* שימוש באנימציה מותאמת למובייל */
+        transform: scale(0);
+        animation: growImageAndShadowMobile 0.7s ease-out forwards;
+        animation-delay: 0.3s;
+    }
 
-    /* סוג הנקודה - עיגול מלא */
-    list-style-type: disc;
+    .circularShadowImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 
-    /* הצבע של הנקודות והטקסט מגיע מהמשתנה */
-    color: var(--card-color);
-}
+    .titleArea {
+        grid-area: title;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: end;
+        background-color: rgb(255, 255, 255);
+    }
 
-/* הגדרות לכל שורה ברשימה */
-.pointsList li {
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 400;
-    margin-bottom: 5px;
-    /* רווח בין השורות */
-}
+    .titleArea h2 {
+        /* שימוש בצבע הדינמי */
+        color: var(--card-color);
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+        text-align: center;
+        direction: rtl;
+    }
 
-/* שאר ה-CSS (summaryArea, iconArea) נשאר אותו דבר */
+    /* ... שאר ה-CSS נשאר אותו דבר עד contentArea ... */
 
-.iconArea {
-    --icon-size: 30px;
-    grid-area: icon;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: rgb(255, 255, 255);
-}
+    .contentArea {
+        grid-area: content;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        /* מצמיד לימין */
+        align-items: flex-start;
+        /* מצמיד למעלה */
+        background-color: rgb(255, 255, 255);
+        padding-right: 10px;
+    }
+
+    /* הגדרות הרשימה */
+    .pointsList {
+        margin: 0;
+        /* padding-right חשוב כדי שיהיה מקום לנקודות בצד ימין */
+        padding-right: 15px;
+        padding-left: 0;
+
+        direction: rtl;
+        text-align: right;
+
+        /* סוג הנקודה - עיגול מלא */
+        list-style-type: disc;
+
+        /* הצבע של הנקודות והטקסט מגיע מהמשתנה */
+        color: var(--card-color);
+    }
+
+    /* הגדרות לכל שורה ברשימה */
+    .pointsList li {
+        font-size: 12px;
+        line-height: 1.4;
+        font-weight: 400;
+        margin-bottom: 5px;
+        /* רווח בין השורות */
+    }
+
+    /* שאר ה-CSS (summaryArea, iconArea) נשאר אותו דבר */
+
+    .iconArea {
+        --icon-size: 30px;
+        grid-area: icon;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        background-color: rgb(255, 255, 255);
+    }
+
+    @keyframes growImageAndShadowMobile {
+        0% {
+            transform: scale(0);
+            box-shadow: 0 0 0 0 var(--card-color);
+        }
+
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 var(--card-color);
+        }
+
+        100% {
+            transform: scale(1);
+            /* צל דק יותר - 8px במקום 15px */
+            box-shadow: 0 0 0 8px var(--card-color);
+        }
+    }
 }
