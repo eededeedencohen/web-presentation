@@ -1,0 +1,59 @@
+.wrapper {
+    /* הגדרת גודל הצל הנוכחי: כברירת מחדל הוא מה שהתקבל מה-React */
+    --current-spread: var(--shadow-spread);
+
+    height: 130%;
+    aspect-ratio: 1 / 1;
+    width: auto;
+    border-radius: 50%;
+    position: absolute;
+    left: 35px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+
+    /* האנימציה משתמשת במשתנים */
+    animation: growImageAndShadow 0.9s ease-out forwards;
+    animation-delay: 0.1s;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* האנימציה - משתמשת במשתנים הדינמיים */
+@keyframes growImageAndShadow {
+    0% {
+        transform: translateY(-50%) scale(0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        /* מתחיל שקוף */
+    }
+
+    70% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: translateY(-50%) scale(1);
+        /* כאן אנחנו משתמשים בצבע ובגודל הדינמיים */
+        box-shadow: 0 0 0px var(--current-spread) var(--shadow-color);
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        height: 125%;
+        left: 10px;
+
+        /* הטריק למובייל: הגדרת הגודל כחישוב של חצי מהגודל המקורי */
+        --current-spread: calc(var(--shadow-spread) / 2);
+    }
+
+    /* אין צורך לשכתב את ה-Keyframes למובייל! 
+     האנימציה למעלה תשתמש אוטומטית בערך החדש של --current-spread */
+}
