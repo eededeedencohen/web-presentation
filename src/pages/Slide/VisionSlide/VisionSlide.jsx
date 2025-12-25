@@ -4,7 +4,7 @@ import styles from "./VisionSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import VisionQuote from "../../../components/VisionQuote/VisionQuote";
 import VisionCard from "../../../components/Cards/VisionCard/VisionCard";
-import image3 from "../../../assets/Images/image3.jpg";
+import image3 from "../../../assets/Images/image7.png";
 import image4 from "../../../assets/Images/image4.png";
 import image5 from "../../../assets/Images/image5.png";
 export default function VisionSlide() {

@@ -66,7 +66,7 @@ function CoverSlide() {
             src={Image1}
             alt="Cover 1"
             /* כאן אנחנו מוסיפים גם את המחלקה הכללית וגם את זו שמזיזה */
-            className={`${styles.centeredCircleImage} ${styles.shifted} ${styles.greenShadowedImage}`}
+            className={`${styles.centeredCircleImage} ${styles.shifted} ${styles.purpleShadowedImage}`}
             style={{ width: shape1Size, height: shape1Size }}
           />
         )}
@@ -77,9 +77,9 @@ function CoverSlide() {
         {/* בדיקה שחושב הגודל */}
         {shape2Size > 0 && (
           <img
-            src={Image2}
-            alt="Cover 2"
-            className={`${styles.centeredCircleImage} ${styles.purpleShadowedImage}`}
+            src={Image3}
+            alt="Cover 3"
+            className={`${styles.centeredCircleImage} ${styles.greenShadowedImage}`}
             style={{ width: shape2Size, height: shape2Size }}
           />
         )}
@@ -119,8 +119,8 @@ function CoverSlide() {
       <div className={`${styles.shape} ${styles.shape5}`} ref={shape5Ref}>
         {shape5Size > 0 && (
           <img
-            src={Image3}
-            alt="Cover 3"
+            src={Image2}
+            alt="Cover 2"
             // משתמשים במחלקה שעושה עיגול
             className={`${styles.centeredCircleImage} ${styles.bigShadowedImage}`}
             style={{ width: shape5Size, height: shape5Size }}

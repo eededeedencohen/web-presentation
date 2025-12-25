@@ -10,10 +10,10 @@ export default function StrategySlide() {
   return (
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
-        <HeaderBlock 
-        text={"האסטרטגיה שלנו לצמיחה"}
-        width="70%"
-        fontSize="3.5rem"
+        <HeaderBlock
+          text={"האסטרטגיה שלנו לצמיחה"}
+          width="70%"
+          fontSize="3.5rem"
         />
       </div>
       <div className={styles.cardsArea}>
@@ -33,9 +33,9 @@ export default function StrategySlide() {
         />
         <StrategyCard
           iconName={"plant-leaf"}
-          title={"זריעת העתיד"}
+          title={"צמיחה משולבת"}
           text={
-            "פיתוח מנועי צמיחה חדשניים להבטחת קיימות וגיוון מקורות הכנסה לטווח הארוך"
+            "מינוף מנוע צמיחה חברתי-עסקי המחבר בין יצירה ומשמעות לבין קיימות כלכלית בה האדם עם המוגבלות הוא שותף מלא"
           }
         />
       </div>

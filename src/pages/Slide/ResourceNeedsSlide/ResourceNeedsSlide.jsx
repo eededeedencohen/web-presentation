@@ -53,24 +53,16 @@ function ResourceNeedsSlide() {
       <div className={styles.cardsArea}>
         <div className={styles.cardWrapper}>
           <ResourceRequirementCard 
-          iconName={operationalNeedsData[0].icon}
-          title={operationalNeedsData[0].title}
-          text={operationalNeedsData[0].description}
-          />
-        </div>
-        <div className={styles.cardWrapper}>
-          <ResourceRequirementCard 
           iconName={operationalNeedsData[1].icon}
           title={operationalNeedsData[1].title}
           text={operationalNeedsData[1].description}
           />
         </div>
-
         <div className={styles.cardWrapper}>
           <ResourceRequirementCard 
-          iconName={operationalNeedsData[2].icon}
-          title={operationalNeedsData[2].title}
-          text={operationalNeedsData[2].description}
+          iconName={operationalNeedsData[0].icon}
+          title={operationalNeedsData[0].title}
+          text={operationalNeedsData[0].description}
           />
         </div>
 
@@ -79,6 +71,14 @@ function ResourceNeedsSlide() {
           iconName={operationalNeedsData[3].icon}
           title={operationalNeedsData[3].title}
           text={operationalNeedsData[3].description}
+          />
+        </div>
+
+        <div className={styles.cardWrapper}>
+          <ResourceRequirementCard 
+          iconName={operationalNeedsData[2].icon}
+          title={operationalNeedsData[2].title}
+          text={operationalNeedsData[2].description}
           />
         </div>
       </div>

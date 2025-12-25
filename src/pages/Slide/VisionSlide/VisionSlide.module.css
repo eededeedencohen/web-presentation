@@ -23,7 +23,7 @@
 .bottomArea {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+
 }
 
 /* 1. כותרת */
@@ -39,7 +39,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* למנוע גלילה אם לא צריך */
 }
 
@@ -87,6 +87,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 }

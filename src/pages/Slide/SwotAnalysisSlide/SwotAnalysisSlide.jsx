@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./SwotAnalysisSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import SWOTCard from "../../../components/Cards/SWOTCard/SWOTCard";
-import exampleImage from "../../../assets/Images/image.png";
+// חוזקות (Strengths)
+import strengthsImage from "../../../assets/Images/image2.jpg";
+//Weaknesses
+import weaknessesImage from "../../../assets/Images/image9.png";
+//Opportunities
+import opportunitiesImage from "../../../assets/Images/image6.png";
+//Threats
+import threatsImage from "../../../assets/Images/image11.jpeg";
 
 const cardsData = [
   {
@@ -11,7 +18,7 @@ const cardsData = [
     points: ["כוח ייצור לא עסקי", "בירוקרטיה ארגונית", "מבנה פיננסי לא גמיש"],
     color: "var(--green)", // צבע הטורקיז
     iconName: "broken-link",
-    image: exampleImage, // אותה תמונה בכל הכרטיסים
+    image: weaknessesImage, // אותה תמונה בכל הכרטיסים
   },
   {
     id: 2,
@@ -23,7 +30,7 @@ const cardsData = [
     ],
     color: "var(--purple)", // צבע הסגול
     iconName: "shield", // או 'insurance' / 'heart'
-    image: exampleImage,
+    image: strengthsImage,
   },
   {
     id: 3,
@@ -35,7 +42,7 @@ const cardsData = [
     ],
     color: "var(--green)",
     iconName: "thunder",
-    image: exampleImage,
+    image: threatsImage,
   },
   {
     id: 4,
@@ -47,7 +54,7 @@ const cardsData = [
     ],
     color: "var(--purple)",
     iconName: "door",
-    image: exampleImage,
+    image: opportunitiesImage,
   },
 ];
 // מבט מפוכח על המגרש:

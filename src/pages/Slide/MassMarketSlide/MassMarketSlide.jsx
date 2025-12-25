@@ -28,9 +28,9 @@ function MassMarketSlide() {
           <MassProductCard
             image={notebooksImage}
             name="מחברות A5"
-            cost={10}
-            price={20}
-            profit={10}
+            cost={15}
+            price={29}
+            profit={14}
             color="var(--purple)"
             imageOffsetY="-10%"
             imageSize="35%"
@@ -40,14 +40,14 @@ function MassMarketSlide() {
           <MassProductCard
             image={calendarImage}
             name="לוח שנה"
-            cost={15}
-            price={30}
-            profit={15}
+            cost={7}
+            price={25}
+            profit={18}
             color="var(--green)"
             imageOffsetY="5%"
             imageSize="55%"
           />
-        </div>
+        </div> 
       </div>
       <div className={styles.summaryArea}>
         <div className={styles.summaryCardArea}>

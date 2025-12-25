@@ -3,6 +3,13 @@ import styles from "./NewGrowthEnginesSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import GrowthEngineCard from "../../../components/Cards/GrowthEngineCard/GrowthEngineCard";
 import exampleImage from "../../../assets/Images/image.png";
+import socialImage from "../../../assets/Images/social.png";
+// להקה
+import bandImage from "../../../assets/Images/image8.png";
+// מיזמי חוויה
+import experienceImage from "../../../assets/Images/life-day.png";
+// מכירות קמעונאיות
+import retailImage from "../../../assets/Images/image12.png";
 
 const cardsData = [
   {
@@ -12,7 +19,7 @@ const cardsData = [
     summary: "פוטנציאל רווח שנתי: ₪175,000",
     color: "var(--purple)", // או הקוד הסגול שלך
     iconName: "retail", // שם האייקון המתאים
-    image: exampleImage,
+    image:  retailImage,
   },
   {
     id: 2,
@@ -21,7 +28,7 @@ const cardsData = [
     summary: "פוטנציאל רווח שנתי: ₪250,000",
     color: "var(--green)", // צבע הטורקיז
     iconName: "favorite",
-    image: exampleImage,
+    image: socialImage,
   },
   {
     id: 3,
@@ -30,7 +37,7 @@ const cardsData = [
     summary: "פוטנציאל רווח שנתי: ₪80,000",
     color: "var(--purple)",
     iconName: "public-speaking",
-    image: exampleImage,
+    image: experienceImage,
   },
   {
     id: 4,
@@ -39,7 +46,7 @@ const cardsData = [
     summary: "פוטנציאל רווח שנתי: ₪35,000",
     color: "var(--green)",
     iconName: "microphone",
-    image: exampleImage,
+    image: bandImage,
   },
 ];
 

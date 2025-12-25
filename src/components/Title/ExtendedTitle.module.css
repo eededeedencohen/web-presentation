@@ -116,7 +116,7 @@
     }
     .subTitle {
         font-size: calc(var(--p-sub-font-size, 2rem) * 0.35);
-        padding-right: 15px;
+        padding-right: 20px;
     }
 
     @keyframes slideAndShadow {
@@ -132,7 +132,7 @@
 
         100% {
             transform: skew(-30deg) translateX(-20px);
-            box-shadow: 12px 3px 0px 8px var(--green);
+            box-shadow: 8px 3px 0px 6px var(--green);
         }
     }
 }

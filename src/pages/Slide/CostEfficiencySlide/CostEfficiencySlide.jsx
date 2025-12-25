@@ -3,7 +3,7 @@ import styles from "./CostEfficiencySlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import CostSavingCard from "../../../components/Cards/CostSavingCard/CostSavingCard";
 import hagadaImage from "../../../assets/Images/hagada.jpg";
-import notebooksImage from "../../../assets/Images/notebooks.png";
+import notebooksImage from "../../../assets/Images/notebooks2.png";
 import bagsImage from "../../../assets/Images/bags.png";
 const examplesData = [
   {

@@ -4,7 +4,7 @@ import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import IconSVG from "../../../components/IconSVG/IconSVG";
 import ESGConceptCard from "../../../components/Cards/ESGConceptCard/ESGConceptCard.jsx";
 import ESGPotencialCard from "../../../components/Cards/ESGPotencialCard/ESGPotencialCard.jsx";
-import productsImage from "../../../assets/Images/image.png";
+import socialImage from "../../../assets/Images/social-card.png";
 
 function SocialLabelSlide() {
   return (
@@ -29,7 +29,7 @@ function SocialLabelSlide() {
       </div>
       <div className={styles.imageArea}>
         <div className={styles.imageWrapper}>
-          <img src={productsImage} alt="Products" />
+          <img src={socialImage} alt="Products" />
         </div>
       </div>
     </div>

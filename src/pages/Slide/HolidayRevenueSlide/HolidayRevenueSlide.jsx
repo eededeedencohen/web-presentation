@@ -14,7 +14,7 @@ const data = {
   currency: "NIS",
   holidays_breakdown: {
     purim: {
-      holiday: "פורים",
+      holiday: "פורים (משלוחי מנות)",
       description: "משלוחי מנות",
       expected_revenue: 200000,
       target_audience: "מ-50 בתי ספר",
@@ -23,21 +23,21 @@ const data = {
       holiday: "ראש השנה",
       description: null,
       expected_revenue: 200000,
-      target_audience: "מ-15 חברות",
+      target_audience: "מ-30 חברות",
     },
     passover: {
       holiday: "פסח",
       description: null,
       expected_revenue: 150000,
-      target_audience: "מ-15 חברות",
+      target_audience: "מ-30 חברות",
     },
     simchatTorah: {
-      holiday: "שמחת תורה",
+      holiday: "שמחת תורה (שקיות ממתקים)",
       description: "שקיות ממתקים",
-      expected_revenue: 200000,
-      target_audience: "מ-75 בתי כנסת",
-    }
-  }
+      expected_revenue: 112500,
+      target_audience: "מ-50 בתי כנסת",
+    },
+  },
 };
 
 function HolidayRevenueSlide() {
@@ -55,7 +55,7 @@ function HolidayRevenueSlide() {
       </div>
       <div className={styles.cardsArea}>
         <div className={styles.cardWrapper}>
-          <HolidayRevenueCard 
+          <HolidayRevenueCard
             image={purimImage}
             title={data.holidays_breakdown.purim.holiday}
             revenue={data.holidays_breakdown.purim.expected_revenue}
@@ -63,7 +63,7 @@ function HolidayRevenueSlide() {
           />
         </div>
         <div className={styles.cardWrapper}>
-          <HolidayRevenueCard 
+          <HolidayRevenueCard
             image={roshHashanahImage}
             title={data.holidays_breakdown.roshHashanah.holiday}
             revenue={data.holidays_breakdown.roshHashanah.expected_revenue}
@@ -72,7 +72,7 @@ function HolidayRevenueSlide() {
         </div>
 
         <div className={styles.cardWrapper}>
-          <HolidayRevenueCard 
+          <HolidayRevenueCard
             image={passoverImage}
             title={data.holidays_breakdown.passover.holiday}
             revenue={data.holidays_breakdown.passover.expected_revenue}
@@ -81,7 +81,7 @@ function HolidayRevenueSlide() {
         </div>
 
         <div className={styles.cardWrapper}>
-          <HolidayRevenueCard 
+          <HolidayRevenueCard
             image={simchatTorahImage}
             title={data.holidays_breakdown.simchatTorah.holiday}
             revenue={data.holidays_breakdown.simchatTorah.expected_revenue}
