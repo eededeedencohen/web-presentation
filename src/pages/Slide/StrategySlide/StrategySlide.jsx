@@ -25,17 +25,17 @@ export default function StrategySlide() {
           }
         />
         <StrategyCard
-          iconName={"perspective-icon"}
-          title={"בניית הבסיס"}
-          text={
-            "יצירת הכנסה שנתית יציבה ורציפה מפעילות שוטפת ומוצרי Mass Market"
-          }
-        />
-        <StrategyCard
           iconName={"plant-leaf"}
           title={"צמיחה משולבת"}
           text={
             "מינוף מנוע צמיחה חברתי-עסקי המחבר בין יצירה ומשמעות לבין קיימות כלכלית בה האדם עם המוגבלות הוא שותף מלא"
+          }
+        />
+        <StrategyCard
+          iconName={"perspective-icon"}
+          title={"בניית הבסיס"}
+          text={
+            "יצירת הכנסה שנתית יציבה ורציפה מפעילות שוטפת ומוצרי Mass Market"
           }
         />
       </div>
