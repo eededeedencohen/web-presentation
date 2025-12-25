@@ -6,7 +6,10 @@ function HolidayRevenueCard({ image, title, revenue, destination }) {
 
   return (
     <div className={styles.holidayCard}>
-      <img src={image} alt={title} className={styles.holidayImage} />
+      {/* ה-Wrapper הזה יהיה הריבוע המושלם שלנו */}
+      <div className={styles.squareWrapper}>
+        <img src={image} alt={title} className={styles.innerImage} />
+      </div>
 
       <div className={styles.content}>
         <div className={styles.title}>{title}</div>
