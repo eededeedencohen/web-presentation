@@ -52,6 +52,7 @@ import Warehouse from "../../assets/SVG/warehouse.svg?react";
 import WaterDrops from "../../assets/SVG/water-drops.svg?react";
 import Income from "../../assets/SVG/income.svg?react";
 import Dollars from "../../assets/SVG/dollars.svg?react";
+import Season from "../../assets/SVG/season.svg?react";
 import styles from "./IconSVG.module.css";
 
 
@@ -109,6 +110,7 @@ const iconMap = {
   "water-drops": WaterDrops,
   income: Income,
   dollars: Dollars,
+  season: Season,
 };
 
 const randomIcons = Object.values(iconMap);
