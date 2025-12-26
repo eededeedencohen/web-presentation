@@ -47,7 +47,7 @@
 }
 
 .strategy25Card h1 {
-    color: #ff3131;
+    color: var(--purple);
 }
 
 
