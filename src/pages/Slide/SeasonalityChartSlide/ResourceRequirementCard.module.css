@@ -11,8 +11,6 @@
     border-right: 15px solid var(--dynamic-color);
     border-left: 15px solid var(--dynamic-color);
     border-radius: 30px;
-    /* box-shadow: 13px 9px 0px 6px var(--dynamic-color); */
-    /* animation: growCardShadow 0.6s ease-out forwards; */
 }
 
 .iconArea {

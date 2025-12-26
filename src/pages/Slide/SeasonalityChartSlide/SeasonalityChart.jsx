@@ -87,7 +87,7 @@ function SeasonalityChart() {
       <ResponsiveContainer
         width="100%"
         height="100%"
-        minHeight={250}
+        minHeight={100}
         minWidth={300}
       >
         <AreaChart
