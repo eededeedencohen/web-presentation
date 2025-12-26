@@ -8,9 +8,9 @@ function FinancialGrowthSlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"האסטרטגיה שלנו לצמיחה"}
+          text={"היעד המרכזי לשנת 2026: קפיצת מדרגה כלכלית וחברתית"}
           width="70%"
-          fontSize="3.5rem"
+          fontSize="2.5rem"
         />
       </div>
 

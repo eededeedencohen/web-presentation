@@ -11,8 +11,9 @@ function SocialLabelSlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"הזדמנות אסטרטגית: כניסה לשוק הקמעונאי (B2B)"}
+          text={"חדשנות עם ערך: 'התו החברתי' ככלי לחיזוק עסקים ועמידה ביעדי ESG"}
           width="70%"
+          fontSize="2rem"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>

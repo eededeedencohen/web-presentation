@@ -9,8 +9,9 @@ function ImpactSummarySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"כיבוש הפסגות - מיקוד במכירות שיא בחגים"}
+          text={"2026: לא רק יעד פיננסי, אלא מכפיל כוח להשפעה חברתית"}
           width="70%"
+          fontSize="2.3rem"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>

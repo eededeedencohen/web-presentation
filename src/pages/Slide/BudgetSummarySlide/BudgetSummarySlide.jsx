@@ -8,9 +8,9 @@ function BudgetSummarySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"האסטרטגיה שלנו לצמיחה"}
+          text={"המודל הפיננסי: כך נגיע לרווח נקי של 415,150 ₪"}
           width="70%"
-          fontSize="3.5rem"
+          fontSize="3rem"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>

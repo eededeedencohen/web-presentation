@@ -55,7 +55,7 @@ function NewGrowthEnginesSlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"זריעת העתיד:"}
+          text={"צמיחה משלבת"}
           subtitle="מנועי צמיחה לקיימות ארוכת טווח"
           width="60%"
           fontSize="3rem"

@@ -11,9 +11,9 @@ export default function StrategySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"האסטרטגיה שלנו לצמיחה"}
+          text={"האסטרטגיה שלנו לצמיחה: שלושה עמודי תווך"}
           width="70%"
-          fontSize="3.5rem"
+          fontSize="3rem"
         />
       </div>
       <div className={styles.cardsArea}>
