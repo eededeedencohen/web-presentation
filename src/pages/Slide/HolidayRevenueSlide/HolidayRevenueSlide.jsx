@@ -16,7 +16,7 @@ const data = {
     purim: {
       holiday: "פורים (משלוחי מנות)",
       description: "משלוחי מנות",
-      expected_revenue: 200000,
+      expected_revenue: 150000,
       target_audience: "מ-50 בתי ספר",
     },
     roshHashanah: {
