@@ -17,8 +17,8 @@
 .modalWindow {
     background: #fff;
     border-radius: 20px;
-    max-width: 500px;
-    width: 90%;
+    /* max-width: 500px; */
+    width: 50%;
     padding: 10px;
     position: relative;
     animation: slide-down 0.5s ease;
@@ -47,7 +47,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .modalWindow {
         width: 85%;
         max-height: 80vh;
