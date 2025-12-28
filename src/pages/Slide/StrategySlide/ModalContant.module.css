@@ -1,0 +1,107 @@
+.exposurePopupContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    direction: rtl;
+    text-align: right;
+    color: #333333;
+
+    /* גובה וגלילה */
+    max-height: 50vh;
+    overflow-y: auto;
+
+    /* הסרת padding עליון כדי שהכותרת תידבק */
+    padding: 0 15px 15px 15px;
+}
+
+/* כותרת דביקה */
+.popupTitle {
+    font-size: 26px;
+    font-weight: 800;
+    color: #4b2c85;
+    /* סגול שק"ל */
+    margin: 0;
+
+    /* Sticky positioning */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #ffffff;
+
+    padding-top: 20px;
+    padding-bottom: 12px;
+    padding-right: 5px;
+
+    border-bottom: 3px solid #f0f0f0;
+}
+
+.popupText {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    color: #444;
+    padding-right: 5px;
+}
+
+/* קופסת המקור */
+.sourceBox {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9fb;
+    border-right: 5px solid #4b2c85;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.sourceRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.sourceLabel {
+    font-weight: 700;
+    color: #4b2c85;
+    min-width: 50px;
+}
+
+.sourceValue {
+    color: #666;
+    flex: 1;
+}
+
+/* פס גלילה מותאם אישית */
+.exposurePopupContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.exposurePopupContainer::-webkit-scrollbar-track {
+    background: transparent;
+    margin-top: 60px;
+    /* כדי שלא יעלה על הכותרת */
+}
+
+.exposurePopupContainer::-webkit-scrollbar-thumb {
+    background: #cbbde8;
+    border-radius: 4px;
+}
+
+.exposurePopupContainer::-webkit-scrollbar-thumb:hover {
+    background: #4b2c85;
+}
+
+/* התאמה למובייל */
+@media screen and (max-width: 768px) {
+    .exposurePopupContainer {
+        max-height: 80vh;
+    }
+
+    .popupTitle {
+        font-size: 22px;
+        padding-top: 15px;
+    }
+}

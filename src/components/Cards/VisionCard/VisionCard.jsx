@@ -11,10 +11,11 @@ function VisionCard({
   color = "var(--purple)", // צבע ראשי לכל הכרטיס
   className = "",
   style = {},
+  ...props
 }) {
   return (
     <div
-      className={`${styles.cardContainer} ${className}`}
+      className={`${styles.cardContainer} ${className}`} onClick={props.onClick}
       style={{ "--card-color": color, ...style }}
     >
       {/* 1. החלק העליון - התמונה */}

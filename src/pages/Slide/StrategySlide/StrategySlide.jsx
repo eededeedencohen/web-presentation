@@ -1,14 +1,23 @@
-import react from "react";
+import react, { useState } from "react";
 import styles from "./StrategySlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock.jsx";
 import StrategyCard from "../../../components/Cards/StrategyCard/StrategyCard.jsx";
-//perspective-icon
-//plant-leaf
-// snowed-mountains
+import Modal from "../../../components/Modal/Modal.jsx";
+import ModalContant from "./ModalContant.jsx";
 
 export default function StrategySlide() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedStrategy, setSelectedStrategy] = useState(null);
+
+  const handleCardClick = (strategyType) => {
+    setSelectedStrategy(strategyType);
+    setIsModalOpen(true);
+  };
   return (
     <div className={styles.slidePage}>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <ModalContant selectedStrategy={selectedStrategy} />
+      </Modal>
       <div className={styles.headerArea}>
         <HeaderBlock
           text={"האסטרטגיה שלנו לצמיחה: שלושה עמודי תווך"}
@@ -23,6 +32,7 @@ export default function StrategySlide() {
           text={
             "מיקוד בקמפיינים המרכזיים סביב החגים, המהווים את מנוע ההכנסה העיקרי"
           }
+          onClick={() => handleCardClick("peaks")}
         />
         <StrategyCard
           iconName={"plant-leaf"}
@@ -30,6 +40,7 @@ export default function StrategySlide() {
           text={
             "מינוף מנוע צמיחה חברתי-עסקי המחבר בין יצירה ומשמעות לבין קיימות כלכלית בה האדם עם המוגבלות הוא שותף מלא"
           }
+          onClick={() => handleCardClick("integrated")}
         />
         <StrategyCard
           iconName={"perspective-icon"}
@@ -37,6 +48,7 @@ export default function StrategySlide() {
           text={
             "יצירת הכנסה שנתית יציבה ורציפה מפעילות שוטפת ומוצרי Mass Market"
           }
+          onClick={() => handleCardClick("base")}
         />
       </div>
     </div>

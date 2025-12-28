@@ -1,0 +1,117 @@
+/* ModalContant.module.css */
+
+.exposurePopupContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    direction: rtl;
+    text-align: right;
+    color: #333333;
+
+    /* גובה למחשב שולחני */
+    max-height: 50vh;
+    overflow-y: auto;
+
+    /* ריווח מיוחד לטובת הכותרת הדביקה */
+    padding: 0 15px 15px 15px;
+}
+
+.popupTitle {
+    font-size: 26px;
+    font-weight: 800;
+    color: #4b2c85;
+    margin: 0;
+
+    /* --- הגדרות ה"דביקות" (Sticky) --- */
+    position: sticky;
+    top: 0;
+    /* נדבק לחלק העליון של הקונטיינר */
+    z-index: 10;
+    /* מוודא שהכותרת מעל הטקסט */
+    background-color: #ffffff;
+    /* רקע לבן אטום כדי שהטקסט לא ייראה דרכו */
+
+    /* כאן אנחנו מוסיפים את ה-padding שהורדנו מהקונטיינר */
+    padding-top: 20px;
+    padding-bottom: 12px;
+    padding-right: 5px;
+    /* יישור קטן */
+
+    /* קו הפרדה תחתון */
+    border-bottom: 3px solid #f0f0f0;
+}
+
+.popupText {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    color: #444;
+    padding-right: 5px;
+    /* שומר על רווח אחיד מהצד */
+}
+
+/* עיצוב המקור - נשאר אותו דבר */
+.sourceBox {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9fb;
+    border-right: 5px solid #4b2c85;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.sourceRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.sourceLabel {
+    font-weight: 700;
+    color: #4b2c85;
+    min-width: 50px;
+}
+
+.sourceValue {
+    color: #666;
+    flex: 1;
+}
+
+/* עיצוב פס גלילה (Scrollbar) */
+.exposurePopupContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.exposurePopupContainer::-webkit-scrollbar-track {
+    background: transparent;
+    margin-top: 60px;
+    /* טריק קטן: מנמיך את פס הגלילה כדי שלא יתחיל מהכותרת */
+}
+
+.exposurePopupContainer::-webkit-scrollbar-thumb {
+    background: #cbbde8;
+    border-radius: 4px;
+}
+
+.exposurePopupContainer::-webkit-scrollbar-thumb:hover {
+    background: #4b2c85;
+}
+
+
+@media screen and (max-width: 768px) {
+    .exposurePopupContainer {
+        /* במובייל אנחנו רוצים לנצל יותר שטח מסך */
+        max-height: 80vh;
+    }
+
+    /* אופציונלי: הקטנת הפונט של הכותרת מעט במובייל */
+    .popupTitle {
+        font-size: 22px;
+        padding-top: 15px;
+        /* התאמה קטנה לריווח */
+    }
+}

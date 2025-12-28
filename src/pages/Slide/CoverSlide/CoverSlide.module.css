@@ -215,3 +215,55 @@
 
 
 }
+
+
+/*=====================================*/
+/* מיכל שמאפשר גלילה בתוך המודל */
+.modalScrollContainer {
+    width: 100%;
+    max-width: 1000px;
+    /* רוחב רחב למסמך */
+    max-height: 85vh;
+    /* תופס עד 85% גובה מסך */
+    overflow-y: auto;
+    /* מאפשר גלילה כשהתוכן ארוך */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+}
+
+/* עיצוב יפה לפס הגלילה (Scrollbar) */
+.modalScrollContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modalScrollContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modalScrollContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* כפתור סגירה שנשאר למעלה כשגוללים */
+.stickyCloseBtn {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.stickyCloseBtn:hover {
+    background-color: #b71c1c;
+}

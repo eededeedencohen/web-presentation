@@ -1,7 +1,8 @@
 import React, { useRef, useState, useLayoutEffect } from "react";
 import styles from "./CoverSlide.module.css";
 // import CircularShadowImage from "../../../components/CircularShadowImage/CircularShadowImage"; // לא בשימוש בפתרון זה, אנו משתמשים ב-img רגיל
-
+import Modal from "../../../components/Modal/Modal.jsx";
+import AnnualPlanDoc from "./AnnualPlanDoc.jsx";
 // וודא שהנתיבים לתמונות נכונים אצלך בפרויקט
 import Image1 from "../../../assets/Images/image-cover1.png"; // התמונה הגדולה (מימין - בחורה מחייכת)
 import Image2 from "../../../assets/Images/social.png"; // התמונה הבינונית (נשים צוחקות)
@@ -20,6 +21,12 @@ function CoverSlide() {
 
   const shape5Ref = useRef(null);
   const [shape5Size, setShape5Size] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   // הוק לחישוב גודל התמונה בצורה דינמית
   useLayoutEffect(() => {
@@ -59,6 +66,23 @@ function CoverSlide() {
 
   return (
     <div className={styles.slidePage}>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          {/* 1. מיכל גלילה חדש */}
+          <div className={styles.modalScrollContainer}>
+            {/* 2. כפתור סגירה דביק */}
+            <button
+              className={styles.stickyCloseBtn}
+              onClick={() => setIsModalOpen(false)}
+            >
+              סגור X
+            </button>
+
+            {/* 3. הקומפוננטה החדשה שמציגה את כל המסמך */}
+            <AnnualPlanDoc />
+          </div>
+        </Modal>
+      )}
       {/* צורה 1 - צהוב - מכילה את התמונה */}
       <div className={`${styles.shape} ${styles.shape1}`} ref={shape1Ref}>
         {shape1Size > 0 && (
@@ -86,18 +110,16 @@ function CoverSlide() {
       </div>
 
       {/* צורה 2 - אדום */}
-      <div className={`${styles.shape} ${styles.shape2}`}>
-      </div>
+      <div className={`${styles.shape} ${styles.shape2}`}></div>
 
       {/* צורה 3 - כחול עליון */}
-      <div className={`${styles.shape} ${styles.shape3}`}>
+      <div className={`${styles.shape} ${styles.shape3}`} onClick={openModal}>
         <h1>שק"ל לאהוב: מחזון חברתי להשפעה כלכלית בת קיימא</h1>
         <h3>תוכניית הצמחיה האסטרטגית לשנת 2026</h3>
       </div>
 
       {/* צורה 4 - סגול קטן שמאלי */}
-      <div className={`${styles.shape} ${styles.shape4}`}>
-      </div>
+      <div className={`${styles.shape} ${styles.shape4}`}></div>
 
       {/* צורה נוספת (כחול תחתון) - לא מוספרת בתמונה אך קיימת */}
       {/* צורה נוספת (כחול תחתון) - לוגו */}
@@ -129,12 +151,10 @@ function CoverSlide() {
       </div>
 
       {/* צורה 6 - סגול עליון ימני */}
-      <div className={`${styles.shape} ${styles.shape6}`}>
-      </div>
+      <div className={`${styles.shape} ${styles.shape6}`}></div>
 
       {/* צורה 7 - סגול תחתון ימני */}
-      <div className={`${styles.shape} ${styles.shape7}`}>
-      </div>
+      <div className={`${styles.shape} ${styles.shape7}`}></div>
     </div>
   );
 }

@@ -1,0 +1,292 @@
+import React from "react";
+import { fullAnnualPlanData } from "./fullAnnualPlanData"; // הייבוא של ה-JSON שיצרנו קודם
+import styles from "./AnnualPlanDoc.module.css";
+
+// רכיב עזר להצגת חישובים פיננסיים בצורה יפה
+const FinancialBox = ({ income, expense, profit, details, title }) => {
+  return (
+    <div className={styles.financialBox}>
+      {title && <h4 className={styles.financialTitle}>{title}</h4>}
+      {details && (
+        <div className={styles.financialDetails}>
+          {Array.isArray(details) ? (
+            details.map((line, i) => <div key={i}>{line}</div>)
+          ) : (
+            <div>{details}</div>
+          )}
+        </div>
+      )}
+      <div className={styles.financialGrid}>
+        {income && (
+          <div className={`${styles.stat} ${styles.income}`}>
+            <span>הכנסות:</span> {income}
+          </div>
+        )}
+        {expense && (
+          <div className={`${styles.stat} ${styles.expense}`}>
+            <span>הוצאות:</span> {expense}
+          </div>
+        )}
+        {profit && (
+          <div className={`${styles.stat} ${styles.profit}`}>
+            <span>רווח:</span> <strong>{profit}</strong>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// רכיב עזר לרשימות
+const ListSection = ({ items, title }) => {
+  if (!items) return null;
+  return (
+    <div className={styles.listSection}>
+      {title && <h5>{title}</h5>}
+      <ul>
+        {items.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default function AnnualPlanDoc() {
+  const { metadata, sections } = fullAnnualPlanData;
+
+  const renderSectionContent = (section) => {
+    switch (section.id) {
+      case "1": // חזון
+        return (
+          <div className={styles.visionSection}>
+            <div className={styles.visionBlock}>
+              <h3>{section.content.vision.title}</h3>
+              {section.content.vision.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <div className={styles.goalBlock}>
+              <h3>{section.content.primaryGoal.title}</h3>
+              <ul>
+                {section.content.primaryGoal.points.map((pt, i) => (
+                  <li key={i}>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+
+      case "2": // מוצרים
+        return (
+          <div className={styles.productsGrid}>
+            {section.items.map((item, i) => (
+              <div key={i} className={styles.productCard}>
+                <h4>{item.name}</h4>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        );
+
+      case "3": // לקוחות
+        return (
+          <div className={styles.customersContainer}>
+            {section.categories.map((cat, i) => (
+              <div key={i} className={styles.customerCategory}>
+                <h4>{cat.type}</h4>
+                {cat.details && <p>{cat.details}</p>}
+
+                {/* רשימות משנה (כמו B2B ו-B2C) */}
+                <ListSection title={cat.subListTitle} items={cat.subList} />
+                <ListSection
+                  title={cat.existingListTitle}
+                  items={cat.existingList}
+                />
+                <ListSection title={cat.examplesTitle} items={cat.examples} />
+              </div>
+            ))}
+          </div>
+        );
+
+      case "4": // SWOT
+        return (
+          <div className={styles.swotGrid}>
+            <div className={`${styles.swotCard} ${styles.strengths}`}>
+              <h4>חוזקות (Strengths)</h4>
+              <ListSection items={section.matrix.strengths} />
+            </div>
+            <div className={`${styles.swotCard} ${styles.weaknesses}`}>
+              <h4>חולשות (Weaknesses)</h4>
+              <ListSection items={section.matrix.weaknesses} />
+            </div>
+            <div className={`${styles.swotCard} ${styles.opportunities}`}>
+              <h4>הזדמנויות (Opportunities)</h4>
+              <ListSection items={section.matrix.opportunities} />
+            </div>
+            <div className={`${styles.swotCard} ${styles.threats}`}>
+              <h4>איומים (Threats)</h4>
+              <ListSection items={section.matrix.threats} />
+            </div>
+          </div>
+        );
+
+      case "5": // שיווק ומכירות
+        return (
+          <div>
+            <div className={styles.marketingMain}>
+              <h4>{section.marketingMain.title}</h4>
+              <ListSection items={section.marketingMain.points} />
+            </div>
+            {section.subSections.map((sub, i) => (
+              <div key={i} className={styles.subSection}>
+                <h4>{sub.title}</h4>
+                {sub.forecast && (
+                  <p className={styles.highlightText}>{sub.forecast}</p>
+                )}
+                {sub.strategy && (
+                  <p>
+                    <strong>אסטרטגיה:</strong> {sub.strategy}
+                  </p>
+                )}
+
+                {/* פירוט חישובים לחגים */}
+                {sub.breakdown?.map((b, idx) => (
+                  <FinancialBox
+                    key={idx}
+                    title={b.holiday}
+                    details={b.calculation}
+                    profit={b.profit}
+                  />
+                ))}
+
+                {/* פירוט חישובים לפורים/שמחת תורה */}
+                {sub.profitability && (
+                  <FinancialBox
+                    title={sub.profitability.title}
+                    details={sub.profitability.calc}
+                    profit={sub.profitability.profit}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+
+      case "6": // דפוס
+        return (
+          <div>
+            <p className={styles.introText}>{section.intro}</p>
+            {section.subSections.map((sub, i) => (
+              <div key={i} className={styles.subSection}>
+                <h4>{sub.title}</h4>
+                {sub.description && <p>{sub.description}</p>}
+                {sub.suppliers && (
+                  <p className={styles.badge}>{sub.suppliers}</p>
+                )}
+
+                {/* רשימות מוצרים */}
+                {sub.productsList && (
+                  <ListSection
+                    title={sub.productsList.title}
+                    items={sub.productsList.items}
+                  />
+                )}
+
+                {/* תחזיות ודוגמאות */}
+                <ListSection items={sub.examples} />
+                <ListSection items={sub.forecast} />
+
+                {/* פירוט שוטף */}
+                <ListSection items={sub.annualForecast} />
+                <ListSection items={sub.monthlyForecast} />
+              </div>
+            ))}
+          </div>
+        );
+
+      case "7": // מנועי צמיחה
+        return (
+          <div className={styles.projectsContainer}>
+            <p className={styles.note}>{section.note}</p>
+            {section.projects.map((proj, i) => (
+              <div key={i} className={styles.projectCard}>
+                <h3 className={styles.projectTitle}>{proj.title}</h3>
+                {proj.concept && (
+                  <p>
+                    <strong>הקונספט:</strong> {proj.concept}
+                  </p>
+                )}
+                {proj.description && <p>{proj.description}</p>}
+
+                {/* דוגמאות עסקה ותחזיות */}
+                {proj.exampleCase && (
+                  <div className={styles.caseStudy}>
+                    <h5>{proj.exampleCase.title}</h5>
+                    <ListSection items={proj.exampleCase.steps} />
+                  </div>
+                )}
+
+                {proj.exampleDeal && (
+                  <FinancialBox
+                    title={proj.exampleDeal.title}
+                    details={
+                      proj.exampleDeal.description
+                        ? [
+                            proj.exampleDeal.description,
+                            ...(proj.exampleDeal.calc || []),
+                          ]
+                        : proj.exampleDeal.calc
+                    }
+                    profit={proj.exampleDeal.profit}
+                  />
+                )}
+
+                {proj.annualForecast && (
+                  <FinancialBox
+                    title={proj.annualForecast.title}
+                    details={proj.annualForecast.calc}
+                    profit={proj.annualForecast.profit}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+
+      case "8": // משאבים
+        return (
+          <div className={styles.resourcesSection}>
+            <ul>
+              {section.items.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        );
+
+      default:
+        return <p>Section content not available</p>;
+    }
+  };
+
+  return (
+    <div className={styles.docContainer}>
+      <header className={styles.docHeader}>
+        <h1>{metadata.title}</h1>
+        <span className={styles.docTag}>מסמך אסטרטגי</span>
+      </header>
+
+      <div className={styles.docContent}>
+        {sections.map((section) => (
+          <section key={section.id} className={styles.docSection}>
+            <h2 className={styles.sectionTitle}>{section.title}</h2>
+            <div className={styles.sectionBody}>
+              {renderSectionContent(section)}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
