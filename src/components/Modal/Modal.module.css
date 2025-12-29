@@ -47,10 +47,11 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .modalWindow {
         width: 85%;
-        max-height: 80vh;
+        height: 85%;
+        max-height: 90vh;
         overflow-y: auto;
     }
 }

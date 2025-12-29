@@ -9,7 +9,7 @@ const containerStyle = {
   textAlign: "right",
   color: "#333",
   padding: "0 10px 10px 10px",
-  maxHeight: "50vh",
+  maxHeight: "80vh",
   overflowY: "auto",
 };
 const titleStyle = {

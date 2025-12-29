@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./MassMarketSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import MassProductCard from "../../../components/Cards/MassProductCard/MassProductCard";
-import notebooksImage from "../../../assets/Images/notebooks.png";
+import notebooksImage from "../../../assets/Images/new-notebooks.png";
 import calendarImage from "../../../assets/Images/calendar.png";
 
 import Modal from "../../../components/Modal/Modal.jsx";
