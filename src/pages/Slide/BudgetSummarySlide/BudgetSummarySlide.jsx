@@ -8,7 +8,7 @@ function BudgetSummarySlide() {
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
         <HeaderBlock
-          text={"המודל הפיננסי: כך נגיע לרווח נקי של 415,150 ₪"}
+          text={"המודל הפיננסי: כך נגיע לרווח נקי של 283,900 ₪"}
           width="70%"
           fontSize="3rem"
           className={styles.header} // TO DO: Remove this class at the end
@@ -35,7 +35,7 @@ function BudgetSummarySlide() {
           <div className={styles.expenses}>
             <div className={styles.expensesStick1}>
               <div className={styles.expensesStick1Label}>הוצאות משתנות</div>
-              <div className={styles.amount1}>₪368,750</div>
+              <div className={styles.amount1}>₪500,000</div>
             </div>
             <div className={styles.expensesStick2}>
               <div className={styles.expensesStick2Label}>הוצאות קבועות</div>
@@ -60,8 +60,8 @@ function BudgetSummarySlide() {
       </div>
       <div className={styles.summaryArea}>
         <div className={styles.incomeAmount}>₪1,112,492</div>
-        <div className={styles.expensesAmount}>₪697,342</div>
-        <div className={styles.profitAmount}>₪415,150</div>
+        <div className={styles.expensesAmount}>₪828,592</div>
+        <div className={styles.profitAmount}>₪283,900 </div>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ function B2BFinancialPotentialCard() {
         </div>
         <div className={styles.profitWrapper}>
           <h3>רווח:</h3>
-          <h2>₪112,500</h2>
+          <h2>₪175,000</h2>
         </div>
       </div>
       <div className={styles.iconWrapper}>

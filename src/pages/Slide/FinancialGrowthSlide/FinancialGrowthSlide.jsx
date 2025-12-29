@@ -65,9 +65,9 @@ function FinancialGrowthSlide() {
             icon="business-and-finance"
             label="רווח"
             value25="16,278"
-            value26="415,150"
+            value26="283,900"
             summaryPart1="מייצג צמיחה של"
-            boldSummary="פי 25.5"
+            boldSummary="פי 17.4"
             summaryPart2="ברווחיות השנתית."
           />
         </div>

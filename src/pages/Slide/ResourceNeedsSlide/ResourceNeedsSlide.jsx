@@ -14,7 +14,8 @@ const operationalNeedsData = [
   {
     id: 2,
     title: "איש מכירות טלפוני נוסף:",
-    description: "להנעת מכירות החגים ומוצרי ה-Mass",
+    // 
+    description: "להנעת מכירות החגים ומוצרי ה-Mass (הזדמנות הכנסה של 262,500 ₪)",
     icon: "call-center",
   },
   {

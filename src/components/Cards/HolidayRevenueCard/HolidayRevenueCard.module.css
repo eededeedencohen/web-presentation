@@ -65,7 +65,7 @@
 }
 
 .content {
-        width: 60%;
+    width: 60%;
     /* margin-right: auto; */
     /* דוחף את התוכן לצד השני מהתמונה */
     height: 100%;
@@ -82,6 +82,7 @@
     font-weight: bold;
     color: var(--purple);
     margin-bottom: 10px;
+    text-align: right;
 }
 
 .revenue {

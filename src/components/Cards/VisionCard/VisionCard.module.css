@@ -41,6 +41,7 @@
     font-weight: 800;
     margin: 0;
     line-height: 1;
+    color: var(--purple)
 }
 
 .iconWrapper {
@@ -93,7 +94,7 @@
         justify-content: center;
     }
 
-    
+
     .circularImage {
         width: 100px;
         height: 100px;

@@ -1,5 +1,3 @@
-/* ModalContant.module.css */
-
 .exposurePopupContainer {
     display: flex;
     flex-direction: column;
@@ -22,22 +20,13 @@
     color: #4b2c85;
     margin: 0;
 
-    /* --- הגדרות ה"דביקות" (Sticky) --- */
     position: sticky;
     top: 0;
-    /* נדבק לחלק העליון של הקונטיינר */
     z-index: 10;
-    /* מוודא שהכותרת מעל הטקסט */
     background-color: #ffffff;
-    /* רקע לבן אטום כדי שהטקסט לא ייראה דרכו */
-
-    /* כאן אנחנו מוסיפים את ה-padding שהורדנו מהקונטיינר */
     padding-top: 20px;
     padding-bottom: 12px;
     padding-right: 5px;
-    /* יישור קטן */
-
-    /* קו הפרדה תחתון */
     border-bottom: 3px solid #f0f0f0;
 }
 
@@ -47,10 +36,9 @@
     margin: 0;
     color: #444;
     padding-right: 5px;
-    /* שומר על רווח אחיד מהצד */
 }
 
-/* עיצוב המקור - נשאר אותו דבר */
+/* --- עיצוב המקור (Source Box) המעודכן --- */
 .sourceBox {
     margin-top: 15px;
     padding: 15px;
@@ -61,6 +49,18 @@
     flex-direction: column;
     gap: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    /* הופך את זה ללחיץ */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sourceBox:hover {
+    background-color: #f0ebfa;
+    /* רקע סגלגל בהיר */
+    transform: translateY(-2px);
+    /* קפיצה קטנה */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sourceRow {
@@ -81,7 +81,18 @@
     flex: 1;
 }
 
-/* עיצוב פס גלילה (Scrollbar) */
+/* טקסט הרמז ללחיצה */
+.clickHint {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #4b2c85;
+    font-weight: bold;
+    border-top: 1px dashed #ddd;
+    padding-top: 8px;
+    display: block;
+}
+
+/* עיצוב פס גלילה */
 .exposurePopupContainer::-webkit-scrollbar {
     width: 8px;
 }
@@ -89,7 +100,6 @@
 .exposurePopupContainer::-webkit-scrollbar-track {
     background: transparent;
     margin-top: 60px;
-    /* טריק קטן: מנמיך את פס הגלילה כדי שלא יתחיל מהכותרת */
 }
 
 .exposurePopupContainer::-webkit-scrollbar-thumb {
@@ -101,17 +111,13 @@
     background: #4b2c85;
 }
 
-
 @media screen and (max-width: 768px) {
     .exposurePopupContainer {
-        /* במובייל אנחנו רוצים לנצל יותר שטח מסך */
         max-height: 80vh;
     }
 
-    /* אופציונלי: הקטנת הפונט של הכותרת מעט במובייל */
     .popupTitle {
         font-size: 22px;
         padding-top: 15px;
-        /* התאמה קטנה לריווח */
     }
 }

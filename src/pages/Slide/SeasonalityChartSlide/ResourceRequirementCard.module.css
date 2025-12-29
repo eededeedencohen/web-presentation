@@ -46,7 +46,7 @@
     color: black;
     text-align: right;
     direction: rtl;
-    width: 90%;
+    width: 100%;
 }
 
 @keyframes growCardShadow {

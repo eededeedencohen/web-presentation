@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SeasonalityChartSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
-// 1. ייבוא הרכיב החדש
 import SeasonalityChart from "./SeasonalityChart";
 import ResourceRequirementCard from "./ResourceRequirementCard";
 
@@ -9,27 +8,34 @@ function SeasonalityChartSlide() {
   return (
     <div className={styles.slidePage}>
       <div className={styles.headerArea}>
-        <HeaderBlock
-          text={"צפי הכנסות כוללות 2026: שנת שיא"}
-        />
+        <HeaderBlock text={"צפי הכנסות כוללות 2026: שנת שיא"} />
       </div>
 
-      {/* 2. שימוש ברכיב בתוך אזור הגרף */}
       <div className={styles.chartArea}>
         <SeasonalityChart />
       </div>
 
       <div className={styles.cardsArea}>
+        {/* כרטיס עליון - רחב יותר + טקסט מוקטן */}
         <div className={styles.cardWrapper}>
           <ResourceRequirementCard
             iconName="season"
             title="מוצרים רב עונתיים"
-            text="השקת מוצרים שאינם תלויים בחג, ליציבות בהכנסות"
+            // שינוי כאן: הפכנו את הטקסט ל-JSX והוספנו <br />
+            text={
+              <>
+                השקת מוצרים שאינם תלויים בחג, ליציבות בהכנסות.
+                <br />
+                בסיס הכנסות חודשי מפעילות שוטפת- 41.6K₪
+              </>
+            }
             color="var(--green)"
+            textSize="1.1vw"
           />
         </div>
-        <div className={styles.cardWrapper}>
 
+        {/* כרטיס תחתון - רגיל */}
+        <div className={styles.cardWrapper}>
           <ResourceRequirementCard
             iconName="reminder"
             title="פעילות בחגים"
@@ -41,4 +47,5 @@ function SeasonalityChartSlide() {
     </div>
   );
 }
+
 export default SeasonalityChartSlide;

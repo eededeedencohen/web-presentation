@@ -6,22 +6,18 @@ function ResourceRequirementCard({
   title,
   text,
   iconName,
-  color, // הצבע שמועבר מבחוץ
+  color,
   className = "",
   style = {},
+  textSize, // 1. הוספת משתנה חדש לגודל הטקסט
 }) {
-  // יצירת משתנה CSS דינמי
-  // אם לא הועבר צבע, נשתמש בברירת מחדל (למשל ירוק או סגול, לפי העדפתך)
   const dynamicVars = {
     "--dynamic-color": color || "var(--green)",
     ...style,
   };
 
   return (
-    <div
-      className={`${styles.cardContainer} ${className}`}
-      style={dynamicVars} // העברת המשתנה ל-CSS
-    >
+    <div className={`${styles.cardContainer} ${className}`} style={dynamicVars}>
       <div className={styles.iconArea}>
         <IconSVG
           iconName={iconName || "logistics-management"}
@@ -32,7 +28,8 @@ function ResourceRequirementCard({
       </div>
       <div className={styles.contentArea}>
         <h2 className={styles.title}>{title || "כותרת דרישת המשאב"}</h2>
-        <p className={styles.text}>
+        {/* 2. שימוש במשתנה כאן כדי לשלוט רק על גודל הטקסט */}
+        <p className={styles.text} style={{ fontSize: textSize }}>
           {text ||
             "תיאור מפורט של דרישת המשאב, כולל הסבר על החשיבות שלו להצלחת התוכנית."}
         </p>

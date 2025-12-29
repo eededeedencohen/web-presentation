@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { fullAnnualPlanData } from "./fullAnnualPlanData"; // וודא שהקובץ קיים בנתיב הזה
 import styles from "./AnnualPlanDoc.module.css";
 
+// --- רכיבי עזר פנימיים ---
 
 const FinancialBox = ({ income, expense, profit, details, title }) => {
   return (
