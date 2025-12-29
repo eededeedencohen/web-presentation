@@ -2,12 +2,13 @@ import React, { useRef, useState, useLayoutEffect } from "react";
 import styles from "./CoverSlide.module.css";
 // import CircularShadowImage from "../../../components/CircularShadowImage/CircularShadowImage"; // לא בשימוש בפתרון זה, אנו משתמשים ב-img רגיל
 import Modal from "../../../components/Modal/Modal.jsx";
-import AnnualPlanDoc from "./AnnualPlanDoc.jsx";
+// import AnnualPlanDoc from "./AnnualPlanDoc.jsx";
 // וודא שהנתיבים לתמונות נכונים אצלך בפרויקט
 import Image1 from "../../../assets/Images/image-cover1.png"; // התמונה הגדולה (מימין - בחורה מחייכת)
 import Image2 from "../../../assets/Images/social.png"; // התמונה הבינונית (נשים צוחקות)
 import Image3 from "../../../assets/Images/image-cover2.png"; // התמונה הקטנה (גברים במטבח)
 import Logo from "../../../assets/Images/logo-shekel.png"; // לוגו מתנות שק"ל
+import { MultiTableCarousel } from "../../../Modals/ModalTables/MultiTableCarousel.jsx";
 
 function CoverSlide() {
   const shape1Ref = useRef(null);
@@ -22,11 +23,9 @@ function CoverSlide() {
   const shape5Ref = useRef(null);
   const [shape5Size, setShape5Size] = useState(0);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
 
   // הוק לחישוב גודל התמונה בצורה דינמית
   useLayoutEffect(() => {
@@ -66,20 +65,14 @@ function CoverSlide() {
 
   return (
     <div className={styles.slidePage}>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      {isOpen && (
+        <Modal isOpen={isOpen} onClose={closeModal}>
           {/* 1. מיכל גלילה חדש */}
           <div className={styles.modalScrollContainer}>
             {/* 2. כפתור סגירה דביק */}
-            <button
-              className={styles.stickyCloseBtn}
-              onClick={() => setIsModalOpen(false)}
-            >
-              סגור X
-            </button>
 
             {/* 3. הקומפוננטה החדשה שמציגה את כל המסמך */}
-            <AnnualPlanDoc />
+            <MultiTableCarousel />
           </div>
         </Modal>
       )}
@@ -113,13 +106,16 @@ function CoverSlide() {
       <div className={`${styles.shape} ${styles.shape2}`}></div>
 
       {/* צורה 3 - כחול עליון */}
-      <div className={`${styles.shape} ${styles.shape3}`} onClick={openModal}>
+      <div className={`${styles.shape} ${styles.shape3}`}>
         <h1>שק"ל לאהוב: מחזון חברתי להשפעה כלכלית בת קיימא</h1>
         <h3>תוכניית הצמחיה האסטרטגית לשנת 2026</h3>
       </div>
 
       {/* צורה 4 - סגול קטן שמאלי */}
-      <div className={`${styles.shape} ${styles.shape4}`}></div>
+      <div
+        className={`${styles.shape} ${styles.shape4}`}
+        onClick={openModal}
+      ></div>
 
       {/* צורה נוספת (כחול תחתון) - לא מוספרת בתמונה אך קיימת */}
       {/* צורה נוספת (כחול תחתון) - לוגו */}
