@@ -132,7 +132,8 @@ function B2BExpansionSlide() {
       >
         <HeaderBlock
           text={"הזדמנות אסטרטגית: כניסה לשוק הקמעונאי (B2B)"}
-          width="70%"
+          width="75%"
+          fontSize="2.8rem"
           className={styles.header}
         />
       </div>

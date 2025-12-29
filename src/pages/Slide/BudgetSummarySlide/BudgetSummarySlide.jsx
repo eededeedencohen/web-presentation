@@ -91,8 +91,8 @@ function BudgetSummarySlide() {
       >
         <HeaderBlock
           text={"המודל הפיננסי: כך נגיע לרווח נקי של 283,900 ₪"}
-          width="70%"
-          fontSize="3rem"
+          width="75%"
+          fontSize="2.8rem"
           className={styles.header}
         />
       </div>
