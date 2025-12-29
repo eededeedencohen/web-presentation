@@ -320,7 +320,7 @@ function ImpactSummarySlide() {
         <HeaderBlock
           text={"2026: לא רק יעד פיננסי, אלא מכפיל כוח להשפעה חברתית"}
           width="70%"
-          fontSize="2.3rem"
+          fontSize="2rem"
           className={styles.header} // TO DO: Remove this class at the end
         />
       </div>
