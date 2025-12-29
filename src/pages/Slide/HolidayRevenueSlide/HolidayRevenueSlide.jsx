@@ -112,7 +112,7 @@ function HolidayRevenueSlide() {
         />
       </div>
       <div className={styles.subtitleArea}>
-        יעד הכנסות כולל מהחגים: ₪662,500
+        יעד הכנסות כולל מהחגים: ₪612,500
       </div>
       <div className={styles.cardsArea}>
         {/* פורים */}
