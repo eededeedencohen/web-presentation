@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { fullAnnualPlanData } from "./fullAnnualPlanData"; // וודא שהקובץ קיים בנתיב הזה
 import styles from "./AnnualPlanDoc.module.css";
 
-
 const FinancialBox = ({ income, expense, profit, details, title }) => {
   return (
     <div className={styles.financialBox}>
@@ -211,25 +210,128 @@ export default function AnnualPlanDoc({ targetSectionId }) {
           </div>
         );
 
-      case "7": // מנועי צמיחה
+      case "7": // מנועי צמיחה (כולל התיקון לסעיף 7.5)
         return (
           <div className={styles.projectsContainer}>
             <p className={styles.note}>{section.note}</p>
             {section.projects.map((proj, i) => (
               <div key={i} className={styles.projectCard}>
                 <h3 className={styles.projectTitle}>{proj.title}</h3>
+
+                {/* --- 7.1 עד 7.4: פרויקטים רגילים --- */}
                 {proj.concept && (
                   <p>
                     <strong>הקונספט:</strong> {proj.concept}
                   </p>
                 )}
                 {proj.description && <p>{proj.description}</p>}
+                {proj.uniqueness && (
+                  <p>
+                    <strong>ייחודיות:</strong> {proj.uniqueness}
+                  </p>
+                )}
 
+                {/* --- 7.5: טיפול ב-SubTypes (הרצאות וסיורים) --- */}
+                {proj.subTypes && (
+                  <div className={styles.subTypesContainer}>
+                    {proj.subTypes.map((sub, subIdx) => (
+                      <div key={subIdx} className={styles.subTypeBlock}>
+                        <h4 className={styles.subTypeTitle}>{sub.type}</h4>
+                        {sub.description && <p>{sub.description}</p>}
+
+                        {/* פרמטרים ספציפיים להרצאות */}
+                        {sub.structure && (
+                          <p>
+                            <strong>מבנה:</strong> {sub.structure}
+                          </p>
+                        )}
+                        {sub.content && (
+                          <p>
+                            <strong>תוכן:</strong> {sub.content}
+                          </p>
+                        )}
+                        {sub.participants && (
+                          <p>
+                            <strong>משתתפים:</strong> {sub.participants}
+                          </p>
+                        )}
+                        {sub.value && (
+                          <p>
+                            <strong>ערך לארגון:</strong> {sub.value}
+                          </p>
+                        )}
+
+                        {/* פרמטרים ספציפיים לסיורים */}
+                        {sub.flow && (
+                          <ListSection
+                            title={sub.flow.title}
+                            items={sub.flow.steps}
+                          />
+                        )}
+                        {sub.benefits && (
+                          <ListSection title="תועלות:" items={sub.benefits} />
+                        )}
+                        {sub.pricing && sub.pricing.points && (
+                          <ListSection
+                            title={sub.pricing.title}
+                            items={sub.pricing.points}
+                          />
+                        )}
+
+                        {/* מודלים עסקיים בתוך תתי הסעיפים */}
+                        {sub.exampleDeal && (
+                          <FinancialBox
+                            title={sub.exampleDeal.title}
+                            details={[
+                              sub.exampleDeal.description,
+                              ...(sub.exampleDeal.pricing || []),
+                              ...(sub.exampleDeal.calc || []),
+                            ].filter(Boolean)}
+                            profit={sub.exampleDeal.profit}
+                          />
+                        )}
+
+                        {sub.annualForecast && (
+                          <FinancialBox
+                            title={sub.annualForecast.title}
+                            details={[
+                              sub.annualForecast.note,
+                              ...(sub.annualForecast.calc || []),
+                            ].filter(Boolean)}
+                            profit={sub.annualForecast.profit}
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* --- המשך רגיל (7.1-7.4) --- */}
                 {proj.exampleCase && (
                   <div className={styles.caseStudy}>
                     <h5>{proj.exampleCase.title}</h5>
                     <ListSection items={proj.exampleCase.steps} />
                   </div>
+                )}
+
+                {proj.serviceModel && (
+                  <ListSection
+                    title={proj.serviceModel.title}
+                    items={proj.serviceModel.types}
+                  />
+                )}
+
+                {proj.value?.points && (
+                  <ListSection
+                    title={proj.value.title}
+                    items={proj.value.points}
+                  />
+                )}
+                {/* אם הערך הוא טקסט רגיל (כמו ב-7.2) */}
+                {typeof proj.value === "string" && (
+                  <p>
+                    <strong>ערך:</strong> {proj.value}
+                  </p>
                 )}
 
                 {proj.exampleDeal && (
@@ -239,6 +341,7 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                       proj.exampleDeal.description
                         ? [
                             proj.exampleDeal.description,
+                            ...(proj.exampleDeal.pricing || []),
                             ...(proj.exampleDeal.calc || []),
                           ]
                         : proj.exampleDeal.calc
@@ -286,7 +389,7 @@ export default function AnnualPlanDoc({ targetSectionId }) {
         {sections.map((section) => (
           <section
             key={section.id}
-            id={`doc-section-${section.id}`} // ה-ID שמאפשר את הגלילה
+            id={`doc-section-${section.id}`}
             className={styles.docSection}
           >
             <h2 className={styles.sectionTitle}>{section.title}</h2>
