@@ -5,6 +5,11 @@
     position: relative;
     background: transparent;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    
+    
 }
 
 /* Tooltip עיצוב ה */
@@ -59,7 +64,7 @@
     padding: 8px 16px;
     border-radius: 12px;
     color: #4a148c;
-    font-size: 14px;
+    font-size: 20px;
     /* גודל פונט קריא */
     line-height: 1.2;
     text-align: center;

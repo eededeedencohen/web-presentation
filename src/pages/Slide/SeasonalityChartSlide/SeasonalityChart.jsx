@@ -11,19 +11,6 @@ import {
 } from "recharts";
 import styles from "./SeasonalityChart.module.css";
 
-//  ₪  41,666 
-//  ₪  41,666 
-//  ₪  191,666 
-//  ₪  191,666 
-//  ₪  41,666 
-//  ₪  41,666 
-//  ₪  41,666 
-//  ₪  41,666 
-//  ₪  241,666 
-//  ₪  154,166 
-//  ₪  41,666 
-//  ₪  41,666 
-
 // 1. הנתונים האמיתיים (הצורה הסופית)
 const realData = [
   { name: "1", uv: 41666 },
@@ -48,17 +35,21 @@ const CustomizedAnnotation = (props) => {
   const { x, y, index } = props;
 
   // מציגים רק בנקודות השיא
-  if (index !== 3 && index !== 8) return null;
+  if (index !== 2 && index !== 8) return null;
 
-  const isPassover = index === 3;
+  const isPassover = index === 2;
   const title = isPassover ? "שיא הכנסות" : "שיא הכנסות ראש";
   const subTitle = isPassover ? "פסח ופורים" : "השנה ושמחת תורה";
 
+  // --- השינוי כאן ---
+  // אם זה פסח (אינדקס 3), נזיז ימינה בכ-55 פיקסלים כדי שיהיה באמצע בין 3 ל-4
+  // אם זה תשרי (אינדקס 8), נשאיר ב-0 כי הוא כבר בשיא
+  const xShift = isPassover ? 70 : 0;
+  // ------------------
+
   return (
-    // שינויים שבוצעו:
-    // 1. x={x - 100}: מרכוז אופקי מושלם (חצי מרוחב 200)
-    // 2. y={y - 120}: מיקום אנכי כך שהתחתית של ה-foreignObject תיגע בדיוק בקו
-    <foreignObject x={x - 100} y={y - 100} width={200} height={120}>
+    // הוספנו את xShift לחישוב ה-x
+    <foreignObject x={x - 100 + xShift} y={y - 80} width={200} height={120}>
       <div className={`${styles.annotationContainer} ${styles.fadeIn}`}>
         <div className={styles.textBox}>
           <strong>{title}</strong>
@@ -83,6 +74,31 @@ const CustomTooltip = ({ active, payload, label }) => {
     );
   }
   return null;
+};
+
+const CustomYAxisTick = ({ x, y, payload }) => {
+  const isTargetValue = payload.value === 41666; // הבדיקה אם זה המספר המיוחד
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={15}
+        y={-12}
+        dy={4} // יישור אנכי למרכז
+        textAnchor="end" // יישור לימין (כי הציר בצד שמאל)
+        fill={isTargetValue ? "#6a1b9a" : "#999"} // אופציונלי: צבעתי בסגול כהה אם זה המיוחד, אחרת אפור
+        fontWeight={isTargetValue ? "bold" : "normal"} // כאן הקסם קורה
+        fontSize={18}
+      >
+        {/* לוגיקת התצוגה (כמו שעשינו מקודם) */}
+        {isTargetValue
+          ? "41.6k"
+          : payload.value === 0
+          ? "0"
+          : `${Math.round(payload.value / 1000)}k`}
+      </text>
+    </g>
+  );
 };
 
 function SeasonalityChart() {
@@ -137,7 +153,7 @@ function SeasonalityChart() {
             axisLine={false}
             tickLine={false}
             // שינוי 2: הזזתי את הטקסט קצת למטה (dy) והקטנתי פונט במקרה הצורך
-            tick={{ fill: "#666", fontSize: 12, fontWeight: "bold" }}
+            tick={{ fill: "#666", fontSize: 20, fontWeight: "bold" }}
             dy={15}
             interval={0} // מבטיח שכל המספרים יוצגו (אופציונלי)
           />
@@ -145,9 +161,11 @@ function SeasonalityChart() {
             hide={false}
             axisLine={false}
             tickLine={false}
-            tickFormatter={(value) => `${value / 1000}k`}
-            tick={{ fill: "#999", fontSize: 12 }}
-            width={40} // קיבעתי רוחב כדי שלא יזוז
+            // רשימת הערכים שרוצים להציג
+            ticks={[0, 41666, 65000, 130000, 195000, 260000]}
+            // כאן אנחנו קוראים לקומפוננטה המיוחדת שיצרנו למעלה
+            tick={<CustomYAxisTick />}
+            width={45}
           />
 
           <Tooltip content={<CustomTooltip />} />
