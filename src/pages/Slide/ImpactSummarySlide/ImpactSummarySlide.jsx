@@ -4,8 +4,7 @@ import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import SummaryImage from "../../../assets/Images/summary.png";
 import ImpactKpiCard from "../../../components/Cards/ImpactKpiCard/ImpactKpiCard";
 import Modal from "../../../components/Modal/Modal.jsx";
-import { InventoryTable } from "../../../Modals/ModalTables/ModalTables.jsx";
-import { ProductDetailsView } from "../../../Modals/ModalViewComponents/ModalViewComponents.jsx";
+
 // import { MultiTableCarousel } from "../../../Modals/ModalViewComponents/MultiTableCarousel.jsx";
 import { MultiTableCarousel } from "../../../Modals/ModalTables/MultiTableCarousel.jsx";
 

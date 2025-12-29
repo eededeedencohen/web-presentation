@@ -100,15 +100,25 @@
 /* --- Table Container (האזור הנגלל) --- */
 .tableContainer {
     max-height: 55vh;
-    /* גובה מקסימלי לגלילה */
     overflow-y: auto;
-    /* גלילה אנכית */
     overflow-x: auto;
-    /* גלילה אופקית */
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.documentScrollContainer {
+    max-height: 55vh;
+    /* אותו גובה כמו הטבלאות */
+    overflow-y: auto;
+    /* גלילה אנכית */
+    overflow-x: hidden;
+    /* אין צורך בגלילה אופקית למסמך */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+    /* תואם לרקע של המסמך */
 }
 
 /* --- Table Styles --- */
@@ -235,5 +245,23 @@
 }
 
 .tableContainer::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+
+.documentScrollContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.documentScrollContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.documentScrollContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.documentScrollContainer::-webkit-scrollbar-thumb:hover {
     background: #999;
 }

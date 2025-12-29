@@ -1,5 +1,3 @@
-// fullAnnualPlanData.js
-
 export const fullAnnualPlanData = {
   metadata: {
     title: 'תכנון שנתי 2026 - מחלקת מכירות וחנות מתנות "שק"ל לאהוב"',
