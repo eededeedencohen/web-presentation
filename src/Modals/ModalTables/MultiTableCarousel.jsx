@@ -943,10 +943,11 @@ export const MultiTableCarousel = ({ onClose }) => {
 
       {/* אזור התוכן */}
       <div className={styles.contentArea}>
+        
         {/* תנאי: אם זה מסמך, הצג את הקומפוננטה, אחרת הצג את הטבלה */}
         {currentSlide.type === "document" ? (
           <div className={styles.documentScrollContainer}>
-            <AnnualPlanDoc />
+             <AnnualPlanDoc />
           </div>
         ) : (
           <div className={styles.tableContainer}>
@@ -962,9 +963,7 @@ export const MultiTableCarousel = ({ onClose }) => {
                 {currentSlide.data.map((row, i) => (
                   <tr
                     key={i}
-                    className={
-                      row.col1?.includes("סה''כ") ? styles.totalRow : ""
-                    }
+                    className={row.col1?.includes("סה''כ") ? styles.totalRow : ""}
                   >
                     <td className={styles.productName}>{row.col1}</td>
 
