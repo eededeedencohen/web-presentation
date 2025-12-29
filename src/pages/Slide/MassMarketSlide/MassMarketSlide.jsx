@@ -1,17 +1,86 @@
+import React, { useState } from "react";
 import styles from "./MassMarketSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import MassProductCard from "../../../components/Cards/MassProductCard/MassProductCard";
 import notebooksImage from "../../../assets/Images/notebooks.png";
 import calendarImage from "../../../assets/Images/calendar.png";
+
+import Modal from "../../../components/Modal/Modal.jsx";
+import ModalContant from "./ModalContant.jsx";
+import MultiTableCarousel from "../../../Modals/ModalTables/MultiTableCarousel";
+
 function MassMarketSlide() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const [viewMode, setViewMode] = useState("summary");
+  const [targetSlideId, setTargetSlideId] = useState(6);
+  const [targetSectionId, setTargetSectionId] = useState(null);
+
+  const handleOpenModal = (item) => {
+    setSelectedItem(item);
+    setViewMode("summary");
+    setTargetSectionId(null);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      setViewMode("summary");
+    }, 300);
+  };
+
+  const handleNavigateToSource = (slideId, sectionId = null) => {
+    setTargetSlideId(slideId);
+    setTargetSectionId(sectionId);
+    setViewMode("carousel");
+  };
+
   return (
     <div className={styles.slidePage}>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        {viewMode === "summary" ? (
+          <ModalContant
+            selectedItem={selectedItem}
+            onNavigate={handleNavigateToSource}
+          />
+        ) : (
+          <div style={{ height: "85vh", width: "100%", position: "relative" }}>
+            <MultiTableCarousel
+              onClose={handleCloseModal}
+              initialSlideId={targetSlideId}
+              targetDocSectionId={targetSectionId}
+            />
+            <button
+              onClick={() => setViewMode("summary")}
+              style={{
+                position: "absolute",
+                bottom: "20px",
+                left: "20px",
+                zIndex: 200,
+                background: "#333",
+                color: "white",
+                border: "none",
+                padding: "8px 16px",
+                borderRadius: "20px",
+                cursor: "pointer",
+                opacity: 0.9,
+                boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+              }}
+            >
+              &larr; חזרה לתקציר
+            </button>
+          </div>
+        )}
+      </Modal>
+
       <div className={styles.headerArea}>
         <HeaderBlock
           text={"בניית הבסיס - הכנסה שוטפת של ₪500,000 ממוצרי MASS"}
           width="75%"
           fontSize="2.5rem"
-          className={styles.header} // TO DO: Remove this class at the end
+          className={styles.header}
         />
       </div>
       <div className={styles.subtitleArea}>
@@ -24,7 +93,11 @@ function MassMarketSlide() {
         <h2 className={styles.labelText}> דוגמאות למוצרים ורווחיותם:</h2>
       </div>
       <div className={styles.cardsArea}>
-        <div className={styles.cardWrapper}>
+        <div
+          className={styles.cardWrapper}
+          onClick={() => handleOpenModal("notebooks")}
+          style={{ cursor: "pointer" }}
+        >
           <MassProductCard
             image={notebooksImage}
             name="מחברות A5"
@@ -36,7 +109,11 @@ function MassMarketSlide() {
             imageSize="35%"
           />
         </div>
-        <div className={styles.cardWrapper}>
+        <div
+          className={styles.cardWrapper}
+          onClick={() => handleOpenModal("calendar")}
+          style={{ cursor: "pointer" }}
+        >
           <MassProductCard
             image={calendarImage}
             name="לוח שנה"
@@ -47,10 +124,14 @@ function MassMarketSlide() {
             imageOffsetY="5%"
             imageSize="55%"
           />
-        </div> 
+        </div>
       </div>
       <div className={styles.summaryArea}>
-        <div className={styles.summaryCardArea}>
+        <div
+          className={styles.summaryCardArea}
+          onClick={() => handleOpenModal("summary")}
+          style={{ cursor: "pointer" }}
+        >
           <p className={styles.summaryTitle}>ציון פוטנציאל:</p>
           <p className={styles.summaryContent}>
             פוטנציאל מכירת 200 לוחות שנה ל־20 ארגונים:
