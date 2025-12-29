@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { fullAnnualPlanData } from "./fullAnnualPlanData"; // וודא שהקובץ קיים בנתיב הזה
+import { fullAnnualPlanData } from "./fullAnnualPlanData";
 import styles from "./AnnualPlanDoc.module.css";
 
 const FinancialBox = ({ income, expense, profit, details, title }) => {
@@ -50,22 +50,22 @@ const ListSection = ({ items, title }) => {
   );
 };
 
-// --- הקומפוננטה הראשית ---
-
 export default function AnnualPlanDoc({ targetSectionId }) {
   const { metadata, sections } = fullAnnualPlanData;
 
   // מנגנון הגלילה האוטומטי
   useEffect(() => {
     if (targetSectionId) {
-      const sectionId = `doc-section-${targetSectionId}`;
-      const element = document.getElementById(sectionId);
+      const elementId = `doc-section-${targetSectionId}`;
+      // חיפוש האלמנט הספציפי
+      const element = document.getElementById(elementId);
 
       if (element) {
-        // השהייה קטנה כדי לוודא שהמודל נפתח והאלמנט רונדר
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
+        }, 300); // דיליי קטן לוודא שהמודל נפתח
+      } else {
+        console.warn(`Element with id ${elementId} not found`);
       }
     }
   }, [targetSectionId]);
@@ -152,7 +152,12 @@ export default function AnnualPlanDoc({ targetSectionId }) {
               <ListSection items={section.marketingMain.points} />
             </div>
             {section.subSections.map((sub, i) => (
-              <div key={i} className={styles.subSection}>
+              <div
+                key={i}
+                className={styles.subSection}
+                // === תיקון קריטי: הוספת ID לתתי-סעיפים (כמו 5.1) ===
+                id={`doc-section-${sub.id}`}
+              >
                 <h4>{sub.title}</h4>
                 {sub.forecast && (
                   <p className={styles.highlightText}>{sub.forecast}</p>
@@ -189,7 +194,12 @@ export default function AnnualPlanDoc({ targetSectionId }) {
           <div>
             <p className={styles.introText}>{section.intro}</p>
             {section.subSections.map((sub, i) => (
-              <div key={i} className={styles.subSection}>
+              <div
+                key={i}
+                className={styles.subSection}
+                // === הוספת ID לתתי-סעיפים ===
+                id={`doc-section-${sub.id}`}
+              >
                 <h4>{sub.title}</h4>
                 {sub.description && <p>{sub.description}</p>}
                 {sub.suppliers && (
@@ -210,15 +220,20 @@ export default function AnnualPlanDoc({ targetSectionId }) {
           </div>
         );
 
-      case "7": // מנועי צמיחה (כולל התיקון לסעיף 7.5)
+      case "7": // מנועי צמיחה
         return (
           <div className={styles.projectsContainer}>
             <p className={styles.note}>{section.note}</p>
             {section.projects.map((proj, i) => (
-              <div key={i} className={styles.projectCard}>
+              <div
+                key={i}
+                className={styles.projectCard}
+                // === הוספת ID לתתי-סעיפים ===
+                id={`doc-section-${proj.id}`}
+              >
                 <h3 className={styles.projectTitle}>{proj.title}</h3>
 
-                {/* --- 7.1 עד 7.4: פרויקטים רגילים --- */}
+                {/* תוכן הפרויקטים */}
                 {proj.concept && (
                   <p>
                     <strong>הקונספט:</strong> {proj.concept}
@@ -231,7 +246,7 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                   </p>
                 )}
 
-                {/* --- 7.5: טיפול ב-SubTypes (הרצאות וסיורים) --- */}
+                {/* טיפול ב-SubTypes (הרצאות וסיורים) */}
                 {proj.subTypes && (
                   <div className={styles.subTypesContainer}>
                     {proj.subTypes.map((sub, subIdx) => (
@@ -239,7 +254,7 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                         <h4 className={styles.subTypeTitle}>{sub.type}</h4>
                         {sub.description && <p>{sub.description}</p>}
 
-                        {/* פרמטרים ספציפיים להרצאות */}
+                        {/* פרמטרים נוספים... */}
                         {sub.structure && (
                           <p>
                             <strong>מבנה:</strong> {sub.structure}
@@ -250,35 +265,6 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                             <strong>תוכן:</strong> {sub.content}
                           </p>
                         )}
-                        {sub.participants && (
-                          <p>
-                            <strong>משתתפים:</strong> {sub.participants}
-                          </p>
-                        )}
-                        {sub.value && (
-                          <p>
-                            <strong>ערך לארגון:</strong> {sub.value}
-                          </p>
-                        )}
-
-                        {/* פרמטרים ספציפיים לסיורים */}
-                        {sub.flow && (
-                          <ListSection
-                            title={sub.flow.title}
-                            items={sub.flow.steps}
-                          />
-                        )}
-                        {sub.benefits && (
-                          <ListSection title="תועלות:" items={sub.benefits} />
-                        )}
-                        {sub.pricing && sub.pricing.points && (
-                          <ListSection
-                            title={sub.pricing.title}
-                            items={sub.pricing.points}
-                          />
-                        )}
-
-                        {/* מודלים עסקיים בתוך תתי הסעיפים */}
                         {sub.exampleDeal && (
                           <FinancialBox
                             title={sub.exampleDeal.title}
@@ -290,7 +276,6 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                             profit={sub.exampleDeal.profit}
                           />
                         )}
-
                         {sub.annualForecast && (
                           <FinancialBox
                             title={sub.annualForecast.title}
@@ -306,34 +291,13 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                   </div>
                 )}
 
-                {/* --- המשך רגיל (7.1-7.4) --- */}
+                {/* המשך רגיל */}
                 {proj.exampleCase && (
                   <div className={styles.caseStudy}>
                     <h5>{proj.exampleCase.title}</h5>
                     <ListSection items={proj.exampleCase.steps} />
                   </div>
                 )}
-
-                {proj.serviceModel && (
-                  <ListSection
-                    title={proj.serviceModel.title}
-                    items={proj.serviceModel.types}
-                  />
-                )}
-
-                {proj.value?.points && (
-                  <ListSection
-                    title={proj.value.title}
-                    items={proj.value.points}
-                  />
-                )}
-                {/* אם הערך הוא טקסט רגיל (כמו ב-7.2) */}
-                {typeof proj.value === "string" && (
-                  <p>
-                    <strong>ערך:</strong> {proj.value}
-                  </p>
-                )}
-
                 {proj.exampleDeal && (
                   <FinancialBox
                     title={proj.exampleDeal.title}
@@ -349,7 +313,6 @@ export default function AnnualPlanDoc({ targetSectionId }) {
                     profit={proj.exampleDeal.profit}
                   />
                 )}
-
                 {proj.annualForecast && (
                   <FinancialBox
                     title={proj.annualForecast.title}
@@ -389,6 +352,7 @@ export default function AnnualPlanDoc({ targetSectionId }) {
         {sections.map((section) => (
           <section
             key={section.id}
+            // ID לפרק הראשי
             id={`doc-section-${section.id}`}
             className={styles.docSection}
           >

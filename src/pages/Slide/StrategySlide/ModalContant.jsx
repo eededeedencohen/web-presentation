@@ -1,166 +1,154 @@
 import React from "react";
 import styles from "./ModalContant.module.css";
 
-// 1. רכיב החוזקות (Strengths)
-export function StrengthsContent() {
+// רכיב עזר להודעת הלחיצה
+const ClickHint = () => (
+  <div
+    style={{
+      marginTop: "10px",
+      fontSize: "0.85rem",
+      color: "#4b2c85",
+      fontWeight: "bold",
+      cursor: "pointer",
+      borderTop: "1px dashed #ccc",
+      paddingTop: "5px",
+    }}
+  >
+    לחץ כאן לצפייה בפרק המלא במסמך &larr;
+  </div>
+);
+
+// 1. כיבוש הפסגות (חגים) -> מפנה לפרק 5.1 (ערכות חג)
+export function PeaksContent({ onNavigate }) {
   return (
     <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>חוזקות (Strengths)</h2>
-      <p className={styles.popupText}>
-        הנכסים הפנימיים שלנו: מסר חברתי חזק של תרומה לקהילה, היותנו ארגון מבוסס
-        עם מוניטין חיובי (במיוחד בירושלים), תשתיות קיימות, וצוות איכותי הכולל את
-        יקיר, אייל, אנשי מכירות ומתנדבים.
-      </p>
+      <h2 className={styles.popupTitle}>כיבוש הפסגות</h2>
+      <div className={styles.popupText}>
+        <p>
+          מיקוד מאמצים ב"פיקים" העונתיים הגדולים (ראש השנה, פסח ופורים), המהווים
+          את מנוע ההכנסה המרכזי והמיידי של החנות.
+        </p>
+        <p>
+          האסטרטגיה כוללת שיווק אקטיבי לחברות (B2B), יצירת קטלוגים ייעודיים לכל
+          חג, וניהול מלאי חכם כדי למקסם רווחים בתקופות השיא.
+        </p>
+      </div>
 
-      <div className={styles.sourceBox}>
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(6, "5.1")} // 6=מסמך, 5.1=פרק ערכות חג
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 1:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            מצגת אסטרטגית עמוד 13 [cite: 171-174]
-          </span>
+          <span className={styles.sourceLabel}>מקור:</span>
+          <span className={styles.sourceValue}>תכנון שנתי 2026</span>
         </div>
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 2:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            תכנון שנתי פרק 4 (טבלה) [cite: 256]
-          </span>
+          <span className={styles.sourceLabel}>מיקום:</span>
+          <span className={styles.sourceValue}>פרק 5.1 ("ערכות חג")</span>
         </div>
         <div className={styles.sourceRow}>
           <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>
-            "מסר חברתי... ארגון מבוסס... תשתיות וצוות איכותי"
-          </span>
+          <span className={styles.sourceValue}>נתוני צפי הכנסות לחגים</span>
         </div>
+        <ClickHint />
       </div>
     </div>
   );
 }
 
-// 2. רכיב החולשות (Weaknesses)
-export function WeaknessesContent() {
+// 2. צמיחה משולבת (חברתי-עסקי) -> מפנה לפרק 1 (מטרת על) או 7 (מנועי צמיחה)
+export function IntegratedContent({ onNavigate }) {
   return (
     <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>חולשות (Weaknesses)</h2>
-      <p className={styles.popupText}>
-        האתגרים הפנימיים הדורשים טיפול: כוח הייצור אינו עסקי לחלוטין (חלקו
-        בדעיכה), קיימת בירוקרטיה ארגונית הדורשת אישורים, והמבנה הפיננסי אינו
-        גמיש מספיק לתגובות מהירות.
-      </p>
+      <h2 className={styles.popupTitle}>צמיחה משולבת</h2>
+      <div className={styles.popupText}>
+        <p>
+          מינוף המודל הייחודי שלנו המשלב ערך חברתי עם הצלחה עסקית. זהו הבידול
+          העיקרי שלנו מול מתחרים בשוק.
+        </p>
+        <p>
+          האסטרטגיה היא להפוך את האדם עם המוגבלות לשותף מלא – יוצר, עובד ומשפיע.
+          חיבור זה יוצר ערך מוסף ללקוחות (ESG/CSR) ומאפשר פיתוח מוצרים כמו "התו
+          החברתי" וסדנאות "יום בחיי".
+        </p>
+      </div>
 
-      <div className={styles.sourceBox}>
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(6, "1")} // 6=מסמך, 1=פרק חזון
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 1:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            מצגת אסטרטגית עמוד 13 [cite: 167-170]
-          </span>
+          <span className={styles.sourceLabel}>מקור:</span>
+          <span className={styles.sourceValue}>תכנון שנתי 2026</span>
         </div>
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 2:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            תכנון שנתי פרק 4 (טבלה) [cite: 256]
-          </span>
+          <span className={styles.sourceLabel}>מיקום:</span>
+          <span className={styles.sourceValue}>פרק 1 ("חזון ומטרות על")</span>
         </div>
         <div className={styles.sourceRow}>
           <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>
-            "כוח ייצור לא עסקי... בירוקרטיה... מבנה פיננסי לא גמיש"
-          </span>
+          <span className={styles.sourceValue}>מנוע צמיחה חברתי-עסקי</span>
         </div>
+        <ClickHint />
       </div>
     </div>
   );
 }
 
-// 3. רכיב ההזדמנויות (Opportunities)
-export function OpportunitiesContent() {
+// 3. בניית הבסיס (שוטף/Mass) -> מפנה לפרק 6 (דפוס ו-Mass)
+export function BaseContent({ onNavigate }) {
   return (
     <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>הזדמנויות (Opportunities)</h2>
-      <p className={styles.popupText}>
-        פוטנציאל הצמיחה החיצוני: קיים פוטנציאל אדיר שטרם מומש, אפשרות למינוף
-        שיווקי ומיתוגי שטרם בוצע, ורצון אותנטי של הציבור והמגזר העסקי לתרום
-        חברתית ולבצע רכישות עם ערך מוסף.
-      </p>
+      <h2 className={styles.popupTitle}>בניית הבסיס</h2>
+      <div className={styles.popupText}>
+        <p>
+          יצירת זרם הכנסות יציב וקבוע לאורך כל השנה (ARR), כדי להפחית את התלות
+          במכירות החגים בלבד.
+        </p>
+        <p>
+          האסטרטגיה מתבססת על מוצרי Mass Market, מכרזי דפוס גדולים, ומכירה
+          קמעונאית שוטפת בחנויות וברשתות, המבטיחים תזרים מזומנים גם בחודשים
+          "רגילים".
+        </p>
+      </div>
 
-      <div className={styles.sourceBox}>
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(6, "6")} // 6=מסמך, 6=פרק דפוס
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 1:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            מצגת אסטרטגית עמוד 13 [cite: 179-182]
-          </span>
+          <span className={styles.sourceLabel}>מקור:</span>
+          <span className={styles.sourceValue}>תכנון שנתי 2026</span>
         </div>
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 2:</span>
-          [cite_start]
+          <span className={styles.sourceLabel}>מיקום:</span>
           <span className={styles.sourceValue}>
-            תכנון שנתי פרק 4 (טבלה) [cite: 256]
+            פרק 6 ("הפקות דפוס ו-Mass")
           </span>
         </div>
         <div className={styles.sourceRow}>
           <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>
-            "פוטנציאל גדול בלתי ממומש... רצון הציבור לתרום"
-          </span>
+          <span className={styles.sourceValue}>בניית הכנסה שוטפת</span>
         </div>
+        <ClickHint />
       </div>
     </div>
   );
 }
 
-// 4. רכיב האיומים (Threats)
-export function ThreatsContent() {
-  return (
-    <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>איומים (Threats)</h2>
-      <p className={styles.popupText}>
-        הסיכונים החיצוניים: השוק הארגוני תחרותי מאוד ("אוקיינוס אדום"), נדרש זמן
-        רב לחדירה לשוק וביסוס קשרים, וישנו קושי בבידול מול עמותות אחרות המתחרות
-        על אותו כיס של התורם/הרוכש.
-      </p>
-
-      <div className={styles.sourceBox}>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 1:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            מצגת אסטרטגית עמוד 13 [cite: 175-178]
-          </span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מקור 2:</span>
-          [cite_start]
-          <span className={styles.sourceValue}>
-            תכנון שנתי פרק 4 (טבלה) [cite: 256]
-          </span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>
-            "שוק ארגוני תחרותי... חוסר בידול מול עמותות אחרות"
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// הקומפוננטה הראשית לניהול התצוגה של ה-SWOT
-export default function ModalContant({ selectedSwotPart }) {
-  switch (selectedSwotPart) {
-    case "strengths":
-      return <StrengthsContent />;
-    case "weaknesses":
-      return <WeaknessesContent />;
-    case "opportunities":
-      return <OpportunitiesContent />;
-    case "threats":
-      return <ThreatsContent />;
+// הקומפוננטה הראשית שמנווטת
+export default function ModalContant({ selectedStrategy, onNavigate }) {
+  switch (selectedStrategy) {
+    case "peaks":
+      return <PeaksContent onNavigate={onNavigate} />;
+    case "integrated":
+      return <IntegratedContent onNavigate={onNavigate} />;
+    case "base":
+      return <BaseContent onNavigate={onNavigate} />;
     default:
-      return <StrengthsContent />; // ברירת מחדל
+      return null;
   }
 }

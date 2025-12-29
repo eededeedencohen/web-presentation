@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
-// וודא שהנתיב הזה נכון בהתאם למבנה התיקיות שלך
+// וודא שהנתיב הזה נכון בהתאם למבנה התיקיות
 import AnnualPlanDoc from "../../pages/Slide/CoverSlide/AnnualPlanDoc";
 
 // ==========================================
@@ -680,7 +680,7 @@ const slides = [
     data: quotes1000Data,
     type: "quotes",
   },
-  // --- השקופית החדשה: המסמך ---
+  // --- שקופית המסמך ---
   {
     id: 6,
     title: "📘 תכנון אסטרטגי מלא 2026",
@@ -698,7 +698,6 @@ export const MultiTableCarousel = ({
   initialSlideId = 1,
   targetDocSectionId = null,
 }) => {
-  // פונקציה למציאת האינדקס לפי ה-ID
   const getInitialIndex = () => {
     const index = slides.findIndex((s) => s.id === initialSlideId);
     return index !== -1 ? index : 0;
@@ -706,7 +705,6 @@ export const MultiTableCarousel = ({
 
   const [currentIndex, setCurrentIndex] = useState(getInitialIndex);
 
-  // עדכון האינדקס אם ה-prop משתנה (חשוב כדי להגיב לפתיחה משקופית אחרת)
   useEffect(() => {
     setCurrentIndex(getInitialIndex());
   }, [initialSlideId]);
@@ -721,11 +719,10 @@ export const MultiTableCarousel = ({
 
   const currentSlide = slides[currentIndex];
 
-  if (!currentSlide) return <div>שגיאה: השקופית לא נמצאה.</div>;
+  if (!currentSlide) return <div>טעינה...</div>;
 
   return (
     <div className={styles.carouselContainer}>
-      {/* כותרת */}
       <div className={styles.header}>
         <h2 className={styles.title}>{currentSlide.title}</h2>
         <button onClick={onClose} className={styles.closeButton}>
@@ -733,7 +730,6 @@ export const MultiTableCarousel = ({
         </button>
       </div>
 
-      {/* חץ ימינה */}
       <button
         className={`${styles.navButton} ${styles.prevBtn}`}
         onClick={prevSlide}
@@ -741,11 +737,10 @@ export const MultiTableCarousel = ({
         &#10094;
       </button>
 
-      {/* אזור התוכן */}
       <div className={styles.contentArea}>
-        {/* תנאי: אם זה מסמך, הצג את הקומפוננטה עם הגלילה למיקום, אחרת הצג את הטבלה */}
         {currentSlide.type === "document" ? (
           <div className={styles.documentScrollContainer}>
+            {/* העברת המיקום המבוקש למסמך */}
             <AnnualPlanDoc targetSectionId={targetDocSectionId} />
           </div>
         ) : (
@@ -768,7 +763,7 @@ export const MultiTableCarousel = ({
                   >
                     <td className={styles.productName}>{row.col1}</td>
 
-                    {/* לוגיקה דינמית לפי סוג הטבלה */}
+                    {/* Inventory */}
                     {currentSlide.type === "inventory" && (
                       <>
                         <td>
@@ -786,6 +781,7 @@ export const MultiTableCarousel = ({
                       </>
                     )}
 
+                    {/* Finance */}
                     {currentSlide.type === "finance" && (
                       <>
                         <td>
@@ -803,6 +799,7 @@ export const MultiTableCarousel = ({
                       </>
                     )}
 
+                    {/* WorkPlan */}
                     {currentSlide.type === "workPlan" && (
                       <>
                         <td style={{ color: "green", fontWeight: "bold" }}>
@@ -842,6 +839,7 @@ export const MultiTableCarousel = ({
                       </>
                     )}
 
+                    {/* Quotes */}
                     {currentSlide.type === "quotes" && (
                       <>
                         <td
@@ -867,7 +865,6 @@ export const MultiTableCarousel = ({
         )}
       </div>
 
-      {/* חץ שמאלה */}
       <button
         className={`${styles.navButton} ${styles.nextBtn}`}
         onClick={nextSlide}
@@ -875,7 +872,6 @@ export const MultiTableCarousel = ({
         &#10095;
       </button>
 
-      {/* נקודות אינדיקציה */}
       <div className={styles.dotsContainer}>
         {slides.map((slide, index) => (
           <div

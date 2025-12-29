@@ -3,32 +3,81 @@ import styles from "./FinancialGrowthSlide.module.css";
 import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import StrategyChart from "../../../components/StrategyChart/StrategyChart";
 import Modal from "../../../components/Modal/Modal";
-// שימי לב: ודאי שהקובץ שיצרנו קודם שמור בשם GoalModalContent.js באותה תיקייה
 import GoalModalContent from "./GoalModalContent";
+// ייבוא הקרוסלה
+import MultiTableCarousel from "../../../Modals/ModalTables/MultiTableCarousel";
 
 function FinancialGrowthSlide() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // שומר את סוג התוכן שנבחר (mainGoal, revenue, profit)
   const [selectedGoal, setSelectedGoal] = useState(null);
 
-  // פונקציה לפתיחת המודל עם התוכן המתאים
+  // ניהול תצוגה
+  const [viewMode, setViewMode] = useState("summary");
+  const [targetSlideId, setTargetSlideId] = useState(1);
+  const [targetSectionId, setTargetSectionId] = useState(null);
+
   const handleOpenModal = (goalType) => {
     setSelectedGoal(goalType);
+    setViewMode("summary");
+    setTargetSectionId(null);
     setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      setViewMode("summary");
+    }, 300);
+  };
+
+  const handleNavigateToSource = (slideId, sectionId = null) => {
+    setTargetSlideId(slideId);
+    setTargetSectionId(sectionId);
+    setViewMode("carousel");
   };
 
   return (
     <div className={styles.slidePage}>
-      {/* המודל עצמו - מקבל את התוכן בהתאם למה שנבחר */}
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <GoalModalContent selectedGoal={selectedGoal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        {viewMode === "summary" ? (
+          <GoalModalContent
+            selectedGoal={selectedGoal}
+            onNavigate={handleNavigateToSource}
+          />
+        ) : (
+          <div style={{ height: "85vh", width: "100%", position: "relative" }}>
+            <MultiTableCarousel
+              onClose={handleCloseModal}
+              initialSlideId={targetSlideId}
+              targetDocSectionId={targetSectionId}
+            />
+            <button
+              onClick={() => setViewMode("summary")}
+              style={{
+                position: "absolute",
+                bottom: "20px",
+                left: "20px",
+                zIndex: 200,
+                background: "#333",
+                color: "white",
+                border: "none",
+                padding: "8px 16px",
+                borderRadius: "20px",
+                cursor: "pointer",
+                opacity: 0.9,
+                boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+              }}
+            >
+              &larr; חזרה לתקציר
+            </button>
+          </div>
+        )}
       </Modal>
 
-      {/* אזור הכותרת - לחיצה פותחת את הסבר מטרת העל */}
       <div
         className={styles.headerArea}
         onClick={() => handleOpenModal("mainGoal")}
-        style={{ cursor: "pointer" }} // הופך את העכבר ליד
+        style={{ cursor: "pointer" }}
       >
         <HeaderBlock
           text={"היעד המרכזי לשנת 2026: קפיצת מדרגה כלכלית וחברתית"}
@@ -38,7 +87,6 @@ function FinancialGrowthSlide() {
       </div>
 
       <div className={styles.cardsArea}>
-        {/* כרטיס הכנסות */}
         <div
           className={styles.cardWrapper}
           onClick={() => handleOpenModal("revenue")}
@@ -55,7 +103,6 @@ function FinancialGrowthSlide() {
           />
         </div>
 
-        {/* כרטיס רווח */}
         <div
           className={styles.cardWrapper}
           onClick={() => handleOpenModal("profit")}

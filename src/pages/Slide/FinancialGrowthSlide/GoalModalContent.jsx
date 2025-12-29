@@ -1,8 +1,24 @@
 import React from "react";
 import styles from "./ModalContant.module.css";
 
-// 1. רכיב מטרת העל - מורחב
-export function MainGoalContent() {
+const ClickHint = ({ text = "לחץ לצפייה בנתונים המלאים" }) => (
+  <div
+    style={{
+      marginTop: "10px",
+      fontSize: "0.85rem",
+      color: "#4b2c85",
+      fontWeight: "bold",
+      cursor: "pointer",
+      borderTop: "1px dashed #ccc",
+      paddingTop: "5px",
+    }}
+  >
+    {text} &larr;
+  </div>
+);
+
+// 1. רכיב מטרת העל -> מפנה למסמך (שקופית 6, פרק 1)
+export function MainGoalContent({ onNavigate }) {
   return (
     <div className={styles.exposurePopupContainer}>
       <h2 className={styles.popupTitle}>מטרת העל: עצמאות ושותפות</h2>
@@ -11,130 +27,101 @@ export function MainGoalContent() {
           היעד הוא לא רק פיננסי, אלא יצירת גוף כלכלי יציב המכניס מעל מיליון ש"ח
           בשנה, במטרה לצמצם את התלות בתקציבים ממשלתיים חיצוניים.
         </p>
-        <p>
-          אנו בונים "מנוע צמיחה חברתי-עסקי": מודל המחבר בין יצירה ומשמעות לבין
-          קיימות כלכלית. במודל זה, האדם עם המוגבלות אינו רק "נתמך", אלא שותף מלא
-          ליצירה, לעבודה ולרווחים, תוך חיבור למגזר העסקי והציבורי.
-        </p>
       </div>
 
-      <div className={styles.sourceBox}>
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(6, "1")}
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מסמך:</span>
-          <span className={styles.sourceValue}>תכנון שנתי 2026</span>
+          <span className={styles.sourceLabel}>מקור:</span>
+          <span className={styles.sourceValue}>מסמך תכנון שנתי 2026</span>
         </div>
         <div className={styles.sourceRow}>
           <span className={styles.sourceLabel}>מיקום:</span>
           <span className={styles.sourceValue}>פרק 1 ("חזון ומטרות על")</span>
         </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>תחת "חזון" ו"מטרת על"</span>
-        </div>
+        <ClickHint text="לצפייה במסמך המלא" />
       </div>
     </div>
   );
 }
 
-// 2. רכיב יעד הכנסות - מורחב (הסבר על המנועים)
-export function RevenueTargetContent() {
+// 2. רכיב הכנסות -> מפנה לטבלת צפי פיננסי (שקופית 2)
+export function RevenueTargetContent({ onNavigate }) {
   return (
     <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>יעד הכנסות: אסטרטגיית הצמיחה</h2>
+      <h2 className={styles.popupTitle}>צפי הכנסות: מנועי הצמיחה</h2>
       <div className={styles.popupText}>
         <p>
-          הקפיצה ל-1.1 מיליון ש"ח (גידול פי 3.6) מתבססת על שלושה עמודי תווך
-          אסטרטגיים:
+          הקפיצה ל-1.1 מיליון ש"ח (גידול פי 3.6) מתבססת על הרחבת הפעילות: חגים
+          (B2B), שוטף (Mass Market) ומיזמים חדשים (התו החברתי).
         </p>
-        <ul style={{ paddingRight: "20px", marginTop: "5px" }}>
-          <li>
-            <strong>כיבוש הפסגות (חגים):</strong> מיקוד במכירות שיא בראש השנה,
-            פסח ופורים המהווים את מנוע ההכנסה העיקרי.
-          </li>
-          <li>
-            <strong>בניית הבסיס (שוטף):</strong> יצירת הכנסה יציבה כל השנה
-            ממוצרי דפוס ו-Mass Market, כדי לא להסתמך רק על חגים.
-          </li>
-          <li>
-            <strong>מנועים חדשים:</strong> כניסה למכירה קמעונאית ברשתות (B2B)
-            והשקת "התו החברתי".
-          </li>
-        </ul>
       </div>
 
-      <div className={styles.sourceBox}>
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(2)} // 2 = טבלת צפי פיננסי
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מסמך:</span>
-          <span className={styles.sourceValue}>מצגת אסטרטגית 2026</span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מיקום:</span>
-          <span className={styles.sourceValue}>עמוד 4 ("אסטרטגיה")</span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>פירוט:</span>
-          <span className={styles.sourceValue}>פירוט שלושת עמודי התווך</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// 3. רכיב יעד רווחיות - מורחב (הסבר על ההתייעלות)
-export function ProfitTargetContent() {
-  return (
-    <div className={styles.exposurePopupContainer}>
-      <h2 className={styles.popupTitle}>יעד רווח: התייעלות ומודל עסקי</h2>
-      <div className={styles.popupText}>
-        <p>
-          הזינוק הדרמטי ברווח (פי 25.5) נובע לא רק מהגדלת המכירות, אלא משינוי
-          עמוק במבנה העלויות:
-        </p>
-        <ul style={{ paddingRight: "20px", marginTop: "5px" }}>
-          <li>
-            <strong>ניהול עלויות אסטרטגי:</strong> יציאה למכרז ספקים מקיף שהוזיל
-            את עלויות הייצור (דפוס, אריזות) בשיעור של 37%-60%.
-          </li>
-          <li>
-            <strong>תמהיל מוצרים רווחי:</strong> התמקות במוצרים עם שולי רווח
-            גבוהים (כגון "התו החברתי" ומוצרי נייר מעוצבים).
-          </li>
-          <li>
-            <strong>מודל פיננסי חכם:</strong> שמירה על הוצאות קבועות נמוכות ביחס
-            לגידול בהכנסות.
-          </li>
-        </ul>
-      </div>
-
-      <div className={styles.sourceBox}>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מסמך:</span>
-          <span className={styles.sourceValue}>תכנון שנתי 2026</span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>מיקום:</span>
-          <span className={styles.sourceValue}>עמוד 8-9 (מודל פיננסי)</span>
-        </div>
-        <div className={styles.sourceRow}>
-          <span className={styles.sourceLabel}>פירוט:</span>
+          <span className={styles.sourceLabel}>מקור:</span>
           <span className={styles.sourceValue}>
-            נתוני מכרז ספקים ותחזית רווח
+            טבלת צפי הכנסות ורווחים 2026
           </span>
         </div>
+        <div className={styles.sourceRow}>
+          <span className={styles.sourceLabel}>נתונים:</span>
+          <span className={styles.sourceValue}>פירוט חודשי של הכנסות</span>
+        </div>
+        <ClickHint text="לצפייה בטבלה המלאה" />
       </div>
     </div>
   );
 }
 
-// הקומפוננטה הראשית שמנווטת
-export default function GoalModalContent({ selectedGoal }) {
+// 3. רכיב רווח והוצאות -> מפנה לטבלת צפי פיננסי (שקופית 2)
+export function ProfitTargetContent({ onNavigate }) {
+  return (
+    <div className={styles.exposurePopupContainer}>
+      <h2 className={styles.popupTitle}>רווח והוצאות: מודל התייעלות</h2>
+      <div className={styles.popupText}>
+        <p>
+          הזינוק ברווח (פי 17.4) נובע מהוזלת עלויות ייצור (מכרזי ספקים) והתמקדות
+          במוצרים רווחיים.
+        </p>
+      </div>
+
+      <div
+        className={styles.sourceBox}
+        onClick={() => onNavigate(2)} // 2 = טבלת צפי פיננסי
+        style={{ cursor: "pointer" }}
+      >
+        <div className={styles.sourceRow}>
+          <span className={styles.sourceLabel}>מקור:</span>
+          <span className={styles.sourceValue}>
+            טבלת צפי הכנסות ורווחים 2026
+          </span>
+        </div>
+        <div className={styles.sourceRow}>
+          <span className={styles.sourceLabel}>נתונים:</span>
+          <span className={styles.sourceValue}>שורת הרווח החודשית</span>
+        </div>
+        <ClickHint text="לצפייה בטבלה המלאה" />
+      </div>
+    </div>
+  );
+}
+
+export default function GoalModalContent({ selectedGoal, onNavigate }) {
   switch (selectedGoal) {
     case "mainGoal":
-      return <MainGoalContent />;
+      return <MainGoalContent onNavigate={onNavigate} />;
     case "revenue":
-      return <RevenueTargetContent />;
+      return <RevenueTargetContent onNavigate={onNavigate} />;
     case "profit":
-      return <ProfitTargetContent />;
+      return <ProfitTargetContent onNavigate={onNavigate} />;
     default:
       return null;
   }
