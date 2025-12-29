@@ -147,21 +147,6 @@ function SwotAnalysisSlide() {
         <div className={styles.horizontalDivider}></div>
         <div className={styles.verticalDivider}></div>
 
-        {/* חולשות */}
-        <div
-          className={styles.cardWrapper}
-          onClick={() => handleCardClick(cardsData[0].type)}
-          style={{ cursor: "pointer" }}
-        >
-          <SWOTCard
-            image={cardsData[0].image}
-            icon={cardsData[0].iconName}
-            color={cardsData[0].color}
-            title={cardsData[0].title}
-            content={cardsData[0].points}
-          />
-        </div>
-
         {/* חוזקות */}
         <div
           className={styles.cardWrapper}
@@ -174,6 +159,21 @@ function SwotAnalysisSlide() {
             color={cardsData[1].color}
             title={cardsData[1].title}
             content={cardsData[1].points}
+          />
+        </div>
+
+        {/* חולשות */}
+        <div
+          className={styles.cardWrapper}
+          onClick={() => handleCardClick(cardsData[0].type)}
+          style={{ cursor: "pointer" }}
+        >
+          <SWOTCard
+            image={cardsData[0].image}
+            icon={cardsData[0].iconName}
+            color={cardsData[0].color}
+            title={cardsData[0].title}
+            content={cardsData[0].points}
           />
         </div>
 
