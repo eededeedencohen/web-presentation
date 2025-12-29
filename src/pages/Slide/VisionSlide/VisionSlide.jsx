@@ -4,24 +4,26 @@ import HeaderBlock from "../../../components/HeaderBlock/HeaderBlock";
 import VisionQuote from "../../../components/VisionQuote/VisionQuote";
 import VisionCard from "../../../components/Cards/VisionCard/VisionCard";
 // וודא שהתמונות קיימות בנתיבים האלה:
-import image3 from "../../../assets/Images/image7.png"; 
+import image3 from "../../../assets/Images/image7.png";
 import image4 from "../../../assets/Images/image4.png";
 import image5 from "../../../assets/Images/image5.png";
 import Modal from "../../../components/Modal/Modal.jsx";
 import ModalContant from "./ModalContant.jsx";
-import AnnualPlanDoc from "./AnnualPlanDoc.jsx"; // ייבוא חובה!
+
+// שינוי: ייבוא הקרוסלה מהמיקום הנכון (3 תיקיות למעלה, ואז לתוך Modals/ModalTables)
+import MultiTableCarousel from "../../../Modals/ModalTables/MultiTableCarousel";
 
 export default function VisionSlide() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVision, setSelectedVision] = useState(null);
-  
-  // 1. הוספת סטייטים לניהול התצוגה (תקציר או מסמך מלא)
-  const [viewMode, setViewMode] = useState("summary"); 
+
+  // viewMode יכול להיות: 'summary' (תקציר) או 'carousel' (צפייה מלאה בקרוסלה)
+  const [viewMode, setViewMode] = useState("summary");
   const [targetSectionId, setTargetSectionId] = useState(null);
 
   const openModal = (vision) => {
     setSelectedVision(vision);
-    setViewMode("summary"); // איפוס לתקציר בפתיחה
+    setViewMode("summary"); // התחלה תמיד בתקציר
     setTargetSectionId(null);
     setIsModalOpen(true);
   };
@@ -29,45 +31,55 @@ export default function VisionSlide() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setTimeout(() => {
-        setViewMode("summary"); // איפוס ביציאה
+      setViewMode("summary"); // איפוס המצב לאחר סגירה
     }, 300);
   };
 
-  // 2. פונקציה למעבר למסמך המלא
+  // פונקציה למעבר מהתקציר לקרוסלה המלאה
   const handleNavigateToDoc = (sectionId) => {
-      setTargetSectionId(sectionId);
-      setViewMode("fullDoc");
+    setTargetSectionId(sectionId);
+    setViewMode("carousel");
   };
 
   return (
     <div className={styles.slidePage}>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      >
-        {/* 3. לוגיקה לבחירה מה להציג בתוך המודל */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        {/* לוגיקה לבחירה מה להציג בתוך המודל */}
         {viewMode === "summary" ? (
-            <ModalContant 
-                selectedVision={selectedVision} 
-                onNavigate={handleNavigateToDoc} // העברת הפונקציה לרכיב הבן
-            />
+          <ModalContant
+            selectedVision={selectedVision}
+            onNavigate={handleNavigateToDoc}
+          />
         ) : (
-            // תצוגת המסמך המלא עם כפתור חזרה
-            <div style={{ height: '80vh', position: 'relative' }}>
-                 <AnnualPlanDoc targetSectionId={targetSectionId} />
-                 
-                 <button 
-                    onClick={() => setViewMode("summary")}
-                    style={{
-                        position: 'absolute', bottom: '20px', left: '20px', 
-                        padding: '10px 20px', background: '#333', color: 'white', 
-                        border: 'none', borderRadius: '30px', cursor: 'pointer', zIndex: 1000,
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-                    }}
-                 >
-                    חזרה לתקציר
-                 </button>
-            </div>
+          // תצוגת הקרוסלה המלאה (במקום סתם AnnualPlanDoc)
+          <div style={{ height: "85vh", width: "100%", position: "relative" }}>
+            <MultiTableCarousel
+              onClose={handleCloseModal}
+              initialSlideId={6} // מזהה השקופית של המסמך (AnnualPlanDoc)
+              targetDocSectionId={targetSectionId} // מזהה הסעיף לגלילה
+            />
+
+            {/* כפתור "חזרה" שמאפשר לחזור לתקציר מבלי לצאת מהמודל */}
+            <button
+              onClick={() => setViewMode("summary")}
+              style={{
+                position: "absolute",
+                bottom: "20px",
+                left: "20px",
+                zIndex: 200, // מעל הקרוסלה
+                background: "#333",
+                color: "white",
+                border: "none",
+                padding: "8px 16px",
+                borderRadius: "20px",
+                cursor: "pointer",
+                opacity: 0.9,
+                boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+              }}
+            >
+              &larr; חזרה לתקציר
+            </button>
+          </div>
         )}
       </Modal>
 

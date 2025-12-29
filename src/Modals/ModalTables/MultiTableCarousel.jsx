@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
+// וודא שהנתיב הזה נכון בהתאם למבנה התיקיות שלך
 import AnnualPlanDoc from "../../pages/Slide/CoverSlide/AnnualPlanDoc";
 
 // ==========================================
@@ -637,63 +638,19 @@ const quotes1000Data = [
 // ==========================================
 // הגדרת השקופיות
 // ==========================================
-// const slides = [
-//   {
-//     id: 1,
-//     title: "📦 מלאי מחסנים ופוטנציאל הכנסה",
-//     headers: ["שם מוצר", 'מק"ט', "כמות", "מחיר יח'", "שווי"],
-//     data: inventoryData,
-//     type: "inventory",
-//   },
-//   {
-//     id: 2,
-//     title: "💰 צפי הכנסות ורווחים 2026",
-//     headers: ["חודש", "אירוע מרכזי", "הכנסות", "הוצאות", "רווח צפוי"],
-//     data: financeData,
-//     type: "finance",
-//   },
-//   {
-//     id: 3,
-//     title: "📅 תוכנית עבודה שנתית מפורטת",
-//     headers: [
-//       "חודש",
-//       "יעד רווח 26'",
-//       "פעולות תפעוליות",
-//       "פעולות שיווקיות",
-//       "יעד לקוחות",
-//     ],
-//     data: workPlanData,
-//     type: "workPlan", // סוג חדש ומפורט
-//   },
-//   {
-//     id: 4,
-//     title: "📑 השוואת מחירים (500 יח')",
-//     headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-//     data: quotes500Data,
-//     type: "quotes",
-//   },
-//   {
-//     id: 5,
-//     title: "📑 השוואת מחירים (1000 יח')",
-//     headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-//     data: quotes1000Data,
-//     type: "quotes",
-//   },
-// ];
-
 const slides = [
   {
     id: 1,
     title: "📦 מלאי מחסנים ופוטנציאל הכנסה",
     headers: ["שם מוצר", 'מק"ט', "כמות", "מחיר יח'", "שווי"],
-    data: inventoryData, // וודא שהמשתנה inventoryData מוגדר בקובץ כפי ששלחת
+    data: inventoryData,
     type: "inventory",
   },
   {
     id: 2,
     title: "💰 צפי הכנסות ורווחים 2026",
     headers: ["חודש", "אירוע מרכזי", "הכנסות", "הוצאות", "רווח צפוי"],
-    data: financeData, // וודא שהמשתנה financeData מוגדר
+    data: financeData,
     type: "finance",
   },
   {
@@ -706,212 +663,53 @@ const slides = [
       "פעולות שיווקיות",
       "יעד לקוחות",
     ],
-    data: workPlanData, // וודא שהמשתנה workPlanData מוגדר
+    data: workPlanData,
     type: "workPlan",
   },
   {
     id: 4,
     title: "📑 השוואת מחירים (500 יח')",
     headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-    data: quotes500Data, // וודא שהמשתנה quotes500Data מוגדר
+    data: quotes500Data,
     type: "quotes",
   },
   {
     id: 5,
     title: "📑 השוואת מחירים (1000 יח')",
     headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-    data: quotes1000Data, // וודא שהמשתנה quotes1000Data מוגדר
+    data: quotes1000Data,
     type: "quotes",
   },
-  // --- השקופית החדשה ---
+  // --- השקופית החדשה: המסמך ---
   {
     id: 6,
     title: "📘 תכנון אסטרטגי מלא 2026",
-    headers: [], // לא רלוונטי למסמך
-    data: [], // לא רלוונטי למסמך (הוא שואב מידע מבפנים)
-    type: "document", // סוג חדש לזיהוי
+    headers: [],
+    data: [],
+    type: "document",
   },
 ];
 
 // ==========================================
 // הרכיב הראשי
 // ==========================================
-// export const MultiTableCarousel = ({ onClose }) => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
+export const MultiTableCarousel = ({
+  onClose,
+  initialSlideId = 1,
+  targetDocSectionId = null,
+}) => {
+  // פונקציה למציאת האינדקס לפי ה-ID
+  const getInitialIndex = () => {
+    const index = slides.findIndex((s) => s.id === initialSlideId);
+    return index !== -1 ? index : 0;
+  };
 
-//   const nextSlide = () => {
-//     setCurrentIndex((prev) => (prev + 1) % slides.length);
-//   };
+  const [currentIndex, setCurrentIndex] = useState(getInitialIndex);
 
-//   const prevSlide = () => {
-//     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-//   };
-
-//   const currentSlide = slides[currentIndex];
-
-//   return (
-//     <div className={styles.carouselContainer}>
-//       {/* כותרת */}
-//       <div className={styles.header}>
-//         <h2 className={styles.title}>{currentSlide.title}</h2>
-//         <button onClick={onClose} className={styles.closeButton}>
-//           ✕
-//         </button>
-//       </div>
-
-//       {/* חץ ימינה */}
-//       <button
-//         className={`${styles.navButton} ${styles.prevBtn}`}
-//         onClick={prevSlide}
-//       >
-//         &#10094;
-//       </button>
-
-//       {/* אזור התוכן */}
-//       <div className={styles.contentArea}>
-//         <div className={styles.tableContainer}>
-//           <table className={styles.table}>
-//             <thead>
-//               <tr>
-//                 {currentSlide.headers.map((h, i) => (
-//                   <th key={i}>{h}</th>
-//                 ))}
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {currentSlide.data.map((row, i) => (
-//                 <tr
-//                   key={i}
-//                   className={row.col1?.includes("סה''כ") ? styles.totalRow : ""}
-//                 >
-//                   <td className={styles.productName}>{row.col1}</td>
-
-//                   {/* לוגיקה דינמית לפי סוג הטבלה */}
-//                   {currentSlide.type === "inventory" && (
-//                     <>
-//                       <td>
-//                         {row.col2 !== "-" ? (
-//                           <span className={styles.badge}>{row.col2}</span>
-//                         ) : (
-//                           "-"
-//                         )}
-//                       </td>
-//                       <td>
-//                         <span className={styles.quantity}>{row.col3}</span>
-//                       </td>
-//                       <td>{row.col4}</td>
-//                       <td className={styles.income}>{row.col5}</td>
-//                     </>
-//                   )}
-
-//                   {currentSlide.type === "finance" && (
-//                     <>
-//                       <td>
-//                         {row.col2 !== "-" ? (
-//                           <span className={styles.badge}>{row.col2}</span>
-//                         ) : (
-//                           "-"
-//                         )}
-//                       </td>
-//                       <td style={{ color: "green", fontWeight: "bold" }}>
-//                         {row.col3}
-//                       </td>
-//                       <td style={{ color: "#d32f2f" }}>{row.col4}</td>
-//                       <td style={{ fontWeight: "bold" }}>{row.col5}</td>
-//                     </>
-//                   )}
-
-//                   {/* סוג תצוגה חדש לתוכנית עבודה מפורטת */}
-//                   {currentSlide.type === "workPlan" && (
-//                     <>
-//                       <td style={{ color: "green", fontWeight: "bold" }}>
-//                         {row.col2}
-//                       </td>
-//                       <td
-//                         style={{
-//                           fontSize: "0.85rem",
-//                           whiteSpace: "normal",
-//                           minWidth: "200px",
-//                           lineHeight: "1.4",
-//                         }}
-//                       >
-//                         {row.col3}
-//                       </td>
-//                       <td
-//                         style={{
-//                           fontSize: "0.85rem",
-//                           whiteSpace: "normal",
-//                           minWidth: "200px",
-//                           lineHeight: "1.4",
-//                         }}
-//                       >
-//                         {row.col4}
-//                       </td>
-//                       <td
-//                         style={{
-//                           fontSize: "0.85rem",
-//                           whiteSpace: "normal",
-//                           minWidth: "120px",
-//                           fontWeight: "bold",
-//                           color: "#2b5876",
-//                         }}
-//                       >
-//                         {row.col5}
-//                       </td>
-//                     </>
-//                   )}
-
-//                   {currentSlide.type === "quotes" && (
-//                     <>
-//                       <td
-//                         style={{
-//                           fontSize: "0.85rem",
-//                           maxWidth: "120px",
-//                           whiteSpace: "normal",
-//                         }}
-//                       >
-//                         {row.col2}
-//                       </td>
-//                       <td>{row.col3}</td>
-//                       <td>{row.col4}</td>
-//                       <td>{row.col5}</td>
-//                       <td>{row.col6}</td>
-//                     </>
-//                   )}
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-
-//       {/* חץ שמאלה */}
-//       <button
-//         className={`${styles.navButton} ${styles.nextBtn}`}
-//         onClick={nextSlide}
-//       >
-//         &#10095;
-//       </button>
-
-//       {/* נקודות אינדיקציה */}
-//       <div className={styles.dotsContainer}>
-//         {slides.map((slide, index) => (
-//           <div
-//             key={slide.id}
-//             className={`${styles.dot} ${
-//               index === currentIndex ? styles.activeDot : ""
-//             }`}
-//             onClick={() => setCurrentIndex(index)}
-//             title={slide.title}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-export const MultiTableCarousel = ({ onClose }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // עדכון האינדקס אם ה-prop משתנה (חשוב כדי להגיב לפתיחה משקופית אחרת)
+  useEffect(() => {
+    setCurrentIndex(getInitialIndex());
+  }, [initialSlideId]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -922,6 +720,8 @@ export const MultiTableCarousel = ({ onClose }) => {
   };
 
   const currentSlide = slides[currentIndex];
+
+  if (!currentSlide) return <div>שגיאה: השקופית לא נמצאה.</div>;
 
   return (
     <div className={styles.carouselContainer}>
@@ -943,11 +743,10 @@ export const MultiTableCarousel = ({ onClose }) => {
 
       {/* אזור התוכן */}
       <div className={styles.contentArea}>
-        
-        {/* תנאי: אם זה מסמך, הצג את הקומפוננטה, אחרת הצג את הטבלה */}
+        {/* תנאי: אם זה מסמך, הצג את הקומפוננטה עם הגלילה למיקום, אחרת הצג את הטבלה */}
         {currentSlide.type === "document" ? (
           <div className={styles.documentScrollContainer}>
-             <AnnualPlanDoc />
+            <AnnualPlanDoc targetSectionId={targetDocSectionId} />
           </div>
         ) : (
           <div className={styles.tableContainer}>
@@ -963,7 +762,9 @@ export const MultiTableCarousel = ({ onClose }) => {
                 {currentSlide.data.map((row, i) => (
                   <tr
                     key={i}
-                    className={row.col1?.includes("סה''כ") ? styles.totalRow : ""}
+                    className={
+                      row.col1?.includes("סה''כ") ? styles.totalRow : ""
+                    }
                   >
                     <td className={styles.productName}>{row.col1}</td>
 
@@ -1090,3 +891,5 @@ export const MultiTableCarousel = ({ onClose }) => {
     </div>
   );
 };
+
+export default MultiTableCarousel;
