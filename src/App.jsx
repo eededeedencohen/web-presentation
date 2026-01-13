@@ -9,6 +9,7 @@ import Slide from "./pages/Slide/Slide.jsx";
 import VisionSlide from "./pages/Slide/VisionSlide/VisionSlide";
 import StrategySlide from "./pages/Slide/StrategySlide/StrategySlide.jsx";
 import Presentation from "./pages/Slide/Presentation/Presentation.jsx";
+import RoiDawi from "./pages/RoiDawi/RoiDawi.jsx";
 
 function App() {
   // replace with OldApp component:
@@ -20,7 +21,8 @@ function App() {
       {/* <Slide /> */}
       {/* <VisionSlide /> */}
       {/* <StrategySlide /> */}
-      <Presentation />
+      {/* <Presentation /> */}
+      <RoiDawi />
     </>
   );
 }
