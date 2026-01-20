@@ -16,27 +16,58 @@ import ImpactSummarySlide from "../ImpactSummarySlide/ImpactSummarySlide";
 import B2BExpansionSlide from "../B2BExpansionSlide/B2BExpansionSlide.jsx";
 import styles from "./Presentation.module.css";
 
+// 1. ייבוא דינמי של כל התמונות מתיקיית הנכסים (Vite Feature)
+const imageModules = import.meta.glob(
+  "../../../assets/Images/*.{png,jpg,jpeg,svg,webp}",
+  { eager: true },
+);
+// המרת האובייקט למערך של כתובות URL
+const imageUrls = Object.values(imageModules).map((mod) => mod.default);
+
 const slideComponents = {
-  // 1: CoverSlide, // X - 1
-  1: CoverSlide, // X - 1
-  2: VisionSlide, // V - 2
-  3: FinancialGrowthSlide, // X - 3
-  4: StrategySlide, // V - 4
-  5: HolidayRevenueSlide, // V - 5
-  6: MassMarketSlide, // V - 6
-  7: SeasonalityChartSlide, // X - 7
-  8: CostEfficiencySlide, // V - 8
-  9: BudgetSummarySlide, // ? - 9
-  10: NewGrowthEnginesSlide, // V - 10
-  11: B2BExpansionSlide, // V - 11
-  12: SocialLabelSlide, // V - 12
-  13: SwotAnalysisSlide, // V - 13
-  14: ResourceNeedsSlide, // V - 14
-  15: ImpactSummarySlide, // X - 15
+  1: CoverSlide,
+  2: VisionSlide,
+  3: FinancialGrowthSlide,
+  4: StrategySlide,
+  5: HolidayRevenueSlide,
+  6: MassMarketSlide,
+  7: SeasonalityChartSlide,
+  8: CostEfficiencySlide,
+  9: BudgetSummarySlide,
+  10: NewGrowthEnginesSlide,
+  11: B2BExpansionSlide,
+  12: SocialLabelSlide,
+  13: SwotAnalysisSlide,
+  14: ResourceNeedsSlide,
+  15: ImpactSummarySlide,
 };
 
 function Presentation() {
   const [currentSlideId, setCurrentSlideId] = useState(1);
+  const [isLoading, setIsLoading] = useState(true); // State למסך טעינה
+  const [loadingProgress, setLoadingProgress] = useState(0); // (אופציונלי) להצגת אחוזים
+
+  // 2. Preloading Effect
+  useEffect(() => {
+    const preloadImages = async () => {
+      const promises = imageUrls.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = resolve; // ממשיכים גם אם תמונה אחת נכשלה
+        });
+      });
+
+      // עדכון ה-State רק כשכל התמונות נטענו
+      await Promise.all(promises);
+      setIsLoading(false);
+    };
+
+    preloadImages();
+  }, []);
+
+  // --- לוגיקת הניווט והמסך המלא נשארת זהה ---
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch((err) => {
@@ -51,7 +82,7 @@ function Presentation() {
 
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const minSwipeDistance = 50; 
+  const minSwipeDistance = 50;
 
   const totalSlides = Object.keys(slideComponents).length;
 
@@ -76,30 +107,46 @@ function Presentation() {
   }, []);
 
   const onTouchStart = (e) => {
-    setTouchEnd(null); 
-    setTouchStart(e.targetTouches[0].clientX); 
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
   const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX); 
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
-
-   
-    if (isLeftSwipe) {
-      goNext();
-    }
-
-    if (isRightSwipe) {
-      goPrev();
-    }
+    if (isLeftSwipe) goNext();
+    if (isRightSwipe) goPrev();
   };
+
+  // 3. תצוגת מסך טעינה בזמן שהתמונות יורדות
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f9f9f9",
+          flexDirection: "column",
+          gap: "20px",
+        }}
+      >
+        <div className={styles.rotateIcon}>⏳</div>{" "}
+        {/* אפשר להשתמש באנימציה שכבר קיימת לך */}
+        <h2 style={{ color: "var(--purple)", fontFamily: "Rubik, sans-serif" }}>
+          טוען מצגת...
+        </h2>
+      </div>
+    );
+  }
 
   const CurrentSlide = slideComponents[currentSlideId];
 
