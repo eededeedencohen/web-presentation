@@ -1,4 +1,5 @@
-/* שינינו את השם כדי שיתאים ל-styles.modalOverlay */
+/* src/components/Modal/Modal.module.css */
+
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -10,30 +11,30 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.7);
     z-index: 9999;
-    /* חשוב מאוד כדי שיעלה מעל הכל */
 }
 
-/* שינינו ל-modalWindow */
 .modalWindow {
     background: #fff;
     border-radius: 20px;
-    /* max-width: 500px; */
-    width: 50%;
-    padding: 10px;
+    width: 60%;
+    /* רוחב למחשב */
+
+    /* גובה דינמי אך מוגבל, ללא גלילה בחלון עצמו */
+    max-height: 85vh;
+    height: auto;
+
+    padding: 0;
+    /* ביטול ריפוד כדי שהתוכן ייצמד לקצוות */
     position: relative;
     animation: slide-down 0.5s ease;
     cursor: auto;
-    /* מחזיר את הסמן לרגיל */
-}
 
-/* שינינו ל-closeButtonContainer */
-.closeButtonContainer {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
+    /* --- השינוי הקריטי: הופך את המודל לקופסה גמישה --- */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* מונע גלילה של כל המודל */
 }
-
 
 @keyframes slide-down {
     0% {
@@ -47,11 +48,21 @@
     }
 }
 
+/* --- התאמה למובייל (גם לאורך וגם לרוחב) --- */
 @media (max-width: 1200px) {
     .modalWindow {
-        width: 85%;
-        height: 85%;
+        width: 90%;
+        height: 80vh;
+        /* גובה קבוע במובייל כדי להבטיח שהנקודות יהיו למטה */
         max-height: 90vh;
-        overflow-y: auto;
+        border-radius: 12px;
+    }
+}
+
+/* התאמה ספציפית לרוחב (כמו שעשינו קודם) */
+@media (max-width: 950px) and (orientation: landscape) {
+    .modalWindow {
+        width: 85%;
+        height: 87%;
     }
 }

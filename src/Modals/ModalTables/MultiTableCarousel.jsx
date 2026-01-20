@@ -638,66 +638,68 @@ const quotes1000Data = [
 // ==========================================
 // הגדרת השקופיות
 // ==========================================
-const slides = [
-  {
-    id: 1,
-    title: "📦 מלאי מחסנים ופוטנציאל הכנסה",
-    headers: ["שם מוצר", 'מק"ט', "כמות", "מחיר יח'", "שווי"],
-    data: inventoryData,
-    type: "inventory",
-  },
-  {
-    id: 2,
-    title: "💰 צפי הכנסות ורווחים 2026",
-    headers: ["חודש", "אירוע מרכזי", "הכנסות", "הוצאות", "רווח צפוי"],
-    data: financeData,
-    type: "finance",
-  },
-  {
-    id: 3,
-    title: "📅 תוכנית עבודה שנתית מפורטת",
-    headers: [
-      "חודש",
-      "יעד רווח 26'",
-      "פעולות תפעוליות",
-      "פעולות שיווקיות",
-      "יעד לקוחות",
-    ],
-    data: workPlanData,
-    type: "workPlan",
-  },
-  {
-    id: 4,
-    title: "📑 השוואת מחירים (500 יח')",
-    headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-    data: quotes500Data,
-    type: "quotes",
-  },
-  {
-    id: 5,
-    title: "📑 השוואת מחירים (1000 יח')",
-    headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
-    data: quotes1000Data,
-    type: "quotes",
-  },
-  // --- שקופית המסמך ---
-  {
-    id: 6,
-    title: "📘 תכנון אסטרטגי מלא 2026",
-    headers: [],
-    data: [],
-    type: "document",
-  },
-];
-
-// ==========================================
-// הרכיב הראשי
-// ==========================================
 export const MultiTableCarousel = ({
   onClose,
   initialSlideId = 1,
   targetDocSectionId = null,
 }) => {
+  // ... (אותו קוד לוגיקה של useState ו-nextSlide/prevSlide כמו קודם)
+  // לצורך הקיצור אני כותב כאן את ה-return המעודכן:
+
+  // --- שחזור לוגיקה פנימית בתוך הקומפוננטה ---
+  // (אם תעתיק את הקוד הזה, תצטרך לוודא שהנתונים inventoryData וכו' מוגדרים למעלה)
+  // הנה ה-Slides לצורך הקונטקסט (העתק מהקובץ המקורי שלך):
+  const slides = [
+    {
+      id: 1,
+      title: "📦 מלאי מחסנים ופוטנציאל הכנסה",
+      headers: ["שם מוצר", 'מק"ט', "כמות", "מחיר יח'", "שווי"],
+      data: inventoryData,
+      type: "inventory",
+    },
+    {
+      id: 2,
+      title: "💰 צפי הכנסות ורווחים 2026",
+      headers: ["חודש", "אירוע מרכזי", "הכנסות", "הוצאות", "רווח צפוי"],
+      data: financeData,
+      type: "finance",
+    },
+    {
+      id: 3,
+      title: "📅 תוכנית עבודה שנתית מפורטת",
+      headers: [
+        "חודש",
+        "יעד רווח 26'",
+        "פעולות תפעוליות",
+        "פעולות שיווקיות",
+        "יעד לקוחות",
+      ],
+      data: workPlanData,
+      type: "workPlan",
+    },
+    {
+      id: 4,
+      title: "📑 השוואת מחירים (500 יח')",
+      headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
+      data: quotes500Data,
+      type: "quotes",
+    },
+    {
+      id: 5,
+      title: "📑 השוואת מחירים (1000 יח')",
+      headers: ["מוצר", "מפרט", "חי הפקות", "דפוס שי", "גרפוס", "במבליק"],
+      data: quotes1000Data,
+      type: "quotes",
+    },
+    {
+      id: 6,
+      title: "📘 תכנון אסטרטגי מלא 2026",
+      headers: [],
+      data: [],
+      type: "document",
+    },
+  ];
+
   const getInitialIndex = () => {
     const index = slides.findIndex((s) => s.id === initialSlideId);
     return index !== -1 ? index : 0;
@@ -709,16 +711,11 @@ export const MultiTableCarousel = ({
     setCurrentIndex(getInitialIndex());
   }, [initialSlideId]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   const currentSlide = slides[currentIndex];
-
   if (!currentSlide) return <div>טעינה...</div>;
 
   return (
@@ -740,7 +737,6 @@ export const MultiTableCarousel = ({
       <div className={styles.contentArea}>
         {currentSlide.type === "document" ? (
           <div className={styles.documentScrollContainer}>
-            {/* העברת המיקום המבוקש למסמך */}
             <AnnualPlanDoc targetSectionId={targetDocSectionId} />
           </div>
         ) : (
@@ -799,39 +795,43 @@ export const MultiTableCarousel = ({
                       </>
                     )}
 
+                    {/* WorkPlan - הסרנו את ה-Inline Styles הבעייתיים */}
+                    {/* WorkPlan */}
                     {/* WorkPlan */}
                     {currentSlide.type === "workPlan" && (
                       <>
-                        <td style={{ color: "green", fontWeight: "bold" }}>
-                          {row.col2}
-                        </td>
                         <td
                           style={{
-                            fontSize: "0.85rem",
-                            whiteSpace: "normal",
-                            minWidth: "200px",
-                            lineHeight: "1.4",
+                            color: "green",
+                            fontWeight: "bold",
+                            width: "10%",
                           }}
+                        >
+                          {row.col2}
+                        </td>
+
+                        {/* שינוי: הגבלת רוחב לעמודות הטקסט הארוך */}
+                        <td
+                          className={styles.wrapText}
+                          style={{ width: "27%" }}
                         >
                           {row.col3}
                         </td>
                         <td
-                          style={{
-                            fontSize: "0.85rem",
-                            whiteSpace: "normal",
-                            minWidth: "200px",
-                            lineHeight: "1.4",
-                          }}
+                          className={styles.wrapText}
+                          style={{ width: "27%" }}
                         >
                           {row.col4}
                         </td>
+
+                        {/* שינוי: הגדלת הרוחב של יעד לקוחות */}
                         <td
+                          className={styles.wrapText}
                           style={{
-                            fontSize: "0.85rem",
-                            whiteSpace: "normal",
-                            minWidth: "120px",
                             fontWeight: "bold",
                             color: "#2b5876",
+                            width: "22%",
+                            minWidth: "80px",
                           }}
                         >
                           {row.col5}
@@ -839,18 +839,10 @@ export const MultiTableCarousel = ({
                       </>
                     )}
 
-                    {/* Quotes */}
+                    {/* Quotes - הסרנו את ה-Inline Styles הבעייתיים */}
                     {currentSlide.type === "quotes" && (
                       <>
-                        <td
-                          style={{
-                            fontSize: "0.85rem",
-                            maxWidth: "120px",
-                            whiteSpace: "normal",
-                          }}
-                        >
-                          {row.col2}
-                        </td>
+                        <td className={styles.wrapText}>{row.col2}</td>
                         <td>{row.col3}</td>
                         <td>{row.col4}</td>
                         <td>{row.col5}</td>
@@ -876,9 +868,7 @@ export const MultiTableCarousel = ({
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`${styles.dot} ${
-              index === currentIndex ? styles.activeDot : ""
-            }`}
+            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""}`}
             onClick={() => setCurrentIndex(index)}
             title={slide.title}
           />
