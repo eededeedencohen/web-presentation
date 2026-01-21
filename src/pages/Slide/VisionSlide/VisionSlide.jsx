@@ -35,6 +35,7 @@ export default function VisionSlide() {
   const clickCount = useRef(0);
   const lastKeyTime = useRef(0);
   const lastKey = useRef(null);
+  const navigationTimer = useRef(null);
 
   // פונקציית עזר לניווט בין עמודים
   const navigatePages = (direction) => {
@@ -95,7 +96,6 @@ export default function VisionSlide() {
       stopScrolling();
 
       if (!isLongPress.current) {
-        // בדיקת לחיצה משולשת (Triple Click) לסגירת המודל
         const now = Date.now();
         const isSameKey = lastKey.current === e.key;
         const isQuick = now - lastKeyTime.current < 400; // 400ms
@@ -109,17 +109,30 @@ export default function VisionSlide() {
         lastKey.current = e.key;
         lastKeyTime.current = now;
 
+        // ביטול טיימר קודם אם יש
+        if (navigationTimer.current) {
+          clearTimeout(navigationTimer.current);
+          navigationTimer.current = null;
+        }
+
         if (clickCount.current === 3) {
           // אם זיהינו 3 לחיצות רצופות - סגירת המודל (בלי ניווט)
           handleCloseModal();
           clickCount.current = 0;
-          return;
-        }
-
-        if (e.key === "ArrowLeft") {
-          navigatePages("next"); // לחיצה קצרה שמאלה -> הבא
-        } else if (e.key === "ArrowRight") {
-          navigatePages("prev"); // לחיצה קצרה ימינה -> הקודם
+        } else {
+          // הפעלת טיימר לביצוע הפעולה אם לא יגיעו עוד לחיצות
+          navigationTimer.current = setTimeout(() => {
+            if (e.key === "ArrowLeft") {
+              for (let i = 0; i < clickCount.current; i++) {
+                navigatePages("next");
+              }
+            } else if (e.key === "ArrowRight") {
+              for (let i = 0; i < clickCount.current; i++) {
+                navigatePages("prev");
+              }
+            }
+            clickCount.current = 0;
+          }, 150);
         }
       }
       isLongPress.current = false;

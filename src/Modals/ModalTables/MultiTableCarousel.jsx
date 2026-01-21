@@ -731,6 +731,7 @@ export const MultiTableCarousel = ({
   const clickCount = React.useRef(0);
   const lastKeyTime = React.useRef(0);
   const lastKey = React.useRef(null);
+  const navigationTimer = React.useRef(null); // טיימר לניווט מושהה
 
   const startScrolling = (direction) => {
     stopScrolling();
@@ -775,10 +776,10 @@ export const MultiTableCarousel = ({
       stopScrolling();
 
       if (!isLongPress.current) {
-        // בדיקת לחיצה משולשת (Triple Click) לסגירת המודל
         const now = Date.now();
         const isSameKey = lastKey.current === e.key;
-        const isQuick = now - lastKeyTime.current < 400; // 400ms בין לחיצות
+        // זמן מקסימלי בין לחיצות כדי שיחשבו כרצף
+        const isQuick = now - lastKeyTime.current < 400;
 
         if (isSameKey && isQuick) {
           clickCount.current += 1;
@@ -789,17 +790,67 @@ export const MultiTableCarousel = ({
         lastKey.current = e.key;
         lastKeyTime.current = now;
 
-        if (clickCount.current === 3) {
-          // אם זיהינו 3 לחיצות רצופות - סגירת המודל
-          if (onClose) onClose();
-          clickCount.current = 0;
-          return;
+        // אם יש טיימר ניווט קודם - מבטלים אותו כי הגיעה עוד לחיצה
+        if (navigationTimer.current) {
+          clearTimeout(navigationTimer.current);
+          navigationTimer.current = null;
         }
 
-        if (e.key === "ArrowLeft") {
-          nextSlide(); // לחיצה קצרה שמאלה -> הבא
-        } else if (e.key === "ArrowRight") {
-          prevSlide(); // לחיצה קצרה ימינה -> הקודם
+        if (clickCount.current === 3) {
+          // פעולה ל-3 לחיצות: סגירה
+          clickCount.current = 0;
+          if (onClose) onClose();
+        } else {
+          // פעולה ללחיצה בודדת או כפולה - מפעילים טיימר
+          // שמחכה לראות אם יגיעו עוד לחיצות
+          navigationTimer.current = setTimeout(() => {
+            // אם הטיימר הגיע לסופו, סימן שלא היו עוד לחיצות מהירות
+            // אז מבצעים את הניווט (רק אם לא הגענו ל-3 לחיצות)
+            // (אנחנו בתוך ה-callback של ה-timeout, אז currentCount לא בהכרח רלוונטי כאן,
+            // אבל ה-cancel שעשינו למעלה מטפל בזה)
+
+            if (e.key === "ArrowLeft") {
+              // בחץ שמאלה - תמיד נרצה לבצע פעולה אחת בלבד גם אם לחץ פעמיים
+              // אלא אם נרצה לתמוך בדאבל קליק בעתיד. כרגע: כל רצף < 3 מפעיל ניווט אחד?
+              // או מפעיל כמספר הלחיצות?
+              // הבקשה הייתה "שלא יראו שמדפדף 2 עמודים ואז סוגר".
+              // אז אם לחץ 1 - דפדוף. אם לחץ 2 - דפדוף (פעמיים?). אם לחץ 3 - סגירה.
+              // הדרך הכי נקיה: אחרי השהיה, בודקים כמה נלחץ.
+              // אם clickCount היה 1 או 2 -> מנווטים כמספר הפעמים (או פעם אחת, תלוי בהתנהגות רצויה).
+              // נניח שנרצה לבצע את סך כל הניווטים שנצברו (אם זה לא 3).
+              // אבל המשתמש ביקש למנוע את המצב שרואים דפדוף ואז סגירה.
+              // אז אם זה רצף שמוביל ל-3 -> לא עושים כלום עד ה-3.
+              // אם זה נעצר ב-1 או 2 -> אז מבצעים.
+
+              // נבצע ניווט כמספר הלחיצות שנצברו (אם < 3)
+              // או פשוט נבצע ניווט אחד עבור כל לחיצה בודדת שהתמהמה?
+              // הפשוט ביותר: אם הטיימר פוקע, מבצעים את הפעולה עבור הלחיצה הנוכחית.
+              // אבל זה יגרום ל-2 דפדופים אם לחץ פעמיים.
+              // בוא נעשה לוגיקה פשוטה: מבצעים את הניווט עבור הלחיצה הנוכחית
+              // *רק* אם הטיימר לא בוטל.
+
+              // אבל רגע, אם לחץ פעם שניה תוך כדי ה-400ms, הטיימר של הפעם הראשונה בוטל.
+              // אז הניווט הראשון לא יקרה.
+              // זה אומר שאם לחץ פעמיים מהר -> יווצר טיימר חדש. כשיפקע -> ינווט פעם אחת?
+              // זה אומר שדאבל קליק יביא לניווט בודד. זה אולי רצוי ואולי לא.
+              // אם המשתמש לוחץ מהר כדי לדפדף מהר, זה יפריע לו.
+              // מצד שני, זה הפתרון היחיד ל"לחכות".
+              // נלך על הפתרון שבו אם לוחצים מהר (פחות מ-3), זה מבצע את הפעולות בסוף.
+              // כדי לתמוך ב"לחיצה מהירה לדפדוף מהר", אפשר לקצר את ה-timeout ל-250ms נניח,
+              // או פשוט להשלים עם זה שיש דיליי קטן.
+              // כאן אבצע את הפעולה עבור סך הלחיצות שנצברו (clickCount).
+
+              for (let i = 0; i < clickCount.current; i++) {
+                nextSlide();
+              }
+            } else if (e.key === "ArrowRight") {
+              for (let i = 0; i < clickCount.current; i++) {
+                prevSlide();
+              }
+            }
+            // מאפסים את המונה אחרי ביצוע הפעולה
+            clickCount.current = 0;
+          }, 350); // השהייה קצרה של 350ms
         }
       }
       isLongPress.current = false;
