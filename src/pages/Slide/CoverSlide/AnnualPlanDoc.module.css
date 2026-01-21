@@ -290,3 +290,189 @@ h5 {
         gap: 10px;
     }
 }
+
+/* Tablet optimization */
+@media (max-width: 768px) {
+    .docContainer {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .docHeader {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .docHeader h1 {
+        font-size: 1.5rem;
+    }
+
+    .docTag {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+    }
+
+    .docSection {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .sectionTitle {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    h4,
+    .financialTitle {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 0.95rem;
+    }
+
+    .visionBlock {
+        font-size: 0.9rem;
+    }
+
+    .financialDetails {
+        font-size: 0.8rem;
+    }
+
+    .stat {
+        font-size: 0.9rem;
+    }
+
+    .stat span {
+        font-size: 0.7rem;
+    }
+
+    .profit {
+        font-size: 1rem;
+    }
+
+    .projectTitle {
+        font-size: 1.1rem;
+    }
+
+    .listSection li {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+    }
+
+    .resourcesSection ul li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile optimization */
+@media (max-width: 480px) {
+    .docContainer {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .docHeader {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .docHeader h1 {
+        font-size: 1.2rem;
+    }
+
+    .docTag {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+
+    .docSection {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    h3 {
+        font-size: 0.95rem;
+    }
+
+    h4,
+    .financialTitle {
+        font-size: 0.9rem;
+    }
+
+    h5 {
+        font-size: 0.85rem;
+    }
+
+    .visionBlock {
+        font-size: 0.8rem;
+    }
+
+    .financialDetails {
+        font-size: 0.75rem;
+        padding-left: 8px;
+    }
+
+    .financialBox {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .financialGrid {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .stat {
+        font-size: 0.8rem;
+    }
+
+    .stat span {
+        font-size: 0.65rem;
+    }
+
+    .profit {
+        font-size: 0.9rem;
+    }
+
+    .projectTitle {
+        font-size: 1rem;
+    }
+
+    .projectCard {
+        padding: 12px;
+    }
+
+    .listSection li {
+        font-size: 0.75rem;
+        margin-bottom: 3px;
+    }
+
+    .resourcesSection ul li {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+
+    .productsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlightText {
+        font-size: 0.8rem;
+        padding: 2px 6px;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 3px 6px;
+    }
+}

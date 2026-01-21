@@ -1,0 +1,230 @@
+/* src/components/SlideModal/SlideModalContent.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    direction: rtl;
+    text-align: right;
+    color: #333;
+    padding: 0 10px 10px 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #4b2c85;
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+    line-height: 1.3;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #555;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sectionTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4b2c85;
+    margin: 0;
+}
+
+.list {
+    margin: 0;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.listItem {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Source Box */
+.sourceBox {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9fb;
+    border-right: 5px solid #4b2c85;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.sourceBox:hover {
+    background-color: #f0f0f8;
+    transform: translateX(-3px);
+}
+
+.sourceRow {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 0.9rem;
+}
+
+.sourceLabel {
+    font-weight: 700;
+    color: #4b2c85;
+    min-width: 60px;
+}
+
+.sourceValue {
+    color: #555;
+    flex: 1;
+}
+
+.clickHint {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #4b2c85;
+    font-weight: bold;
+    border-top: 1px dashed #ccc;
+    padding-top: 8px;
+}
+
+/* התאמות למובייל */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 8px 8px 8px;
+        gap: 10px;
+        max-height: 75vh;
+    }
+
+    .title {
+        font-size: 0.95rem;
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .content {
+        gap: 10px;
+    }
+
+    .text {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .sectionTitle {
+        font-size: 0.9rem;
+    }
+
+    .list {
+        padding-right: 15px;
+        gap: 6px;
+    }
+
+    .listItem {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .sourceBox {
+        padding: 10px;
+        margin-top: 10px;
+        gap: 6px;
+    }
+
+    .sourceRow {
+        font-size: 0.75rem;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .sourceLabel {
+        min-width: auto;
+        font-size: 0.75rem;
+    }
+
+    .sourceValue {
+        font-size: 0.75rem;
+    }
+
+    .clickHint {
+        font-size: 0.7rem;
+        padding-top: 6px;
+        margin-top: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 6px 6px 6px;
+        gap: 8px;
+    }
+
+    .title {
+        font-size: 0.85rem;
+        padding-bottom: 5px;
+        margin-bottom: 6px;
+    }
+
+    .text {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .sectionTitle {
+        font-size: 0.85rem;
+    }
+
+    .list {
+        padding-right: 12px;
+        gap: 5px;
+    }
+
+    .listItem {
+        font-size: 0.7rem;
+    }
+
+    .sourceBox {
+        padding: 8px;
+        margin-top: 8px;
+    }
+
+    .sourceRow {
+        font-size: 0.7rem;
+    }
+
+    .sourceLabel {
+        font-size: 0.7rem;
+    }
+
+    .sourceValue {
+        font-size: 0.7rem;
+    }
+
+    .clickHint {
+        font-size: 0.65rem;
+    }
+}

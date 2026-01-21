@@ -46,32 +46,12 @@ function MassMarketSlide() {
             onNavigate={handleNavigateToSource}
           />
         ) : (
-          <div style={{ height: "85vh", width: "100%", position: "relative" }}>
-            <MultiTableCarousel
-              onClose={handleCloseModal}
-              initialSlideId={targetSlideId}
-              targetDocSectionId={targetSectionId}
-            />
-            <button
-              onClick={() => setViewMode("summary")}
-              style={{
-                position: "absolute",
-                bottom: "20px",
-                left: "20px",
-                zIndex: 200,
-                background: "#333",
-                color: "white",
-                border: "none",
-                padding: "8px 16px",
-                borderRadius: "20px",
-                cursor: "pointer",
-                opacity: 0.9,
-                boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-              }}
-            >
-              &larr; חזרה לתקציר
-            </button>
-          </div>
+          <MultiTableCarousel
+            onClose={handleCloseModal}
+            onBackToSummary={() => setViewMode("summary")}
+            initialSlideId={targetSlideId}
+            targetDocSectionId={targetSectionId}
+          />
         )}
       </Modal>
 

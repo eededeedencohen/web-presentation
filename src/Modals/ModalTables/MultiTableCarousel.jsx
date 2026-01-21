@@ -640,6 +640,7 @@ const quotes1000Data = [
 // ==========================================
 export const MultiTableCarousel = ({
   onClose,
+  onBackToSummary,
   initialSlideId = 1,
   targetDocSectionId = null,
 }) => {
@@ -706,6 +707,11 @@ export const MultiTableCarousel = ({
   };
 
   const [currentIndex, setCurrentIndex] = useState(getInitialIndex);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // מרחק מינימלי להחלקה (בפיקסלים)
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     setCurrentIndex(getInitialIndex());
@@ -715,16 +721,57 @@ export const MultiTableCarousel = ({
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
+  // טיפול בתחילת מגע
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  // טיפול בתנועת מגע
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  // טיפול בסיום מגע
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide(); // החלקה שמאלה = מעבר קדימה
+    }
+    if (isRightSwipe) {
+      prevSlide(); // החלקה ימינה = מעבר אחורה
+    }
+  };
+
   const currentSlide = slides[currentIndex];
   if (!currentSlide) return <div>טעינה...</div>;
 
+  // אם זה מסמך, לא מוסיפים touch handlers כדי לאפשר גלילה
+  const isDocument = currentSlide.type === "document";
+
   return (
-    <div className={styles.carouselContainer}>
+    <div
+      className={styles.carouselContainer}
+      onTouchStart={isDocument ? undefined : onTouchStart}
+      onTouchMove={isDocument ? undefined : onTouchMove}
+      onTouchEnd={isDocument ? undefined : onTouchEnd}
+    >
       <div className={styles.header}>
         <h2 className={styles.title}>{currentSlide.title}</h2>
-        <button onClick={onClose} className={styles.closeButton}>
-          ✕
-        </button>
+        {onBackToSummary ? (
+          <button onClick={onBackToSummary} className={styles.backToSummaryButton}>
+            ← חזרה לתקציר
+          </button>
+        ) : (
+          <button onClick={onClose} className={styles.closeButton}>
+            ✕
+          </button>
+        )}
       </div>
 
       <button

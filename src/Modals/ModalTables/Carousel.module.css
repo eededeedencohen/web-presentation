@@ -11,6 +11,10 @@
     color: #333;
     padding: 10px 15px;
     /* ריפוד פנימי */
+    /* תמיכה במגע מובייל */
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* --- Header (קבוע למעלה) --- */
@@ -49,6 +53,32 @@
     justify-content: center;
 }
 
+.closeButton:hover {
+    background: #e5e7eb;
+    transform: scale(1.1);
+}
+
+.backToSummaryButton {
+    background: rgba(75, 85, 99, 0.6);
+    /* שקוף */
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.backToSummaryButton:hover {
+    background: rgba(75, 85, 99, 0.8);
+    border-color: rgba(75, 85, 99, 0.5);
+}
+
 /* --- Content Area (האזור הגמיש באמצע) --- */
 .contentArea {
     flex: 1;
@@ -58,6 +88,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    /* מאפשר גלילה תוך כדי swipe */
+    touch-action: pan-y;
 }
 
 /* --- Table Container (האזור הנגלל היחיד) --- */
@@ -78,6 +110,16 @@
     overflow-x: hidden;
     border-radius: 8px;
     background: #f9f9f9;
+    /* מאפשר בחירת טקסט וגלילה חלקה */
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    touch-action: pan-y !important;
+}
+
+/* מאפשר בחירת כל התוכן בתוך המסמך */
+.documentScrollContainer * {
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
 /* --- Table Styles --- */
@@ -111,13 +153,14 @@
 /* --- Navigation & Dots (קבוע למטה) --- */
 .navButton {
     /* מיקום החיצים */
-    background: #fff;
-    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.7);
+    /* שקיפות */
+    border: 1px solid rgba(221, 221, 221, 0.5);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -127,14 +170,22 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
+    transition: all 0.2s;
+}
+
+.navButton:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(221, 221, 221, 0.8);
 }
 
 .prevBtn {
-    right: -15px;
+    right: 10px;
+    /* בתוך המסך */
 }
 
 .nextBtn {
-    left: -15px;
+    left: 10px;
+    /* בתוך המסך */
 }
 
 .dotsContainer {
@@ -202,43 +253,68 @@
 /* ================================================= */
 @media (max-width: 1200px) {
     .carouselContainer {
-        padding: 10px 5px;
+        padding: 8px 4px;
         /* פחות שוליים בצדדים */
     }
 
     .title {
-        font-size: 1.2rem;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+
+    .closeButton {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+
+    .backToSummaryButton {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        background: rgba(75, 85, 99, 0.5);
     }
 
     .navButton {
         width: 32px;
         height: 32px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid #ccc;
+        background: rgba(255, 255, 255, 0.6);
+        /* שקיפות במובייל */
+        border: 1px solid rgba(204, 204, 204, 0.5);
+        font-size: 0.9rem;
     }
 
     /* חיצים בתוך המסך */
     .prevBtn {
-        right: 2px;
+        right: 5px;
     }
 
     .nextBtn {
-        left: 2px;
+        left: 5px;
     }
 
     /* טבלה קומפקטית */
     .table thead th {
-        padding: 8px 4px;
-        font-size: 0.75rem;
+        padding: 6px 3px;
+        font-size: 0.65rem;
     }
 
     .table tbody td {
-        padding: 8px 4px;
-        font-size: 0.75rem;
+        padding: 6px 3px;
+        font-size: 0.65rem;
     }
 
     .wrapText {
         min-width: auto;
+    }
+
+    .badge {
+        font-size: 0.6em;
+        padding: 2px 4px;
+    }
+
+    .quantity {
+        font-size: 0.7rem;
     }
 }
 
@@ -249,6 +325,10 @@
     .header {
         margin-bottom: 5px;
         padding-bottom: 5px;
+    }
+
+    .title {
+        font-size: 0.8rem;
     }
 
     .dotsContainer {
@@ -270,5 +350,63 @@
     .table tbody td {
         font-size: 0.7rem;
         padding: 4px;
+    }
+}
+
+/* ================================================= */
+/* === התאמה למסכים קטנים מאוד (פלאפונים) === */
+/* ================================================= */
+@media (max-width: 480px) {
+    .carouselContainer {
+        padding: 6px 3px;
+    }
+
+    .header {
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+    }
+
+    .title {
+        font-size: 0.65rem;
+        line-height: 1.15;
+        font-weight: 600;
+    }
+
+    .closeButton {
+        width: 26px;
+        height: 26px;
+        font-size: 0.95rem;
+    }
+
+    .backToSummaryButton {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+        background: rgba(75, 85, 99, 0.5);
+    }
+
+    .navButton {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+    }
+
+    .table thead th {
+        padding: 5px 2px;
+        font-size: 0.6rem;
+    }
+
+    .table tbody td {
+        padding: 5px 2px;
+        font-size: 0.6rem;
+    }
+
+    .dotsContainer {
+        margin-top: 6px;
+        gap: 5px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
     }
 }
