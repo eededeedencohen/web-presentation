@@ -779,7 +779,7 @@ export const MultiTableCarousel = ({
         const now = Date.now();
         const isSameKey = lastKey.current === e.key;
         // זמן מקסימלי בין לחיצות כדי שיחשבו כרצף
-        const isQuick = now - lastKeyTime.current < 400;
+        const isQuick = now - lastKeyTime.current < 200;
 
         if (isSameKey && isQuick) {
           clickCount.current += 1;
@@ -796,8 +796,8 @@ export const MultiTableCarousel = ({
           navigationTimer.current = null;
         }
 
-        if (clickCount.current === 3) {
-          // פעולה ל-3 לחיצות: סגירה
+        if (clickCount.current === 2) {
+          // פעולה ל-2 לחיצות: סגירה
           clickCount.current = 0;
           if (onClose) onClose();
         } else {

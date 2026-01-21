@@ -116,7 +116,7 @@ export default function VisionSlide() {
         }
 
         if (clickCount.current === 2) {
-          // אם זיהינו 3 לחיצות רצופות - סגירת המודל (בלי ניווט)
+          // אם זיהינו 2 לחיצות רצופות - סגירת המודל (בלי ניווט)
           handleCloseModal();
           clickCount.current = 0;
         } else {
