@@ -115,7 +115,7 @@ export default function VisionSlide() {
           navigationTimer.current = null;
         }
 
-        if (clickCount.current === 3) {
+        if (clickCount.current === 2) {
           // אם זיהינו 3 לחיצות רצופות - סגירת המודל (בלי ניווט)
           handleCloseModal();
           clickCount.current = 0;
