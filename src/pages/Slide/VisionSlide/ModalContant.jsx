@@ -6,9 +6,9 @@ import {
 } from "../../../components/SlideModal/SlideModalContent";
 
 // 1. רכיב החזון
-export function VisionContent({ onNavigate }) {
+export function VisionContent({ onNavigate, containerRef }) {
   return (
-    <SlideModalContainer title="הצהרת החזון">
+    <SlideModalContainer title="הצהרת החזון" ref={containerRef}>
       <ModalText>
         חנות המתנות שואפת להוות בית יוצר המשקף לעולם את הכישרון, היצירתיות
         והעוצמה האנושית של אמני ויוצרי שק"ל. החזון הוא להפוך את החנות לפלטפורמה
@@ -28,9 +28,9 @@ export function VisionContent({ onNavigate }) {
 }
 
 // 2. רכיב עצמאות כלכלית
-export function FinancialContent({ onNavigate }) {
+export function FinancialContent({ onNavigate, containerRef }) {
   return (
-    <SlideModalContainer title="עצמאות כלכלית">
+    <SlideModalContainer title="עצמאות כלכלית" ref={containerRef}>
       <ModalText>
         החזון הכלכלי הוא יצירת מקור הכנסה עצמאי ויציב לעמותה, שיוביל לצמצום
         התלות בתקציבים ממשלתיים ובמקורות ציבוריים. עצמאות זו תאפשר פיתוח שירותים
@@ -50,9 +50,9 @@ export function FinancialContent({ onNavigate }) {
 }
 
 // 3. רכיב משמעות
-export function MeaningContent({ onNavigate }) {
+export function MeaningContent({ onNavigate, containerRef }) {
   return (
-    <SlideModalContainer title="משמעות">
+    <SlideModalContainer title="משמעות" ref={containerRef}>
       <ModalText>
         חנות חזקה ורווחית תגדיל את תחושת המשמעות והשייכות של אנשי העמותה. המודל
         ממחיש את יכולתם להיות יצרניים ומשפיעים בכלכלה הישראלית. כל רכישה היא
@@ -71,9 +71,9 @@ export function MeaningContent({ onNavigate }) {
 }
 
 // 4. רכיב מנוע חשיפה
-export function ExposureContent({ onNavigate }) {
+export function ExposureContent({ onNavigate, containerRef }) {
   return (
-    <SlideModalContainer title="מנוע חשיפה">
+    <SlideModalContainer title="מנוע חשיפה" ref={containerRef}>
       <ModalText>
         כיום קיים פער גדול בין היקף העשייה וההשפעה של עמותת שק"ל לבין ההיכרות של
         הציבור הרחב איתה. החנות משמשת כ"מנוע חשיפה" שמטרתו להגדיל את הנראות
@@ -93,16 +93,28 @@ export function ExposureContent({ onNavigate }) {
 }
 
 // קבלת ה-prop החדש onNavigate
-export default function ModalContant({ selectedVision, onNavigate }) {
+export default function ModalContant({
+  selectedVision,
+  onNavigate,
+  containerRef,
+}) {
   switch (selectedVision) {
     case "vision":
-      return <VisionContent onNavigate={onNavigate} />;
+      return (
+        <VisionContent onNavigate={onNavigate} containerRef={containerRef} />
+      );
     case "financial":
-      return <FinancialContent onNavigate={onNavigate} />;
+      return (
+        <FinancialContent onNavigate={onNavigate} containerRef={containerRef} />
+      );
     case "meaning":
-      return <MeaningContent onNavigate={onNavigate} />;
+      return (
+        <MeaningContent onNavigate={onNavigate} containerRef={containerRef} />
+      );
     case "exposure":
-      return <ExposureContent onNavigate={onNavigate} />;
+      return (
+        <ExposureContent onNavigate={onNavigate} containerRef={containerRef} />
+      );
     default:
       return null;
   }

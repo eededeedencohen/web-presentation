@@ -727,6 +727,11 @@ export const MultiTableCarousel = ({
   const scrollInterval = React.useRef(null);
   const isLongPress = React.useRef(false);
 
+  // משתנים לזיהוי לחיצה משולשת (Triple Click)
+  const clickCount = React.useRef(0);
+  const lastKeyTime = React.useRef(0);
+  const lastKey = React.useRef(null);
+
   const startScrolling = (direction) => {
     stopScrolling();
     scrollInterval.current = setInterval(() => {
@@ -770,6 +775,27 @@ export const MultiTableCarousel = ({
       stopScrolling();
 
       if (!isLongPress.current) {
+        // בדיקת לחיצה משולשת (Triple Click) לסגירת המודל
+        const now = Date.now();
+        const isSameKey = lastKey.current === e.key;
+        const isQuick = now - lastKeyTime.current < 400; // 400ms בין לחיצות
+
+        if (isSameKey && isQuick) {
+          clickCount.current += 1;
+        } else {
+          clickCount.current = 1;
+        }
+
+        lastKey.current = e.key;
+        lastKeyTime.current = now;
+
+        if (clickCount.current === 3) {
+          // אם זיהינו 3 לחיצות רצופות - סגירת המודל
+          if (onClose) onClose();
+          clickCount.current = 0;
+          return;
+        }
+
         if (e.key === "ArrowLeft") {
           nextSlide(); // לחיצה קצרה שמאלה -> הבא
         } else if (e.key === "ArrowRight") {

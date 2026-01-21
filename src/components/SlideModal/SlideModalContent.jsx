@@ -51,14 +51,16 @@ export const SourceBox = ({
 };
 
 // רכיב Container כללי
-export const SlideModalContainer = ({ title, children }) => {
-  return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>{title}</h2>
-      <div className={styles.content}>{children}</div>
-    </div>
-  );
-};
+export const SlideModalContainer = React.forwardRef(
+  ({ title, children }, ref) => {
+    return (
+      <div className={styles.container} ref={ref}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.content}>{children}</div>
+      </div>
+    );
+  },
+);
 
 // רכיב טקסט פשוט
 export const ModalText = ({ children, className = "" }) => {
