@@ -96,6 +96,13 @@ function Presentation() {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
+      // בדיקה האם יש מודל פתוח דרך ה-portal
+      // אם modal-root מכיל ילדים, סימן שיש מודל פתוח ולכן לא נעביר שקופיות
+      const modalRoot = document.getElementById("modal-root");
+      if (modalRoot && modalRoot.hasChildNodes()) {
+        return;
+      }
+
       if (event.key === "ArrowRight" || event.key === "Space") {
         goNext();
       } else if (event.key === "ArrowLeft") {
@@ -116,6 +123,12 @@ function Presentation() {
   };
 
   const onTouchEnd = () => {
+    // בדיקה האם יש מודל פתוח (גם למניעת החלקה ברקע)
+    const modalRoot = document.getElementById("modal-root");
+    if (modalRoot && modalRoot.hasChildNodes()) {
+      return;
+    }
+
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;

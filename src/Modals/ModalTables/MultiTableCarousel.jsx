@@ -721,6 +721,75 @@ export const MultiTableCarousel = ({
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
+  // --- לוגיקה לניווט וגלילה ---
+  const scrollContainerRef = React.useRef(null);
+  const longPressTimer = React.useRef(null);
+  const scrollInterval = React.useRef(null);
+  const isLongPress = React.useRef(false);
+
+  const startScrolling = (direction) => {
+    stopScrolling();
+    scrollInterval.current = setInterval(() => {
+      if (scrollContainerRef.current) {
+        // ArrowLeft -> direction="down" -> +15
+        // ArrowRight -> direction="up" -> -15
+        scrollContainerRef.current.scrollTop += direction === "down" ? 15 : -15;
+      }
+    }, 16);
+  };
+
+  const stopScrolling = () => {
+    if (scrollInterval.current) {
+      clearInterval(scrollInterval.current);
+      scrollInterval.current = null;
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.repeat) return;
+
+      if (e.key === "ArrowLeft") {
+        longPressTimer.current = setTimeout(() => {
+          isLongPress.current = true;
+          startScrolling("down"); // לחיצה ארוכה שמאלה -> גלילה למטה
+        }, 300);
+      } else if (e.key === "ArrowRight") {
+        longPressTimer.current = setTimeout(() => {
+          isLongPress.current = true;
+          startScrolling("up"); // לחיצה ארוכה ימינה -> גלילה למעלה
+        }, 300);
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      if (longPressTimer.current) {
+        clearTimeout(longPressTimer.current);
+        longPressTimer.current = null;
+      }
+      stopScrolling();
+
+      if (!isLongPress.current) {
+        if (e.key === "ArrowLeft") {
+          nextSlide(); // לחיצה קצרה שמאלה -> הבא
+        } else if (e.key === "ArrowRight") {
+          prevSlide(); // לחיצה קצרה ימינה -> הקודם
+        }
+      }
+      isLongPress.current = false;
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+      stopScrolling();
+      if (longPressTimer.current) clearTimeout(longPressTimer.current);
+    };
+  }, []); // התלות היא פונקציות הניווט, אבל כיוון שהן משתמשות ב-updater function של setState, זה בטוח
+
   // טיפול בתחילת מגע
   const onTouchStart = (e) => {
     setTouchEnd(null);
@@ -764,7 +833,10 @@ export const MultiTableCarousel = ({
       <div className={styles.header}>
         <h2 className={styles.title}>{currentSlide.title}</h2>
         {onBackToSummary ? (
-          <button onClick={onBackToSummary} className={styles.backToSummaryButton}>
+          <button
+            onClick={onBackToSummary}
+            className={styles.backToSummaryButton}
+          >
             ← חזרה לתקציר
           </button>
         ) : (
@@ -783,11 +855,14 @@ export const MultiTableCarousel = ({
 
       <div className={styles.contentArea}>
         {currentSlide.type === "document" ? (
-          <div className={styles.documentScrollContainer}>
+          <div
+            className={styles.documentScrollContainer}
+            ref={scrollContainerRef}
+          >
             <AnnualPlanDoc targetSectionId={targetDocSectionId} />
           </div>
         ) : (
-          <div className={styles.tableContainer}>
+          <div className={styles.tableContainer} ref={scrollContainerRef}>
             <table className={styles.table}>
               <thead>
                 <tr>
